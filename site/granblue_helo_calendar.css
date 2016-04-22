@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+body *{
+  font-family: 'Noto Sans Japanese', sans-serif;
+}
+
+.fc-sun{
+	background-color:#FFCCCC;
+	color:#CC6699;
+}
+
+.fc-sat{
+	background-color:#CCFFFF;
+	color:#0380B7;
+}
+
+.fc-widget-header{
+}
+
+.fc-widget-content{
+}
+
+.menu_content{
+	float:left;
+}
+
+.calendar_content{
+	float:right;
+}
+
+
+.element_morning{
+	background-color:#FFFF8F !important;
+	color:#CC66CC !important;
+	font-size:11px !important;
+}
+
+.element_noon{
+	background-color:#CCFFCC !important;
+	color:#2E8A5C !important;
+	font-size:11px !important;
+}
+
+.element_night{
+	background-color:#E6CCFF !important;
+	color:#2E8A5C !important;
+	font-size:11px !important;
+}
+
+
+
+.element_fire{
+	background-color:#FF0000 !important;
+	font-size:11px !important;
+}
+.element_water{
+	background-color:#0380B7 !important;
+	font-size:11px !important;
+}
+.element_earth{
+	background-color:#FF7F00 !important;
+	font-size:11px !important;
+}
+.element_wind{
+	background-color:#7FC31C !important;
+	font-size:11px !important;
+}
+.element_shine{
+	background-color:#FFF232 !important;
+	font-size:11px !important;
+}
+.element_darkness{
+	background-color:#2A007C !important;
+	font-size:11px !important;
+}
+
+
+.subjugation_fire{
+	background-color:#FF0000 !important;
+	font-size:11px !important;
+}
+.subjugation_water{
+	background-color:#0380B7 !important;
+	font-size:11px !important;
+}
+.subjugation_earth{
+	background-color:#FF7F00 !important;
+	font-size:11px !important;
+}
+.subjugation_wind{
+	background-color:#7FC31C !important;
+	font-size:11px !important;
+}
+.subjugation_shine{
+	background-color:#FFF232 !important;
+	font-size:11px !important;
+}
+.subjugation_darkness{
+	background-color:#2A007C !important;
+	font-size:11px !important;
+}

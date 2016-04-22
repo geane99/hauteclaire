@@ -1,0 +1,1403 @@
+{
+	"events":[
+		{
+			"id":1,
+			"title":"降焔祭",
+			"start":"2014-03-31 19:00:00",
+			"end":"2014-04-16 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C801_%B9%DF%B1%EB%BA%D7"
+		},
+
+		{
+			"id":2,
+			"title":"コキュートス討滅戦",
+			"start":"2014-04-24 19:00:00",
+			"end":"2014-04-30 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C802_%A5%B3%A5%AD%A5%E5%A1%BC%A5%C8%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+
+		{
+			"id":3,
+			"title":"臆病勇者と囚われの姫君",
+			"start":"2014-04-30 19:00:00",
+			"end":"2014-05-07 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C803_%B2%B2%C9%C2%CD%A6%BC%D4%A4%C8%BC%FC%A4%EF%A4%EC%A4%CE%C9%B1%B7%AF"
+		},
+
+		{
+			"id":4,
+			"title":"不屈の勇者と熱砂の動乱",
+			"start":"2014-05-08 19:00:00",
+			"end":"2014-05-14 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C804_%C9%D4%B6%FE%A4%CE%CD%A6%BC%D4%A4%C8%C7%AE%BA%BD%A4%CE%C6%B0%CD%F0"
+		},
+
+		{
+			"id":5,
+			"title":"ウォフマナフ討滅戦",
+			"start":"2014-05-15 19:00:00",
+			"end":"2014-05-22 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C805_%A5%A6%A5%A9%A5%D5%A5%DE%A5%CA%A5%D5%C6%A4%CC%C7%C0%EF"
+		},
+
+		{
+			"id":6,
+			"title":"砂神の巫女",
+			"start":"2014-05-31 19:00:00",
+			"end":"2014-06-08 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C806_%BA%BD%BF%C0%A4%CE%D6%E0%BD%F7"
+		},
+
+		{
+			"id":7,
+			"title":"陰謀の涙雨",
+			"start":"2014-06-09 19:00:00",
+			"end":"2014-06-16 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C807_%B1%A2%CB%C5%A4%CE%CE%DE%B1%AB"
+		},
+		
+
+		{
+			"id":8,
+			"title":"イフリート討滅戦",
+			"start":"2014-06-17 19:00:00",
+			"end":"2014-06-21 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C808_%A5%A4%A5%D5%A5%EA%A1%BC%A5%C8%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":9,
+			"title":"決戦！星の古戦場",
+			"start":"2014-06-23 19:00:00",
+			"end":"2014-06-30 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C809_%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+		{
+			"id":10,
+			"title":"蛇神の島に響く歌",
+			"start":"2014-06-30 19:00:00",
+			"end":"2014-07-11 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C810_%BC%D8%BF%C0%A4%CE%C5%E7%A4%CB%B6%C1%A4%AF%B2%CE"
+		},
+		
+		{
+			"id":11,
+			"title":"コキュートス討滅戦(2)",
+			"start":"2014-07-10 19:00:00",
+			"end":"2014-07-15 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C811_%282%B2%F3%CC%DC%29%A5%B3%A5%AD%A5%E5%A1%BC%A5%C8%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+
+		{
+			"id":12,
+			"title":"決戦！星の古戦場(2)",
+			"start":"2014-07-23 19:00:00",
+			"end":"2014-07-27 17:00:00",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C812_%282%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+
+		{
+			"id":13,
+			"title":"蒼海を征く暗黒巨大魚",
+			"start":"2014-07-31 19:00:00",
+			"end":"2014-08-11 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C813_%C1%F3%B3%A4%A4%F2%C0%AC%A4%AF%B0%C5%B9%F5%B5%F0%C2%E7%B5%FB"
+		},
+		
+		{
+			"id":14,
+			"title":"ウォフマナフ討滅戦(2)",
+			"start":"2014-08-08 19:00:00",
+			"end":"2014-08-14 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C814_%282%B2%F3%CC%DC%29%A5%A6%A5%A9%A5%D5%A5%DE%A5%CA%A5%D5%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":15,
+			"title":"決戦！星の古戦場(3)",
+			"start":"2014-08-20 19:00:00",
+			"end":"2014-08-24 17:00:00",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C815_%283%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+		{
+			"id":16,
+			"title":"サジタリウス討滅戦",
+			"start":"2014-08-25 19:00:00",
+			"end":"2014-08-31 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C816_%A5%B5%A5%B8%A5%BF%A5%EA%A5%A6%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":17,
+			"title":"昏き島に眠る光の巨人",
+			"start":"2014-08-31 19:00:00",
+			"end":"2014-09-11 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C817_%BA%AA%A4%AD%C5%E7%A4%CB%CC%B2%A4%EB%B8%F7%A4%CE%B5%F0%BF%CD"
+		},
+		
+		{
+			"id":18,
+			"title":"ケルベロス討滅戦",
+			"start":"2014-09-12 19:00:00",
+			"end":"2014-09-18 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C818_%A5%B1%A5%EB%A5%D9%A5%ED%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":19,
+			"title":"決戦！星の古戦場(4)",
+			"start":"2014-09-19 19:00:00",
+			"end":"2014-09-23 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C819_%284%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+		{
+			"id":20,
+			"title":"降焔祭(2)",
+			"start":"2014-09-24 19:00:00",
+			"end":"2014-09-30 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C820_%282%B2%F3%CC%DC%29%B9%DF%B1%EB%BA%D7"
+		},
+		
+		{
+			"id":21,
+			"title":"若き義勇の振るう剣",
+			"start":"2014-09-30 19:00:00",
+			"end":"2014-10-07 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C821_%BC%E3%A4%AD%B5%C1%CD%A6%A4%CE%BF%B6%A4%EB%A4%A6%B7%F5"
+		},
+		
+		{
+			"id":22,
+			"title":"イフリート討滅戦(2)",
+			"start":"2014-10-08 19:00:00",
+			"end":"2014-10-13 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C822_%282%B2%F3%CC%DC%29%A5%A4%A5%D5%A5%EA%A1%BC%A5%C8%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":22,
+			"title":"シンデレラファンタジー ～少女達の冒険譚～",
+			"start":"2014-10-14 19:00:00",
+			"end":"2014-10-23 17:00:00",
+			"className":"collaboration",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C823_%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%BE%AF%BD%F7%C3%A3%A4%CE%CB%C1%B8%B1%EB%FD%A1%C1"
+		},
+		
+		{
+			"id":23,
+			"title":"決戦！星の古戦場(5) 外伝：幽幻の饗宴",
+			"start":"2014-10-24 19:00:00",
+			"end":"2014-10-30 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C824_%CD%A9%B8%B8%A4%CE%B6%C2%B1%E3%20-%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC%B3%B0%C5%C1-"
+		},
+		
+		{
+			"id":24,
+			"title":"過日の痕、明日への扉",
+			"start":"2014-10-31 19:00:00",
+			"end":"2014-11-07 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C825_%B2%E1%C6%FC%A4%CE%BA%AF%A1%A2%CC%C0%C6%FC%A4%D8%A4%CE%C8%E2"
+		},
+		
+		{
+			"id":25,
+			"title":"コロゥ討滅戦",
+			"start":"2014-11-07 19:00:00",
+			"end":"2014-11-13 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C826_%A5%B3%A5%ED%A5%A5%C6%A4%CC%C7%C0%EF"
+		},
+		
+		
+		{
+			"id":26,
+			"title":"臆病勇者と囚われの姫君(2)",
+			"start":"2014-11-13 19:00:00",
+			"end":"2014-11-21 17:00:00",
+			"className":"story_events_reprint",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C827_%282%B2%F3%CC%DC%29%B2%B2%C9%C2%CD%A6%BC%D4%A4%C8%BC%FC%A4%EF%A4%EC%A4%CE%C9%B1%B7%AF"
+		},
+		
+		{
+			"id":27,
+			"title":"決戦！星の古戦場(6)",
+			"start":"2014-11-21 19:00:00",
+			"end":"2014-11-25 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C828_%286%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+				
+		{
+			"id":28,
+			"title":"救国の忠騎士",
+			"start":"2014-11-30 19:00:00",
+			"end":"2014-12-08 23:59:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C829_%B5%DF%B9%F1%A4%CE%C3%E9%B5%B3%BB%CE"
+		},
+		
+		{
+			"id":29,
+			"title":"サジタリウス討滅戦(2)",
+			"start":"2014-12-10 19:00:00",
+			"end":"2014-12-15 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C830_%282%B2%F3%CC%DC%29%A5%B5%A5%B8%A5%BF%A5%EA%A5%A6%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":30,
+			"title":"聖夜のスターダスト・メモリーズ",
+			"start":"2014-12-16 19:00:00",
+			"end":"2014-12-25 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C831_%C0%BB%CC%EB%A4%CE%A5%B9%A5%BF%A1%BC%A5%C0%A5%B9%A5%C8%A1%A6%A5%E1%A5%E2%A5%EA%A1%BC%A5%BA"
+		},
+		
+		{
+			"id":31,
+			"title":"決戦！星の古戦場(7)",
+			"start":"2014-12-26 19:00:00",
+			"end":"2014-12-30 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C832_%287%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+		{
+			"id":32,
+			"title":"神境にて辿る跡",
+			"start":"2014-12-31 19:00:00",
+			"end":"2015-01-07 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C833_%BF%C0%B6%AD%A4%CB%A4%C6%C3%A9%A4%EB%C0%D7"
+		},
+		
+		{
+			"id":33,
+			"title":"砂神の巫女(2)",
+			"start":"2015-01-08 19:00:00",
+			"end":"2015-01-16 17:00:00",
+			"className":"story_events_reprint",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C834_%282%B2%F3%CC%DC%29%BA%BD%BF%C0%A4%CE%D6%E0%BD%F7"
+		},
+		
+		{
+			"id":34,
+			"title":"シンデレラファンタジー ～少女達の冒険譚～(2)",
+			"start":"2015-01-09 19:00:00",
+			"end":"2015-01-19 17:00:00",
+			"className":"collaboration_reprint",
+			"isReprint":true,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C835_%282%B2%F3%CC%DC%29%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%BE%AF%BD%F7%C3%A3%A4%CE%CB%C1%B8%B1%EB%FD%A1%C1"
+		},
+		
+		{
+			"id":35,
+			"title":"シンデレラファンタジー ～夢の続きの空の先～",
+			"start":"2015-01-16 19:00:00",
+			"end":"2015-01-25 17:00:00",
+			"className":"collaboration",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C836_%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%CC%B4%A4%CE%C2%B3%A4%AD%A4%CE%B6%F5%A4%CE%C0%E8%A1%C1"
+		},
+		
+		{
+			"id":36,
+			"title":"決戦！星の古戦場(8)",
+			"start":"2015-01-26 19:00:00",
+			"end":"2015-01-30 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C837_%288%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+		{
+			"id":37,
+			"title":"砂縛の涙、ひとしずく",
+			"start":"2015-01-31 19:00:00",
+			"end":"2015-02-07 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C838_%BA%BD%C7%FB%A4%CE%CE%DE%A1%A2%A4%D2%A4%C8%A4%B7%A4%BA%A4%AF"
+		},
+		
+		{
+			"id":38,
+			"title":"ディアボロス討滅戦",
+			"start":"2015-02-07 19:00:00",
+			"end":"2015-02-13 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C839_%A5%C7%A5%A3%A5%A2%A5%DC%A5%ED%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":39,
+			"title":"はじめてのバレンタイン",
+			"start":"2015-02-13 19:00:00",
+			"end":"2015-02-23 17:00:00",
+			"className":"other",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"arena",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C840_%A4%CF%A4%B8%A4%E1%A4%C6%A4%CE%A5%D0%A5%EC%A5%F3%A5%BF%A5%A4%A5%F3"
+		},
+		
+		{
+			"id":40,
+			"title":"魔ガ散ルトキ、彼ハ",
+			"start":"2015-02-28 19:00:00",
+			"end":"2015-03-09 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C841_%CB%E2%A5%AC%BB%B6%A5%EB%A5%C8%A5%AD%A1%A2%C8%E0%A5%CF"
+		},
+		
+		{
+			"id":41,
+			"title":"アニバーサリー討伐戦",
+			"start":"2015-03-10 00:00:00",
+			"end":"2015-03-10 23:00:00",
+			"className":"other",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C842_%A5%A2%A5%CB%A5%D0%A1%BC%A5%B5%A5%EA%A1%BC%C6%A4%C8%B2%C0%EF"
+		},
+		
+		{
+			"id":42,
+			"title":"ケルベロス討滅戦(2)",
+			"start":"2015-03-10 19:00:00",
+			"end":"2015-03-17 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C843_%282%B2%F3%CC%DC%29%A5%B1%A5%EB%A5%D9%A5%ED%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":43,
+			"title":"「ホワイトデーの贈り物」キャンペーン",
+			"start":"2015-03-14 19:00:00",
+			"end":"2015-03-17 17:00:00",
+			"className":"other",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"other",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C844_%A1%D6%A5%DB%A5%EF%A5%A4%A5%C8%A5%C7%A1%BC%A4%CE%C2%A3%A4%EA%CA%AA%A1%D7%A5%AD%A5%E3%A5%F3%A5%DA%A1%BC%A5%F3"
+		},
+		
+		{
+			"id":44,
+			"title":"決戦！星の古戦場(9)",
+			"start":"2015-03-17 19:00:00",
+			"end":"2015-03-25 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C845_%289%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+		{
+			"id":45,
+			"title":"蛇神の島に響く歌(2)",
+			"start":"2015-03-20 19:00:00",
+			"end":"2015-03-30 17:00:00",
+			"className":"story_events_reprint",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C846_%282%B2%F3%CC%DC%29%BC%D8%BF%C0%A4%CE%C5%E7%A4%CB%B6%C1%A4%AF%B2%CE"
+		},
+		
+		{
+			"id":46,
+			"title":"名探偵バロワ ～ジュエルリゾートを奪還せよ～",
+			"start":"2015-03-31 19:00:00",
+			"end":"2015-04-09 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C847_%CC%BE%C3%B5%C4%E5%A5%D0%A5%ED%A5%EF%20%A1%C1%A5%B8%A5%E5%A5%A8%A5%EB%A5%EA%A5%BE%A1%BC%A5%C8%A4%F2%C3%A5%B4%D4%A4%BB%A4%E8%A1%C1"
+		},
+		
+		{
+			"id":47,
+			"title":"GRANBLUE FANTASY IDOL PROJECT",
+			"start":"2015-04-01 00:00:00",
+			"end":"2015-04-01 23:00:00",
+			"className":"other",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"other",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C848_GRANBLUE%20FANTASY%20IDOL%20PROJECT"
+		},
+		
+		{
+			"id":48,
+			"title":"ウォフマナフ討滅戦(3)",
+			"start":"2015-04-08 19:00:00",
+			"end":"2015-04-15 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C849_%283%B2%F3%CC%DC%29%A5%A6%A5%A9%A5%D5%A5%DE%A5%CA%A5%D5%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":49,
+			"title":"北玄の戦い～四象降臨～",
+			"start":"2015-04-16 19:00:00",
+			"end":"2015-04-20 17:00:00",
+			"className":"sisyou",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C850_%CB%CC%B8%BC%A4%CE%C0%EF%A4%A4%A1%C1%BB%CD%BE%DD%B9%DF%CE%D7%A1%C1"
+		},
+		
+		{
+			"id":50,
+			"title":"決戦！星の古戦場(10)",
+			"start":"2015-04-20 19:00:00",
+			"end":"2015-04-28 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C851_%2810%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+		{
+			"id":51,
+			"title":"その胸にひとひらの輝きが",
+			"start":"2015-04-30 19:00:00",
+			"end":"2015-05-08 23:59:59",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C852_%A4%BD%A4%CE%B6%BB%A4%CB%A4%D2%A4%C8%A4%D2%A4%E9%A4%CE%B5%B1%A4%AD%A4%AC"
+		},
+		
+		{
+			"id":52,
+			"title":"シンデレラファンタジー ～少女達の冒険譚～(3)",
+			"start":"2015-05-03 19:00:00",
+			"end":"2015-05-22 17:00:00",
+			"className":"collaboration_reprint",
+			"isReprint":true,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C853_%283%B2%F3%CC%DC%29%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%BE%AF%BD%F7%C3%A3%A4%CE%CB%C1%B8%B1%EB%FD%A1%C1"
+		},
+		
+		{
+			"id":53,
+			"title":"シンデレラファンタジー ～夢の続きの空の先～(2)",
+			"start":"2015-05-03 19:00:00",
+			"end":"2015-05-22 17:00:00",
+			"className":"collaboration_reprint",
+			"isReprint":true,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C854_%282%B2%F3%CC%DC%29%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%CC%B4%A4%CE%C2%B3%A4%AD%A4%CE%B6%F5%A4%CE%C0%E8%A1%C1"
+		},
+		
+		{
+			"id":54,
+			"title":"シンデレラファンタジー ～新たなる来訪者～",
+			"start":"2015-05-11 19:00:00",
+			"end":"2015-05-22 17:00:00",
+			"className":"collaboration",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C855_%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%BF%B7%A4%BF%A4%CA%A4%EB%CD%E8%CB%AC%BC%D4%A1%C1"
+		},
+		
+				
+		{
+			"id":55,
+			"title":"決戦！星の古戦場(11)",
+			"start":"2015-05-25 19:00:00",
+			"end":"2015-05-30 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C856_%2811%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+		{
+			"id":56,
+			"title":"届かないほど、近くのあなたへ",
+			"start":"2015-05-31 19:00:00",
+			"end":"2015-06-09 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C857_%C6%CF%A4%AB%A4%CA%A4%A4%A4%DB%A4%C9%A1%A2%B6%E1%A4%AF%A4%CE%A4%A2%A4%CA%A4%BF%A4%D8"
+		},
+		
+		{
+			"id":57,
+			"title":"東青の戦い～四象降臨～",
+			"start":"2015-06-10 19:00:00",
+			"end":"2015-06-16 17:00:00",
+			"className":"sisyou",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C858_%C5%EC%C0%C4%A4%CE%C0%EF%A4%A4%A1%C1%BB%CD%BE%DD%B9%DF%CE%D7%A1%C1"
+		},
+		
+		{
+			"id":58,
+			"title":"決戦！星の古戦場(12)",
+			"start":"2015-06-17 19:00:00",
+			"end":"2015-06-24 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C859_%2812%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+		{
+			"id":59,
+			"title":"ウォフマナフ討滅戦(4)",
+			"start":"2015-06-25 19:00:00",
+			"end":"2015-06-30 23:59:59",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C861_%284%B2%F3%CC%DC%29%A5%A6%A5%A9%A5%D5%A5%DE%A5%CA%A5%D5%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":60,
+			"title":"ディアボロス討滅戦(2)",
+			"start":"2015-06-25 19:00:00",
+			"end":"2015-06-30 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C862_%282%B2%F3%CC%DC%29%A5%C7%A5%A3%A5%A2%A5%DC%A5%ED%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":61,
+			"title":"コキュートス討滅戦(3)",
+			"start":"2015-06-25 19:00:00",
+			"end":"2015-06-30 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C860_%283%B2%F3%CC%DC%29%A5%B3%A5%AD%A5%E5%A1%BC%A5%C8%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":62,
+			"title":"ロボミ",
+			"start":"2015-06-30 19:00:00",
+			"end":"2015-07-09 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C863_%A5%ED%A5%DC%A5%DF"
+		},
+		
+		{
+			"id":63,
+			"title":"交差する運命の物語",
+			"start":"2015-07-10 19:00:00",
+			"end":"2015-07-21 17:00:00",
+			"className":"collaboration",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C864_%B8%F2%BA%B9%A4%B9%A4%EB%B1%BF%CC%BF%A4%CE%CA%AA%B8%EC"
+		},
+		
+		{
+			"id":64,
+			"title":"蒼海を征く暗黒巨大魚(2)",
+			"start":"2015-07-14 19:00:00",
+			"end":"2015-07-23 17:00:00",
+			"className":"story_events_reprint",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C865_%282%B2%F3%CC%DC%29%C1%F3%B3%A4%A4%F2%C0%AC%A4%AF%B0%C5%B9%F5%B5%F0%C2%E7%B5%FB"
+		},
+		
+		{
+			"id":65,
+			"title":"サジタリウス討滅戦(3)",
+			"start":"2015-07-23 19:00:00",
+			"end":"2015-07-31 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C867_%283%B2%F3%CC%DC%29%A5%B5%A5%B8%A5%BF%A5%EA%A5%A6%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":66,
+			"title":"コロゥ討滅戦(2)",
+			"start":"2015-07-23 19:00:00",
+			"end":"2015-07-31 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C868_%282%B2%F3%CC%DC%29%A5%B3%A5%ED%A5%A5%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":67,
+			"title":"イフリート討滅戦(3)",
+			"start":"2015-07-23 19:00:00",
+			"end":"2015-07-31 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C866_%283%B2%F3%CC%DC%29%A5%A4%A5%D5%A5%EA%A1%BC%A5%C8%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":68,
+			"title":"薫風、白波を蹴立てる",
+			"start":"2015-07-31 19:00:00",
+			"end":"2015-08-07 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C869_%B7%B0%C9%F7%A1%A2%C7%F2%C7%C8%A4%F2%BD%B3%CE%A9%A4%C6%A4%EB"
+		},
+		
+		{
+			"id":69,
+			"title":"西白の戦い～四象降臨～",
+			"start":"2015-08-07 19:00:00",
+			"end":"2015-08-14 17:00:00",
+			"className":"sisyou",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C870_%C0%BE%C7%F2%A4%CE%C0%EF%A4%A4%20%A1%C1%BB%CD%BE%DD%B9%DF%CE%D7%A1%C1"
+		},
+		
+		{
+			"id":70,
+			"title":"シンデレラファンタジー ～少女達の冒険譚～(4)",
+			"start":"2015-08-12 19:00:00",
+			"end":"2015-08-21 17:00:00",
+			"className":"collaboration_reprint",
+			"isReprint":true,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C871_%284%B2%F3%CC%DC%29%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%BE%AF%BD%F7%C3%A3%A4%CE%CB%C1%B8%B1%EB%FD%A1%C1"
+		},
+		
+		{
+			"id":71,
+			"title":"シンデレラファンタジー ～夢の続きの空の先～(3)",
+			"start":"2015-08-12 19:00:00",
+			"end":"2015-08-21 17:00:00",
+			"className":"collaboration_reprint",
+			"isReprint":true,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C872_%283%B2%F3%CC%DC%29%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%CC%B4%A4%CE%C2%B3%A4%AD%A4%CE%B6%F5%A4%CE%C0%E8%A1%C1"
+		},
+		
+		{
+			"id":72,
+			"title":"シンデレラファンタジー ～新たなる来訪者～(2)",
+			"start":"2015-08-12 19:00:00",
+			"end":"2015-08-21 17:00:00",
+			"className":"collaboration_reprint",
+			"isReprint":true,
+			"isCollaboration":true,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C873_%282%B2%F3%CC%DC%29%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%BF%B7%A4%BF%A4%CA%A4%EB%CD%E8%CB%AC%BC%D4%A1%C1"
+		},
+		
+		{
+			"id":73,
+			"title":"決戦！星の古戦場(13) 外伝：～迷える魂よ、安らかに～",
+			"start":"2015-08-22 19:00:00",
+			"end":"2015-08-30 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C874_%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%CC%C2%A4%A8%A4%EB%BA%B2%A4%E8%A1%A2%B0%C2%A4%E9%A4%AB%A4%CB%A1%C1"
+		},
+		
+		{
+			"id":74,
+			"title":"フォール・オブ・ドラゴン",
+			"start":"2015-08-31 19:00:00",
+			"end":"2015-09-08 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C875_%A5%D5%A5%A9%A1%BC%A5%EB%A1%A6%A5%AA%A5%D6%A1%A6%A5%C9%A5%E9%A5%B4%A5%F3"
+		},
+		
+		{
+			"id":75,
+			"title":"ウォフマナフ討滅戦(5)",
+			"start":"2015-09-09 19:00:00",
+			"end":"2015-09-14 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C877_%285%B2%F3%CC%DC%29%A5%A6%A5%A9%A5%D5%A5%DE%A5%CA%A5%D5%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":76,
+			"title":"ディアボロス討滅戦(3)",
+			"start":"2015-09-09 19:00:00",
+			"end":"2015-09-14 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C878_%283%B2%F3%CC%DC%29%A5%C7%A5%A3%A5%A2%A5%DC%A5%ED%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":77,
+			"title":"コキュートス討滅戦(4)",
+			"start":"2015-09-09 19:00:00",
+			"end":"2015-09-14 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C876_%284%B2%F3%CC%DC%29%A5%B3%A5%AD%A5%E5%A1%BC%A5%C8%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		
+		{
+			"id":78,
+			"title":"南朱の戦い ～四象降臨～",
+			"start":"2015-09-15 19:00:00",
+			"end":"2015-09-21 17:00:00",
+			"className":"sisyou",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C879_%C6%EE%BC%EB%A4%CE%C0%EF%A4%A4%20%A1%C1%BB%CD%BE%DD%B9%DF%CE%D7%A1%C1"
+		},
+		
+		{
+			"id":79,
+			"title":"ヴィラ・デ・シェロカルテ ～集え！千客万来の島～",
+			"start":"2015-09-17 19:00:00",
+			"end":"2015-09-20 17:00:00",
+			"className":"other",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"other",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C880_%A5%F4%A5%A3%A5%E9%A1%A6%A5%C7%A1%A6%A5%B7%A5%A7%A5%ED%A5%AB%A5%EB%A5%C6%20%A1%C1%BD%B8%A4%A8%A1%AA%C0%E9%B5%D2%CB%FC%CD%E8%A4%CE%C5%E7%A1%C1"
+		},
+		
+		{
+			"id":80,
+			"title":"決戦！星の古戦場(14)",
+			"start":"2015-09-22 19:00:00",
+			"end":"2015-09-29 17:00:00",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C881_%2814%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		
+		{
+			"id":81,
+			"title":"英雄再起",
+			"start":"2015-09-30 19:00:00",
+			"end":"2015-10-09 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C882_%B1%D1%CD%BA%BA%C6%B5%AF"
+		},
+		
+		{
+			"id":82,
+			"title":"サイコー！FANTASY ～理由（ワケ）あって、空へ！～",
+			"start":"2015-10-07 19:00:00",
+			"end":"2015-10-19 17:00:00",
+			"className":"collaboration",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C883_%A5%B5%A5%A4%A5%B3%A1%BC%A1%AAFANTASY%20%A1%C1%CD%FD%CD%B3%A1%CA%A5%EF%A5%B1%A1%CB%A4%A2%A4%C3%A4%C6%A1%A2%B6%F5%A4%D8%A1%AA%A1%C1"
+		},
+		
+		{
+			"id":83,
+			"title":"昏き島に眠る光の巨人(2)",
+			"start":"2015-10-14 19:00:00",
+			"end":"2015-10-22 17:00:00",
+			"className":"story_events_reprint",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C884_%282%B2%F3%CC%DC%29%BA%AA%A4%AD%C5%E7%A4%CB%CC%B2%A4%EB%B8%F7%A4%CE%B5%F0%BF%CD"
+		},
+		
+		{
+			"id":84,
+			"title":"決戦！星の古戦場(15) 外伝：幽幻の饗宴(2)",
+			"start":"2015-10-23 19:00:00",
+			"end":"2015-10-30 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C885_%CD%A9%B8%B8%A4%CE%B6%C2%B1%E3%20-%A5%EC%A5%F4%A5%A1%A5%EA%A1%BC%A5%CA%A5%A4%A5%C8-"
+		},
+		
+		{
+			"id":85,
+			"title":"山駆ける少女 ～幻の味覚を求めて～",
+			"start":"2015-10-31 19:00:00",
+			"end":"2015-11-09 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C887_%BB%B3%B6%EE%A4%B1%A4%EB%BE%AF%BD%F7%20%A1%C1%B8%B8%A4%CE%CC%A3%B3%D0%A4%F2%B5%E1%A4%E1%A4%C6%A1%C1"
+		},
+		
+		{
+			"id":86,
+			"title":"ヴィラ・デ・シェロカルテ",
+			"start":"2015-11-05 19:00:00",
+			"end":"2015-11-12 17:00:00",
+			"className":"other",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"other",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C888_%282%B2%F3%CC%DC%29%A5%F4%A5%A3%A5%E9%A1%A6%A5%C7%A1%A6%A5%B7%A5%A7%A5%ED%A5%AB%A5%EB%A5%C6%20%A1%C1%BD%B8%A4%A8%A1%AA%C0%E9%B5%D2%CB%FC%CD%E8%A4%CE%C5%E7%A1%C1"
+		},
+		
+		{
+			"id":87,
+			"title":"ウルトラグルンブルーファイター",
+			"start":"2015-11-13 19:00:00",
+			"end":"2015-11-23 17:00:00",
+			"className":"collaboration",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C889_%A5%A6%A5%EB%A5%C8%A5%E9%A5%B0%A5%E9%A5%F3%A5%D6%A5%EB%A1%BC%A5%D5%A5%A1%A5%A4%A5%BF%A1%BC"
+		},
+		
+		{
+			"id":88,
+			"title":"救国の忠騎士(2)",
+			"start":"2015-11-17 19:00:00",
+			"end":"2015-11-22 17:00:00",
+			"className":"story_events_reprint",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C890_%282%B2%F3%CC%DC%29%B5%DF%B9%F1%A4%CE%C3%E9%B5%B3%BB%CE"
+		},
+
+		{
+			"id":89,
+			"title":"決戦！星の古戦場(16)",
+			"start":"2015-11-22 19:00:00",
+			"end":"2015-11-29 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C891_%2816%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+
+		{
+			"id":90,
+			"title":"亡国の四騎士",
+			"start":"2015-11-30 19:00:00",
+			"end":"2015-12-09 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C892_%CB%B4%B9%F1%A4%CE%BB%CD%B5%B3%BB%CE"
+		},
+		
+		{
+			"id":91,
+			"title":"ケルベロス討滅戦(3)",
+			"start":"2015-12-04 19:00:00",
+			"end":"2015-12-11 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C893_%283%B2%F3%CC%DC%29%A5%B1%A5%EB%A5%D9%A5%ED%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":92,
+			"title":"聖夜のスターダスト・メモリーズ(2)",
+			"start":"2015-12-04 19:00:00",
+			"end":"2015-12-11 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C894_%A5%D5%A5%A7%A5%F3%A5%EA%A5%EB%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":93,
+			"title":"北玄の戦い～四象降臨～(2)",
+			"start":"2015-12-11 19:00:00",
+			"end":"2015-12-15 17:00:00",
+			"className":"sisyou",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C895_%282%B2%F3%CC%DC%29%CB%CC%B8%BC%A4%CE%C0%EF%A4%A4%20%A1%C1%BB%CD%BE%DD%B9%DF%CE%D7%A1%C1"
+		},
+		
+		{
+			"id":94,
+			"title":"決戦！星の古戦場 特別編「ホーリーナイトスペシャルマッチ」(17)",
+			"start":"2015-12-18 19:00:00",
+			"end":"2015-12-25 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C896_%A5%DB%A1%BC%A5%EA%A1%BC%A5%CA%A5%A4%A5%C8%A5%B9%A5%DA%A5%B7%A5%E3%A5%EB%A5%DE%A5%C3%A5%C1"
+		},
+		
+		{
+			"id":95,
+			"title":"年年歳歳",
+			"start":"2015-12-26 19:00:00",
+			"end":"2015-12-31 17:00:00",
+			"className":"other",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"other",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C899_%C7%AF%C7%AF%BA%D0%BA%D0"
+		},
+		
+		{
+			"id":96,
+			"title":"自由をその手に",
+			"start":"2015-12-31 19:00:00",
+			"end":"2016-01-08 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8100_%BC%AB%CD%B3%A4%F2%A4%BD%A4%CE%BC%EA%A4%CB"
+		},
+		
+		{
+			"id":97,
+			"title":"サジタリウス討滅戦(4)",
+			"start":"2016-01-08 19:00:00",
+			"end":"2016-01-17 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8103_%284%B2%F3%CC%DC%29%A5%B5%A5%B8%A5%BF%A5%EA%A5%A6%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":98,
+			"title":"コロゥ討滅戦(3)",
+			"start":"2016-01-08 19:00:00",
+			"end":"2016-01-17 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8104_%283%B2%F3%CC%DC%29%A5%B3%A5%ED%A5%A5%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":99,
+			"title":"イフリート討滅戦(4)",
+			"start":"2016-01-08 19:00:00",
+			"end":"2016-01-17 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8102_%284%B2%F3%CC%DC%29%A5%A4%A5%D5%A5%EA%A1%BC%A5%C8%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":100,
+			"title":"東青の戦い～四象降臨～(2)",
+			"start":"2016-01-14 19:00:00",
+			"end":"2016-01-20 17:00:00",
+			"className":"sisyou",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8105_%282%B2%F3%CC%DC%29%C5%EC%C0%C4%A4%CE%C0%EF%A4%A4%20%A1%C1%BB%CD%BE%DD%B9%DF%CE%D7%A1%C1"
+		},
+		
+		{
+			"id":101,
+			"title":"決戦！星の古戦場 特別編「スレイヤーズまぐな」(18)",
+			"start":"2016-01-22 19:00:00",
+			"end":"2016-01-30 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8106_%A5%B9%A5%EC%A5%A4%A5%E4%A1%BC%A5%BA%A4%DE%A4%B0%A4%CA"
+		},
+
+		{
+			"id":102,
+			"title":"カイオラ",
+			"start":"2016-01-31 19:00:00",
+			"end":"2016-02-08 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8107_%A5%AB%A5%A4%A5%AA%A5%E9"
+		},
+		
+		{
+			"id":103,
+			"title":"ウォフマナフ討滅戦(6)",
+			"start":"2016-02-08 19:00:00",
+			"end":"2016-02-17 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8109_%286%B2%F3%CC%DC%29%A5%A6%A5%A9%A5%D5%A5%DE%A5%CA%A5%D5%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":104,
+			"title":"ディアボロス討滅戦(4)",
+			"start":"2016-02-08 19:00:00",
+			"end":"2016-02-17 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8110_%284%B2%F3%CC%DC%29%A5%C7%A5%A3%A5%A2%A5%DC%A5%ED%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":105,
+			"title":"コキュートス討滅戦(5)",
+			"start":"2016-02-08 19:00:00",
+			"end":"2016-02-17 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8108_%285%B2%F3%CC%DC%29%A5%B3%A5%AD%A5%E5%A1%BC%A5%C8%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":106,
+			"title":"若き義勇の振るう剣",
+			"start":"2016-02-17 19:00:00",
+			"end":"2016-02-22 17:00:00",
+			"className":"story_events",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8112_%282%B2%F3%CC%DC%29%BC%E3%A4%AD%B5%C1%CD%A6%A4%CE%BF%B6%A4%EB%A4%A6%B7%F5"
+		},
+			
+		{
+			"id":107,
+			"title":"西白の戦い～四象降臨～(2)",
+			"start":"2016-02-24 19:00:00",
+			"end":"2016-02-28 17:00:00",
+			"className":"sisyou",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"sisyou"
+		},
+		
+		{
+			"id":108,
+			"title":"舞い歌う五花",
+			"start":"2016-02-29 19:00:00",
+			"end":"2016-03-08 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8114_%C9%F1%A4%A4%B2%CE%A4%A6%B8%DE%B2%D6"
+		},
+		{
+			"id":109,
+			"title":"シンデレラファンタジー ～少女たちの夢の続き～",
+			"start":"2016-03-11 19:00:00",
+			"end":"2016-03-21 17:00:00",
+			"className":"collaboration",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8115_%A5%B7%A5%F3%A5%C7%A5%EC%A5%E9%A5%D5%A5%A1%A5%F3%A5%BF%A5%B8%A1%BC%20%A1%C1%BE%AF%BD%F7%A4%BF%A4%C1%A4%CE%CC%B4%A4%CE%C2%B3%A4%AD%A1%C1"
+		},
+		{
+			"id":110,
+			"title":"決戦！星の古戦場(19)",
+			"start":"2016-03-23 19:00:00",
+			"end":"2016-03-30 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8117_%2819%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
+		},
+		{
+			"id":111,
+			"title":"とりまトッポブで。",
+			"start":"2016-03-31 19:00:00",
+			"end":"2016-04-08 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8118_%A4%C8%A4%EA%A4%DE%A5%C8%A5%C3%A5%DD%A5%D6%A4%C7%A1%A3"
+		},
+		
+		{
+			"id":112,
+			"title":"南朱の戦い ～四象降臨～(2)",
+			"start":"2016-04-08 19:00:00",
+			"end":"2016-04-15 17:00:00",
+			"className":"sisyou",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8120_%282%B2%F3%CC%DC%29%C6%EE%BC%EB%A4%CE%C0%EF%A4%A4%20%A1%C1%BB%CD%BE%DD%B9%DF%CE%D7%A1%C1"
+		},		
+		{
+			"id":113,
+			"title":"ウルトラグルンブルーファイター(2)",
+			"start":"2016-04-15 19:00:00",
+			"end":"2016-04-25 17:00:00",
+			"className":"collaboration",
+			"isReprint":true,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8121_%282%B2%F3%CC%DC%29%A5%A6%A5%EB%A5%C8%A5%E9%A5%B0%A5%E9%A5%F3%A5%D6%A5%EB%A1%BC%A5%D5%A5%A1%A5%A4%A5%BF%A1%BC"
+		},		
+		
+		{
+			"id":114,
+			"title":"グランブルーファイターV",
+			"start":"2016-04-15 19:00:00",
+			"end":"2016-04-25 17:00:00",
+			"className":"collaboration",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8122_%A5%B0%A5%E9%A5%F3%A5%D6%A5%EB%A1%BC%A5%D5%A5%A1%A5%A4%A5%BF%A1%BCV"
+		},
+		{
+			"id":115,
+			"title":"決戦！星の古戦場(20)",
+			"start":"2016-04-25 19:00:00",
+			"end":"2016-05-01 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield"
+		},
+		{
+			"id":116,
+			"title":"シナリオイベント",
+			"start":"2016-05-02 19:00:00",
+			"end":"2016-05-11 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency"
+		}
+	]
+}
