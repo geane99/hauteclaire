@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="eventCalendarApp" id="top">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="granblue fantasy イベントカレンダー">
+		<meta name="format-detection" content="telephone=no,address=no,email=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>granblue fantasy イベントカレンダー</title>
+		<style>@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);</style>			
+		<link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+		<link rel="stylesheet" href="granblue_event_calendar.css"/>
+		<!-- jquery, moment, and angular have to get included before fullcalendar -->
+		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-ui-calendar/calendar.js"></script>
+		<script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+		<script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		
+		<script type="text/javascript" src="granblue_common.js"></script>
+		<script type="text/javascript" src="granblue_event_controller.js"></script>
+	</head>
+	
+	<body>
+		<div class="main" ng-controller="currentController">
+			<div class="calendar" id='calendar'></div>
+		</div>
+	</body>
+</html>

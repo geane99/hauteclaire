@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+/*
+	http://www.colorschemer.com/online.html
+
+	background(薄) <-> font-color(濃)
+	赤：FFCCCC / FF0000
+	オレンジ：FFE6CC / FF8000
+	橙：FFFFCC / FFFF3D
+	黄：FFFF8F / CCCC66
+	薄緑：E6FFCC / 3DB87A
+	緑：CCFFCC / 2E8A5C
+	青緑：CCFFE6 / 66CC66
+	青：CCFFFF / 00FFFF
+	青紫：CCCCFF / 6666CC
+	紫：E6CCFF / 9966CC
+	赤紫：FFCCFF / CC66CC
+	ピンク：FFCCE6 / B83D7A
+	
+	純色レベル
+	赤：FF0000
+	青：0380B7
+	
+	
+	紫：団イベ
+	緑：シナリオ
+	黄色：四象
+	青紫：討滅
+	赤紫：コラボ
+	ピンク：その他
+	
+*/
+
+
+/* 四象 */
+.sisyou{
+	background-color:#FFFF8F !important;
+	color:#CCCC66 !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+/* 団イベ */
+.historic_battlefield{
+	background-color:#E6CCFF !important;
+	color:#9966CC !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+/* ストーリーイベント */
+.story_events{
+	background-color:#CCFFCC !important;
+	color:#2E8A5C !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+/* 復刻ストーリーイベント */
+.story_events_reprint{
+	background-color:#CCFFCC !important;
+	color:#2E8A5C !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+/* 討滅 */
+.subjugation{
+	background-color:#CCCCFF !important;
+	color:#6666CC !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+/* コラボ */
+.collaboration{
+	background-color:#FFCCFF !important;
+	color:#CC66CC !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+/* 復刻コラボ */
+.collaboration_reprint{
+	background-color:#FFCCFF !important;
+	color:#CC66CC !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+/* その他 */
+.other{
+	background-color:#FFCCE6 !important;
+	color:#B83D7A !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+.maintenance{
+	background-color:#FF0000 !important;
+	font-size:11px !important;
+}
+
+
+body *{
+  font-family: 'Noto Sans Japanese', sans-serif;
+}
+
+.fc-sun{
+	background-color:#FFCCCC;
+	color:#CC6699;
+}
+
+.fc-sat{
+	background-color:#CCFFFF;
+	color:#0380B7;
+}
+
+.fc-widget-header{
+}
+
+.fc-widget-content{
+}
+
+.menu_content{
+	float:left;
+}
+
+.calendar_content{
+	float:right;
+}
