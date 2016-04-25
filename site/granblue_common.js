@@ -92,8 +92,8 @@ hauteclaire = function(_this){
 
 	_this.cloneElement = function(elem){
 		return {
-			minDeviation:elem.minDeviation,
-			maxDeviation:elem.maxDeviation,
+			minVariation:elem.minVariation,
+			maxVariation:elem.maxVariation,
 			title:elem.title,
 			className:elem.className,
 			isReprint:elem.isReprint,
@@ -111,10 +111,10 @@ hauteclaire = function(_this){
 			pattern:["morning","noon","morning","noon","night","noon","night","morning","night"]
 		},
 		groups:[
-			{ name:"グループA&E", deviation:0 },
-			{ name:"グループB&F", deviation:1 },
-			{ name:"グループC&G", deviation:2 },
-				{ name:"グループD&H", deviation:3 }
+			{ name:"グループA&E", variate:0 },
+			{ name:"グループB&F", variate:1 },
+			{ name:"グループC&G", variate:2 },
+				{ name:"グループD&H", variate:3 }
 		],
 		timeline:{
 			current:new Date(2016,0,5),
@@ -126,21 +126,21 @@ hauteclaire = function(_this){
 		cache : new Array()
 	};
 
-	_this.helo.rule.deviation = function(d){
+	_this.helo.rule.variate = function(d){
 		var target = d;
 		var range = target.getTime() - _this.helo.rule.current.getTime();
 		var dev = Math.floor(range/(1000*60*60*24));
 		return dev++;
 	};
-	_this.helo.timeline.deviation = function(d,current){
+	_this.helo.timeline.variate = function(d,current){
 		var target = d;
 		var range = target.getTime() - _this.helo.timeline.current.getTime();
 		var dev = Math.floor(range/(1000*60*60*24));
 		return dev;
 	};
 
-	_this.helo.element = function(dateString,zone,group,deviationTimeline){
-		var timeline = zone.min+deviationTimeline+group.deviation;
+	_this.helo.element = function(dateString,zone,group,variateTimeline){
+		var timeline = zone.min+variateTimeline+group.variate;
 		if(timeline>zone.max){
 			timeline=timeline-zone.max+zone.min-1;
 		}
@@ -162,31 +162,31 @@ hauteclaire = function(_this){
 		var result = new Array();
 
 		var ruleSize = _this.helo.rule.size;
-		var ruleDeviation = _this.helo.rule.deviation(baseDate);
-		if(ruleDeviation >= ruleSize)
-			ruleDeviation = ruleDeviation % ruleSize;
+		var ruleVariation = _this.helo.rule.variate(baseDate);
+		if(ruleVariation >= ruleSize)
+			ruleVariation = ruleVariation % ruleSize;
 		
 		var timelineSize = _this.helo.timeline.size;
-		var timelineDeviation = _this.helo.timeline.deviation(baseDate);
+		var timelineVariation = _this.helo.timeline.variate(baseDate);
 
-		if(timelineDeviation > timelineSize)
-			timelineDeviation = timelineDeviation % timelineSize;
+		if(timelineVariation > timelineSize)
+			timelineVariation = timelineVariation % timelineSize;
 
 		for(var i=0; i<_this.helo.range; i++){
 			var dString = _this.dateToString(baseDate);
-			var zoneInfo = _this.helo.rule.pattern[ruleDeviation++];
+			var zoneInfo = _this.helo.rule.pattern[ruleVariation++];
 			var zone = _this.helo.timeline[zoneInfo];
 				
-			var element = _this.helo.element(dString,zone,group,timelineDeviation++);
+			var element = _this.helo.element(dString,zone,group,timelineVariation++);
 			element.id = _this.helo.id + i;
 
 			result[i] = element;
 			baseDate.setDate(baseDate.getDate() + 1);
 
-			if(ruleDeviation >= ruleSize)
-				ruleDeviation = ruleDeviation % ruleSize;
-			if(timelineDeviation > timelineSize)
-				timelineDeviation = timelineDeviation % timelineSize;
+			if(ruleVariation >= ruleSize)
+				ruleVariation = ruleVariation % ruleSize;
+			if(timelineVariation > timelineSize)
+				timelineVariation = timelineVariation % timelineSize;
 		}
 		_this.helo.cache[groupindex] = result;
 		return result;
@@ -199,48 +199,48 @@ hauteclaire = function(_this){
 		range:90,
 		size:18,
 		pattern:[{
-				minDeviation:0,
-				maxDeviation:2,
+				minVariation:0,
+				maxVariation:2,
 				title:"イフリート",
 				className:"subjugation_fire",
 				isReprint:false,
 				isCollaboration:false,
 				type:"subjugation"
 			},{
-				minDeviation:3,
-				maxDeviation:5,
+				minVariation:3,
+				maxVariation:5,
 				title:"コキュートス",
 				className:"subjugation_water",
 				isReprint:false,
 				isCollaboration:false,
 				type:"subjugation"
 			},{
-				minDeviation:6,
-				maxDeviation:8,
+				minVariation:6,
+				maxVariation:8,
 				title:"ウォフマナフ",
 				className:"subjugation_earth",
 				isReprint:false,
 				isCollaboration:false,
 				type:"subjugation"
 			},{
-				minDeviation:9,
-				maxDeviation:11,
+				minVariation:9,
+				maxVariation:11,
 				title:"サジタリウス",
 				className:"subjugation_wind",
 				isReprint:false,
 				isCollaboration:false,
 				type:"subjugation"
 			},{
-				minDeviation:12,
-				maxDeviation:14,
+				minVariation:12,
+				maxVariation:14,
 				title:"コロゥ",
 				className:"subjugation_shine",
 				isReprint:false,
 				isCollaboration:false,
 				type:"subjugation"
 			},{
-				minDeviation:15,
-				maxDeviation:17,
+				minVariation:15,
+				maxVariation:17,
 				title:"ディアボロス",
 				className:"subjugation_darkness",
 				isReprint:false,
@@ -251,7 +251,7 @@ hauteclaire = function(_this){
 	_this.subjugation.findElement = function(dev){
 		var found = null;
 		_this.subjugation.pattern.forEach(function(item,index,array){
-			if(item.minDeviation <= dev && item.maxDeviation >= dev)
+			if(item.minVariation <= dev && item.maxVariation >= dev)
 				found = item;
 		});	
 		if(!found)
@@ -259,7 +259,7 @@ hauteclaire = function(_this){
 		return _this.cloneElement(found);
 	};
 
-	_this.subjugation.deviation = function(d){
+	_this.subjugation.variate = function(d){
 		var target = d;
 		var range = target.getTime() - _this.subjugation.current.getTime();
 		var dev = Math.floor(range/(1000*60*60*24));
@@ -273,12 +273,12 @@ hauteclaire = function(_this){
 		var size = _this.subjugation.size;
 		var result = new Array();
 		var baseDate = new Date();
-		var deviation = _this.subjugation.deviation(baseDate);
-		if(deviation >= size)
-			deviation = deviation % size;
+		var variate = _this.subjugation.variate(baseDate);
+		if(variate >= size)
+			variate = variate % size;
 
 		for(var i=0;i<_this.subjugation.range;i++){
-			var element = _this.subjugation.findElement(deviation++);
+			var element = _this.subjugation.findElement(variate++);
 
 			var dString = _this.dateToString(baseDate);
 			element.start = dString + " 00:00:00";
@@ -287,8 +287,8 @@ hauteclaire = function(_this){
 			element.id = _this.subjugation.id + i;
 			result[i] = element;
 
-			if(deviation >= size)
-				deviation = deviation % size;
+			if(variate >= size)
+				variate = variate % size;
 		}
 		_this.subjugation.cache = result;
 		return _this.subjugation.cache;
@@ -302,48 +302,48 @@ hauteclaire = function(_this){
 		cache:new Array(),
 		size:12,
 		pattern:[{
-				minDeviation:0,
-				maxDeviation:1,
+				minVariation:0,
+				maxVariation:1,
 				title:"業火の試練",
 				className:"element_fire",
 				isReprint:false,
 				isCollaboration:false,
 				type:"element"
 			},{
-				minDeviation:2,
-				maxDeviation:3,
+				minVariation:2,
+				maxVariation:3,
 				title:"玉水の試練",
 				className:"element_water",
 				isReprint:false,
 				isCollaboration:false,
 				type:"element"
 			},{
-				minDeviation:4,
-				maxDeviation:5,
+				minVariation:4,
+				maxVariation:5,
 				title:"荒土の試練",
 				className:"element_earth",
 				isReprint:false,
 				isCollaboration:false,
 				type:"element"
 			},{
-				minDeviation:6,
-				maxDeviation:7,
+				minVariation:6,
+				maxVariation:7,
 				title:"狂風の試練",
 				className:"element_wind",
 				isReprint:false,
 				isCollaboration:false,
 				type:"element"
 			},{
-				minDeviation:8,
-				maxDeviation:9,
+				minVariation:8,
+				maxVariation:9,
 				title:"極光の試練",
 				className:"element_shine",
 				isReprint:false,
 				isCollaboration:false,
 				type:"element"
 			},{
-				minDeviation:10,
-				maxDeviation:11,
+				minVariation:10,
+				maxVariation:11,
 				title:"幽闇の試練",
 				className:"element_darkness",
 				isReprint:false,
@@ -351,7 +351,7 @@ hauteclaire = function(_this){
 				type:"element"
 	}]};
 
-	_this.ordeal.deviation = function(d){
+	_this.ordeal.variate = function(d){
 		var target = d;
 		var range = target.getTime() - _this.ordeal.current.getTime();
 		var dev = Math.floor(range/(1000*60*60*24));
@@ -361,7 +361,7 @@ hauteclaire = function(_this){
 	_this.ordeal.findElement = function(dev){
 		var found = null;
 		_this.ordeal.pattern.forEach(function(item,index,array){
-			if(item.minDeviation <= dev && item.maxDeviation >= dev)
+			if(item.minVariation <= dev && item.maxVariation >= dev)
 				found = item;
 		});	
 		if(!found)
@@ -377,12 +377,12 @@ hauteclaire = function(_this){
 		var result = new Array();
 		var baseDate = new Date();
 
-		var deviation = _this.ordeal.deviation(baseDate);
-		if(deviation >= size)
-			deviation = deviation % size;
+		var variate = _this.ordeal.variate(baseDate);
+		if(variate >= size)
+			variate = variate % size;
 
 		for(var i=0;i<_this.ordeal.range;i++){
-			var element = _this.ordeal.findElement(deviation++);
+			var element = _this.ordeal.findElement(variate++);
 			var dString = _this.dateToString(baseDate);
 			
 			element.start = dString + " 00:00:00";
@@ -390,8 +390,8 @@ hauteclaire = function(_this){
 			baseDate.setDate(baseDate.getDate() + 1);
 			element.id = _this.ordeal.id + i;
 			result[i] = element;
-			if(deviation >= size)
-				deviation = deviation % size;
+			if(variate >= size)
+				variate = variate % size;
 		}
 		
 		_this.ordeal.cache = result;
