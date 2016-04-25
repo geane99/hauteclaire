@@ -58,7 +58,7 @@ hauteclaire = function(_this){
 		},
 		config : {
 			resources:[{
-				url:"./granblue_event_data.json",
+				url:"./granbluefantasy/granblue_event_data.json",
 				process:function(data){
 					return data.events;
 			}}],
