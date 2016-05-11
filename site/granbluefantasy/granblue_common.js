@@ -2,33 +2,49 @@ var hauteclaire = {};
 
 hauteclaire = function(_this){
 	_this.app = {
-		events : new Array(),
+		schedule : new Array(),
+		hasSchedule : function(){
+			return _this.app.schedule != null && _this.app.schedule.length > 0;
+		},
 		addAll : function(data){
 			data.forEach(function(item,index,array){
-				_this.app.events.push(item);
+				_this.app.schedule.push(item);
 			});
 		},
 		clean : function(){
-			_this.app.events = new Array();
+			_this.app.schedule = new Array();
 		},
 		cache : new Array(),
-		load : function(urls,types,callback){
-			if(_this.app.cache && _this.app.cache.length > 0)
-				return callback(_this.app.cache);
+		load : function(urls, finalize){
+			var complete = function(callback){
+				_this.app.addAll(_this.app.events.cache);
+				_this.app.filter(_this.app.config.target);
+				return callback(_this.app.schedule);
+			};
+		
+			if(_this.app.events.cache && _this.app.events.cache.length > 0)
+				return complete(finalize);
 
+			var domains = new Array();
+			_this.app.events.cache.addAll = function(data){
+				var _parent = this;
+				data.forEach(function(item,index,array){
+					_parent.push(item);
+				});
+			};
+			
 			var us = urls.filter(function(){return true;});
 			var site = us.pop();
 			return $.ajax({
 				url:site.url,
 				dataType:'json',
 				success:function(data){
-					var domains = site.process(data);
-					_this.app.addAll(domains);
+					var results = site.process(data);
+					_this.app.events.cache.addAll(results);
 					if(us.length===0){
-						_this.app.cache = _this.app.filter(types);
-						return callback(_this.app.cache);
+						complete(finalize);
 					}
-					_this.app.load(us,callback);
+					_this.app.load(us,finalize);
 				},
 				error:function(XMLHttpRequest, textStatus, errorThrown){
 					alert(errorThrown);
@@ -45,11 +61,14 @@ hauteclaire = function(_this){
 				return result;
 			};
 			var result = new Array();
-			_this.app.events.forEach(function(item,index,array){
+			_this.app.schedule.forEach(function(item,index,array){
 				if(contain(arg,item.type))
 					result.push(item);
 			});
 			return result;
+		},
+		events:{
+			cache:new Array()
 		},
 		openWindow:function(url){
 			if(url == null)
