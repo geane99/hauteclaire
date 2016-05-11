@@ -27,12 +27,20 @@
 	
 	<body>
 		<div class="main" ng-controller="currentController">
-			<select id="groupComponent">
-				<option value="0" selected>グループA&E</option>
-				<option value="1">グループB&F</option>
-				<option value="2">グループC&G</option>
-				<option value="3">グループD&H</option>
-			</select>
+			<div>
+				<a class="header" href="./index.html">TOP</a>
+				<a class="header" href="./granblue_event_calendar.html">イベントカレンダー</a>
+
+				<a class="header" href="./granblue_all_calendar.html">全カレンダー</a>
+			</div>
+			<div>
+				<select id="groupComponent">
+					<option value="0" selected>グループA&E</option>
+					<option value="1">グループB&F</option>
+					<option value="2">グループC&G</option>
+					<option value="3">グループD&H</option>
+				</select>
+			</div>
 			<div class="calendar" id='calendar'></div>
 		</div>
 	</body>
