@@ -3,8 +3,8 @@ eventCalendarApp.controller('currentController',function($scope,$http){
 	_this = hauteclaire;
 
 	_this.config.calendar.events = function(start,end,timezone,callback){
-		_this.app.clean();
 		_this.events.generate(function(){
+			_this.app.clean();
 			_this.app.addAll(_this.events.cache);
 			callback(_this.app.findAll());
 		});

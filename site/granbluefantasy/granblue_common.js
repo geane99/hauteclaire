@@ -33,31 +33,127 @@ hauteclaire = function(_this){
 		}
 	};
 	
+	_this.UUID = {
+		_state : null,
+		_rand : function(max){
+	 		var B32 = 4294967296;
+			if(max <= B32){
+				return Math.floor(Math.random() * max);
+			}
+			else{
+				var d0 = Math.floor(Math.random() * B32);
+				var d1 = Math.floor(Math.random() * Math.floor(max / B32));
+				return d0 + d1 * B32;
+			}
+		},
+		_intToPaddedHex : function(n, length){
+			var hex = n.toString(16);
+			while(hex.length < length){
+				hex = '0' + hex;
+			}
+			return hex;
+		},
+		generate : function(){
+			var rand = this._rand; 
+			var hex = this._intToPaddedHex;
+			//version 1
+			if(arguments && (arguments[0] == 1)) {
+				var timestamp = new Date() - Date.UTC(1582, 9, 15);
+				if(this._state == null){
+					this._state = {
+						timestamp: timestamp,
+						sequence: rand(16384),
+						node: hex(rand(256) | 1, 2) + hex(rand(1099511627776), 10) 
+					};
+				}
+				else{
+					if(timestamp <= this._state.timestamp)
+						this._state.sequence++;
+					else
+						this._state.timestamp = timestamp;
+				}
+				var ts  = hex(timestamp * 10000, 15);
+				var seq = 32768 | (16383 & this._state.sequence); 
+				return [
+					ts.substr(7),
+					ts.substr(3, 4),
+					'1' + ts.substr(0, 3),
+					hex(seq, 4),
+					this._state.node
+				].join('-');
+			}
+			else {
+				//version 4
+				return [
+					hex(rand(4294967296), 8),
+					hex(rand(65536), 4),
+					'4' + hex(rand(4096), 3),
+					hex(8 | rand(4), 1) + hex(rand(4096), 3),
+					hex(rand(281474976710656), 12)
+				].join('-');
+			}
+		}
+	};
+	
+	_this.Semaphore = function(){
+		this.release = function(arg){
+			if(this.uuid == arg){
+				this.uuid = null;
+//				alert("release:"+arg);
+			}
+		};
+		this.await = function(data){
+			var _t = this;
+			if(this.uuid == null){
+//				alert("register:"+data.uuid);
+				this.uuid = data.uuid;
+				return false;
+			}
+			
+			if(this.uuid == data.uuid)
+				return false;
+			
+			setTimeout(function(){
+//				alert("await(this):"+_t.uuid+"\narg:"+data.uuid);
+				data.executor.apply(data.target, data.arguments);
+			},2000);
+			return true;
+		};
+	};
+	
+	
 	_this.util = {
-		load : function(target, finalize){
+		semaphore : new _this.Semaphore(),
+		load : function(target, uuid, array, finalize){
+			_semaphore = this.semaphore;
+			if(_semaphore.await({
+				uuid : uuid,
+				executor : _this.util.load,
+				target : _this.util,
+				arguments : arguments
+			}))
+				return;
+			
 			var _t = this;
 			var complete = function(callback){
-				return callback();
+				callback();
 			};
 
 			if(target.cache && target.cache.length > 0)
 				return complete(finalize);
-
-			var site = target.resources.pop();
-			if(!site)
-				complete(finalize);
+			var site = array.pop();
 			var surl = site.url;
-
+			
 			return $.ajax({
 				url:surl,
 				dataType:'json',
 				success:function(data){
 					var results = site.process(data);
 					target.cache.addAll(results);
-					if(target.resources.length===0){
+					if(array.length===0)
 						complete(finalize);
-					}
-					_t.load(target,finalize);
+						_semaphore.release(uuid);
+					_t.load(target, uuid, array, finalize);
 				},
 				error:function(XMLHttpRequest, textStatus, errorThrown){
 					alert(errorThrown);
@@ -144,7 +240,9 @@ hauteclaire = function(_this){
 					_parent.push(item);
 				});
 			};
-			_this.util.load(_this.events,callback);
+			
+			var uuid = _this.UUID.generate(1);
+			_this.util.load(this, uuid, this.resources.slice(0), callback);
 		}
 	};
 	return _this;
@@ -459,4 +557,3 @@ hauteclaire = function(_this){
 	};
 	return _this;
 }(hauteclaire);
-
