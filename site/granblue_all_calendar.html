@@ -7,9 +7,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<title>granblue fantasy エンジェルヘイローカレンダー</title>
+		<title>granblue fantasy カレンダー</title>
 		<style>@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);</style>			
 		<link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+		<link rel="stylesheet" href="granbluefantasy/granblue_common.css"/>
 		<link rel="stylesheet" href="granbluefantasy/granblue_helo_calendar.css"/>
 		<link rel="stylesheet" href="granbluefantasy/granblue_event_calendar.css"/>
 		<!-- jquery, moment, and angular have to get included before fullcalendar -->
@@ -27,7 +28,7 @@
 	</head>
 	
 	<body>
-		<div class="main" ng-controller="currentController">
+		<div class="main" ng-controller="currentController as controller">
 			<div>
 				<a class="header" href="./index.html">TOP</a>
 				<a class="header" href="./granblue_event_calendar.html">イベントカレンダー</a>
@@ -35,14 +36,9 @@
 
 			</div>
 			<div>
-				<select id="groupComponent">
-					<option value="0" selected>グループA&E</option>
-					<option value="1">グループB&F</option>
-					<option value="2">グループC&G</option>
-					<option value="3">グループD&H</option>
-				</select>
+				<select ng-selected="changeHeloGroup()" ng-model="heloGroupSelected" ng-options="e as e.name for e in heloGroups"></select></select>
 			</div>
-			<div class="calendar" id='calendar'></div>
+			<div id="calendar" ng-calendar />
 		</div>
 	</body>
 </html>

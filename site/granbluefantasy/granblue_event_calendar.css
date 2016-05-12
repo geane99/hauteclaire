@@ -34,64 +34,40 @@
 
 /* 四象 */
 .sisyou{
-	background-color:#FFFF8F !important;
-	color:#CCCC66 !important;
+	background-color:#009AFF !important;
+	color:#FFFFFF !important;
 	font-size:11px !important;
 	cursor:pointer;
 }
 
 /* 団イベ */
 .historic_battlefield{
-	background-color:#E6CCFF !important;
-	color:#9966CC !important;
+	background-color:#FF2600 !important;
+	color:#FFFFFF !important;
 	font-size:11px !important;
 	cursor:pointer;
 }
 
 /* ストーリーイベント */
-.story_events{
-	background-color:#CCFFCC !important;
-	color:#2E8A5C !important;
-	font-size:11px !important;
-	cursor:pointer;
-}
-
 /* 復刻ストーリーイベント */
-.story_events_reprint{
-	background-color:#CCFFCC !important;
-	color:#2E8A5C !important;
-	font-size:11px !important;
-	cursor:pointer;
-}
-
+/* その他 */
 /* 討滅 */
-.subjugation{
-	background-color:#CCCCFF !important;
-	color:#6666CC !important;
+.story_events, 
+.story_events_reprint,
+.subjugation,
+.other
+{
+	background-color:#00E824 !important;
+	color:#FFFFFF !important;
 	font-size:11px !important;
 	cursor:pointer;
 }
 
 /* コラボ */
-.collaboration{
-	background-color:#FFCCFF !important;
-	color:#CC66CC !important;
-	font-size:11px !important;
-	cursor:pointer;
-}
-
 /* 復刻コラボ */
-.collaboration_reprint{
-	background-color:#FFCCFF !important;
-	color:#CC66CC !important;
-	font-size:11px !important;
-	cursor:pointer;
-}
-
-/* その他 */
-.other{
-	background-color:#FFCCE6 !important;
-	color:#B83D7A !important;
+.collaboration, .collaboration_reprint{
+	background-color:#8B00E8 !important;
+	color:#FFFFFF !important;
 	font-size:11px !important;
 	cursor:pointer;
 }
@@ -99,47 +75,4 @@
 .maintenance{
 	background-color:#FF0000 !important;
 	font-size:11px !important;
-}
-
-
-body *{
-  font-family: 'Noto Sans Japanese', sans-serif;
-}
-
-.header{
-	font-size:0.9em;
-}
-
-.fc-left > h2{
-	font-size: 1.2em !important;
-}
-
-.fc-sun{
-	background-color:#FFCCCC;
-	color:#CC6699;
-}
-
-.fc-sat{
-	background-color:#CCFFFF;
-	color:#0380B7;
-}
-
-.fc-widget-header{
-	font-size:11px;
-}
-
-.fc-button{
-	font-size: 0.8em !important;
-	height: 1.7em !important;
-}
-
-.fc-widget-content{
-}
-
-.menu_content{
-	float:left;
-}
-
-.calendar_content{
-	float:right;
 }

@@ -2,13 +2,16 @@ var eventCalendarApp = angular.module('eventCalendarApp',['ui.calendar','ui.boot
 eventCalendarApp.controller('currentController',function($scope,$http){
 	_this = hauteclaire;
 
-	_this.app.config.calendar.events = function(start,end,timezone,callback){
+	_this.config.calendar.events = function(start,end,timezone,callback){
 		_this.app.clean();
-		_this.app.load(_this.app.config.resources, callback);
+		_this.events.generate(function(){
+			_this.app.addAll(_this.events.cache);
+			callback(_this.app.findAll());
+		});
 	};
 	
-	_this.app.config.calendar.eventClick = function(item,jsEvent,view){
-		_this.app.openWindow(item.wiki);
+	_this.config.calendar.eventClick = function(item,jsEvent,view){
+		_this.util.openWindow(item.wiki);
 	}
-	$('#calendar').fullCalendar(_this.app.config.calendar);
+	$('#calendar').fullCalendar(_this.config.calendar);
 });

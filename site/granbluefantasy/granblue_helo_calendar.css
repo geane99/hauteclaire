@@ -1,101 +1,76 @@
 @charset "UTF-8";
 
-body *{
-  font-family: 'Noto Sans Japanese', sans-serif;
-}
-
-.fc-sun{
-	background-color:#FFCCCC;
-	color:#CC6699;
-}
-
-.fc-sat{
-	background-color:#CCFFFF;
-	color:#0380B7;
-}
-
-.fc-widget-header{
-}
-
-.fc-widget-content{
-}
-
-.menu_content{
-	float:left;
-}
-
-.calendar_content{
-	float:right;
-}
-
-
 .element_morning{
-	background-color:#FFFF8F !important;
-	color:#CC66CC !important;
+	background-color:#FFFFFF !important;
+	color:#666633 !important;
 	font-size:11px !important;
 }
 
 .element_noon{
-	background-color:#CCFFCC !important;
-	color:#2E8A5C !important;
+	background-color:#FFFFFF !important;
+	color:#666633 !important;
 	font-size:11px !important;
 }
 
 .element_night{
-	background-color:#E6CCFF !important;
-	color:#2E8A5C !important;
+	background-color:#FFFFFF !important;
+	color:#666633 !important;
 	font-size:11px !important;
 }
 
-
-
 .element_fire{
-	background-color:#FF0000 !important;
+	background-color:#FF958F !important;
+	color:#7F0C00 !important;
 	font-size:11px !important;
 }
 .element_water{
-	background-color:#0380B7 !important;
+	background-color:#8FABFF !important;
+	color:#000C7F !important;
 	font-size:11px !important;
 }
 .element_earth{
-	background-color:#FF7F00 !important;
+	background-color:#FFE18F !important;
+	color:#7F6200 !important;
 	font-size:11px !important;
 }
 .element_wind{
-	background-color:#7FC31C !important;
+	background-color:#8FFF9E !important;
+	color:#007F0F !important;
 	font-size:11px !important;
 }
 .element_shine{
-	background-color:#FFF232 !important;
+	background-color:#FFFD8F !important;
+	color:#7F7F03 !important;
 	font-size:11px !important;
 }
 .element_darkness{
-	background-color:#2A007C !important;
+	background-color:#E68FFF !important;
+	color:#6C007F !important;
 	font-size:11px !important;
 }
 
 
 .subjugation_fire{
-	background-color:#FF0000 !important;
+	background-color:#7F1B15 !important;
 	font-size:11px !important;
 }
 .subjugation_water{
-	background-color:#0380B7 !important;
+	background-color:#273E7F !important;
 	font-size:11px !important;
 }
 .subjugation_earth{
-	background-color:#FF7F00 !important;
+	background-color:#7F651E !important;
 	font-size:11px !important;
 }
 .subjugation_wind{
-	background-color:#7FC31C !important;
+	background-color:#1E7F2B !important;
 	font-size:11px !important;
 }
 .subjugation_shine{
-	background-color:#FFF232 !important;
+	background-color:#7F7D19 !important;
 	font-size:11px !important;
 }
 .subjugation_darkness{
-	background-color:#2A007C !important;
+	background-color:#6C297F !important;
 	font-size:11px !important;
 }
