@@ -10,6 +10,7 @@
 		<title>granblue fantasy イベントカレンダー</title>
 		<style>@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);</style>			
 		<link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+		<link rel="stylesheet" href="granbluefantasy/granblue_common.css"/>
 		<link rel="stylesheet" href="granbluefantasy/granblue_event_calendar.css"/>
 		<!-- jquery, moment, and angular have to get included before fullcalendar -->
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -27,6 +28,12 @@
 	
 	<body>
 		<div class="main" ng-controller="currentController">
+			<div>
+				<a class="header" href="./index.html">TOP</a>
+
+				<a class="header" href="./granblue_helo_calendar.html">ヘイローカレンダー</a>
+				<a class="header" href="./granblue_all_calendar.html">全カレンダー</a>
+			</div>
 			<div class="calendar" id='calendar'></div>
 		</div>
 	</body>

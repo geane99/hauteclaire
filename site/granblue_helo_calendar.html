@@ -9,6 +9,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<title>granblue fantasy エンジェルヘイローカレンダー</title>
 		<style>@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);</style>			
+		<link rel="stylesheet" href="granbluefantasy/granblue_common.css"/>
 		<link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
 		<link rel="stylesheet" href="granbluefantasy/granblue_helo_calendar.css"/>
 		<!-- jquery, moment, and angular have to get included before fullcalendar -->
@@ -26,13 +27,15 @@
 	</head>
 	
 	<body>
-		<div class="main" ng-controller="currentController">
-			<select id="groupComponent">
-				<option value="0" selected>グループA&E</option>
-				<option value="1">グループB&F</option>
-				<option value="2">グループC&G</option>
-				<option value="3">グループD&H</option>
-			</select>
+		<div class="main" ng-controller="currentController as controller" data-ng-init="init()">
+			<div>
+				<a class="header" href="./index.html">TOP</a>
+				<a class="header" href="./granblue_event_calendar.html">イベントカレンダー</a>
+				<a class="header" href="./granblue_all_calendar.html">全カレンダー</a>
+			</div>
+			<div>
+				<select ng-selected="changeHeloGroup()" ng-model="heloGroupSelected" ng-options="e as e.name for e in heloGroups"></select>
+			</div>
 			<div class="calendar" id='calendar'></div>
 		</div>
 	</body>

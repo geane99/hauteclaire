@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+body *{
+  font-family: 'Noto Sans Japanese', sans-serif;
+}
+
+.header{
+	font-size:0.9em;
+}
+
+.fc-left > h2{
+	font-size: 1.2em !important;
+}
+
+.fc-sun{
+	background-color:#FFCCCC;
+	color:#CC6699;
+}
+
+.fc-sat{
+	background-color:#CCFFFF;
+	color:#0380B7;
+}
+
+.fc-widget-header{
+	font-size:11px;
+}
+
+.fc-button{
+	font-size: 0.8em !important;
+	height: 1.7em !important;
+}
+
+.fc-widget-content{
+}
+
+.menu_content{
+	float:left;
+}
+
+.calendar_content{
+	float:right;
+}
+

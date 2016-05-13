@@ -1403,13 +1403,14 @@
 		},
 		{
 			"id":117,
-			"title":"新イベント",
+			"title":"サクラ大戦 ～空駆ける乙女～",
 			"start":"2016-05-13 19:00:00",
 			"end":"2016-05-23 17:00:00",
 			"className":"collaboration",
 			"isReprint":false,
 			"isCollaboration":true,
-			"type":"subjugation"
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8125_%A5%B5%A5%AF%A5%E9%C2%E7%C0%EF%20%A1%C1%B6%F5%B6%EE%A4%B1%A4%EB%B2%B5%BD%F7%A1%C1"
 		},
 		{
 			"id":118,
