@@ -15,22 +15,18 @@ hauteclaire = function(_this){
 		clean : function(){
 			this.cache = new Array();
 		},
-		filter : function(arg){
-			var contain = function(array, target){
-				var result = false;
-				array.forEach(function(item,index,array){
-					if(!result && item === target)
-						result = true;
-				});
-				return result;
-			};
-			var result = new Array();
-			_this.app.schedule.forEach(function(item,index,array){
-				if(contain(arg,item.type))
-					result.push(item);
+		filter : function(rule){
+			if(this.cache2nd && this.cache2nd.length > 0)
+				return this.cache2nd;
+			var array = new Array();
+			this.cache.forEach(function(item){
+				if(rule.match(item))
+					array.push(item);
 			});
-			return result;
-		}
+			this.cache2nd = array;
+			return array;
+		},
+		cache2nd : new Array()
 	};
 	
 	_this.UUID = {
@@ -213,8 +209,9 @@ hauteclaire = function(_this){
 				return true;
 			return r;
 		},
+		rules : new Array(),
 		properties : new Array(),
-		defineAccessor : function(name){
+		defineAccessor : function(name, ){
 			this.__defineGetter__(name, function(){
 				return this._get(name);
 			});
@@ -222,6 +219,9 @@ hauteclaire = function(_this){
 				return this._set(name, val);
 			});
 			this.properties.push(name);
+			this.rules.push(function(item){
+				
+			});
 		},
 		build :function(){
 			this.defineAccessor("heloDisplay");
@@ -260,6 +260,8 @@ hauteclaire = function(_this){
 		},
 		load : function(t){
 			return this.save.apply(t, [this]);
+		},
+		match :function(item){
 		}
 	};
 	_this.operation.build();
