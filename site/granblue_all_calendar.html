@@ -8,20 +8,27 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<title>granblue fantasy カレンダー</title>
-		<style>@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);</style>			
+		
+		<style>@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);</style>
+		
+		<link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap-theme.min.css" />
 		<link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+
 		<link rel="stylesheet" href="granbluefantasy/granblue_common.css"/>
 		<link rel="stylesheet" href="granbluefantasy/granblue_helo_calendar.css"/>
 		<link rel="stylesheet" href="granbluefantasy/granblue_event_calendar.css"/>
+		
 		<!-- jquery, moment, and angular have to get included before fullcalendar -->
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+		<script type="text/javascript" src="bower_components/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular-ui-calendar/calendar.js"></script>
+		<script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
 		<script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 		<script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
-		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		
 		
 		<script type="text/javascript" src="granbluefantasy/granblue_common.js"></script>
 		<script type="text/javascript" src="granbluefantasy/granblue_all_controller.js"></script>
@@ -33,12 +40,126 @@
 				<a class="header" href="./index.html">TOP</a>
 				<a class="header" href="./granblue_event_calendar.html">イベントカレンダー</a>
 				<a class="header" href="./granblue_helo_calendar.html">ヘイローカレンダー</a>
-
 			</div>
 			<div>
-				<select ng-selected="changeHeloGroup()" ng-model="heloGroupSelected" ng-options="e as e.name for e in heloGroups"></select></select>
+				<button class="btn btn-warning btn-xs" type="button" ng-click="openModal()">設定</button>
+				
 			</div>
 			<div id="calendar" ng-calendar />
 		</div>
+		
+		<script type="text/ng-template" id="modal.html">
+			<div class="modal-header">
+				<h3 class="modal-title">カレンダー表示設定</h3>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+				
+					<!-- helo -->
+					<div class="row">
+						<div class="col-sm-1">
+							<abbr title="★ヘイロー。表示したくない場合は表示するのチェックを外す。" class="initialism">グループ</abbr>
+						</div>
+						<div class="col-sm-9">
+							<input type="checkbox" ng-checked="heloDisplay" ng-click="checkHelo($event)" /><label class="form-checkbox-label">表示する</label>
+							<span ng-show="heloDisplay">
+								<!-- group -->
+								<select ng-selected="changeHeloGroup()" ng-model="selectedHeloGroup" ng-options="e as e.name for e in heloGroups"></select>
+								
+								<!-- timeline -->
+								<!-- morning -->
+								<input type="checkbox" ng-checked="heloMorning" ng-click="toggleChecks($event,'heloMorning')" />
+								<label class="form-checkbox-label">朝</label>
+								<!-- noon -->
+								<input type="checkbox" ng-checked="heloNoon" ng-click="toggleChecks($event,'heloNoon')" />
+								<label class="form-checkbox-label">昼</label>
+								<!-- night -->
+								<input type="checkbox" ng-checked="heloNight" ng-click="toggleChecks($event,'heloNight')" />
+								<label class="form-checkbox-label">夜</label>
+							</span>
+						</div>
+					</div>
+					
+					<!-- Subjugation -->
+					<div class="row">
+						<div class="col-sm-1">
+							<abbr title="3日に1度切り替わる討滅戦。表示したくない場合は表示するのチェックを外す。" class="initialism">討滅戦</abbr>
+						</div>
+						<div class="col-sm-9">
+							<input type="checkbox" ng-model="subjugationDisplayModel" ng-click="checkSubjugation($event)" /><label class="form-checkbox-label">表示する</label>
+							<span ng-show="subjugationDisplay">
+								<!-- fire -->
+								<input type="checkbox" ng-checked="subjugationFire" /><label class="form-checkbox-label">イフリート</label>
+								<!-- water -->
+								<input type="checkbox" ng-checked="subjugationWater" /><label class="form-checkbox-label">コキュートス</label>
+								<!-- earth -->
+								<input type="checkbox" ng-checked="subjugationEarth" /><label class="form-checkbox-label">ウォフマナフ</label>
+								<!-- wind -->
+								<input type="checkbox" ng-checked="subjugationWind" /><label class="form-checkbox-label">サジタリウス</label>
+								<!-- shine -->
+								<input type="checkbox" ng-checked="subjugationShine" /><label class="form-checkbox-label">コロゥ</label>
+								<!-- darkness -->
+								<input type="checkbox" ng-checked="subjugationDarkness" /><label class="form-checkbox-label">ディアボロス</label>
+								
+							</span>
+						</div>
+					</div>
+					
+					<!-- ordeal -->
+					<div class="row">
+						<div class="col-sm-1">
+							<abbr title="2日に1度切り替わる属性別試練。表示したくない場合は表示するのチェックを外す。" class="initialism">属性試練</abbr>
+						</div>
+						<div class="col-sm-9">
+							<input type="checkbox" ng-checked="ordealDisplay" ng-model="ordealDisplayModel" ng-click="checkOrdeal($event)"/><label class="form-checkbox-label">表示する</label>
+							<span ng-show="ordealDisplay">
+								<!-- fire -->
+								<input type="checkbox" ng-checked="ordealFire" /><label class="form-checkbox-label">業火の試練</label>
+								<!-- water -->
+								<input type="checkbox" ng-checked="ordealWater" /><label class="form-checkbox-label">玉水の試練</label>
+								<!-- earth -->
+								<input type="checkbox" ng-checked="ordealEarth" /><label class="form-checkbox-label">荒土の試練</label>
+								<!-- wind -->
+								<input type="checkbox" ng-checked="ordealWind" /><label class="form-checkbox-label">狂風の試練</label>
+								<!-- shine -->
+								<input type="checkbox" ng-checked="ordealShine" /><label class="form-checkbox-label">極光の試練</label>
+								<!-- darkness -->
+								<input type="checkbox" ng-checked="ordealDarkness" /><label class="form-checkbox-label">幽闇の試練</label>
+							</span>
+						</div>
+					</div>
+					
+					<!-- events -->
+					<div class="row">
+						<div class="col-sm-1">
+							<abbr title="各種イベント。表示したくない場合は表示するのチェックを外す。" class="initialism">イベント</abbr>
+						</div>
+						<div class="col-sm-9">
+							<input type="checkbox" ng-checked="ordealDisplay" ng-model="ordealDisplayModel" ng-click="checkEvents($event)"/><label class="form-checkbox-label">表示する</label>
+							<span ng-show="eventsDisplay">
+								<!-- hiroic battle fields -->
+								<input type="checkbox" ng-checked="eventsHiroicBattleFields" /><label class="form-checkbox-label">団イベ</label>
+								<!-- sisyou -->
+								<input type="checkbox" ng-checked="eventsSisyo" /><label class="form-checkbox-label">四象</label>
+								<!-- story_events -->
+								<input type="checkbox" ng-checked="eventsStory" /><label class="form-checkbox-label">シナリオイベント</label>
+								<!-- subjugation -->
+								<input type="checkbox" ng-checked="eventsSubjugation" /><label class="form-checkbox-label">討滅</label>
+								<!-- collaboration -->
+								<input type="checkbox" ng-checked="eventsCollaboration" /><label class="form-checkbox-label">コラボ</label>
+								<!-- diffend order -->
+								<input type="checkbox" ng-checked="eventsDiffendOrder" /><label class="form-checkbox-label">ディフェンドオーダー</label>
+								<!-- other -->
+								<input type="checkbox" ng-checked="eventsOther" /><label class="form-checkbox-label">その他</label>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="ok()">反映する</button>
+				<button class="btn btn-default" type="button" ng-click="cancel()">キャンセル</button>
+			</div>
+		</script>
 	</body>
 </html>

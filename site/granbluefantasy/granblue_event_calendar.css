@@ -55,6 +55,7 @@
 .story_events, 
 .story_events_reprint,
 .subjugation,
+.subjugation_reprint,
 .other
 {
 	background-color:#00E824 !important;
@@ -65,7 +66,8 @@
 
 /* コラボ */
 /* 復刻コラボ */
-.collaboration, .collaboration_reprint{
+.collaboration, 
+.collaboration_reprint{
 	background-color:#8B00E8 !important;
 	color:#FFFFFF !important;
 	font-size:11px !important;

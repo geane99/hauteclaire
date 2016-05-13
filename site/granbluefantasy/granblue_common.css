@@ -42,3 +42,10 @@ body *{
 	float:right;
 }
 
+.form-checkbox-label{
+	margin-left:5px;
+}
+
+.calendar-modal-window{
+	width:700px;
+}

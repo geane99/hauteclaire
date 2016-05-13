@@ -204,14 +204,65 @@ hauteclaire = function(_this){
 
 hauteclaire = function(_this){
 	_this.operation = {
-		get groupId(){
-			return localStorage.getItem("groupId");
+		_set : function(name, value){
+			return localStorage.setItem(name, value);
 		},
-		set groupId(groupId){
-			return localStorage.setItem("groupId",groupId);
+		_get : function(name){
+			var r = localStorage.getItem(name);
+			if(r === undefined || r === null || r === 'null')
+				return true;
+			return r;
+		},
+		properties : new Array(),
+		defineAccessor : function(name){
+			this.__defineGetter__(name, function(){
+				return this._get(name);
+			});
+			this.__defineSetter__(name, function(val){
+				return this._set(name, val);
+			});
+			this.properties.push(name);
+		},
+		build :function(){
+			this.defineAccessor("heloDisplay");
+			this.defineAccessor("heloGroupId");
+			this.defineAccessor("heloMorning");
+			this.defineAccessor("heloNoon");
+			this.defineAccessor("heloNight");
+			this.defineAccessor("subjugationDisplay");
+			this.defineAccessor("subjugationFire");
+			this.defineAccessor("subjugationWater");
+			this.defineAccessor("subjugationEarth");
+			this.defineAccessor("subjugationWind");
+			this.defineAccessor("subjugationShine");
+			this.defineAccessor("subjugationDarkness");
+			this.defineAccessor("ordealDisplay");
+			this.defineAccessor("ordealFire");
+			this.defineAccessor("ordealWater");
+			this.defineAccessor("ordealEarth");
+			this.defineAccessor("ordealWind");
+			this.defineAccessor("ordealShine");
+			this.defineAccessor("ordealDarkness");
+			this.defineAccessor("eventsDisplay");
+			this.defineAccessor("eventsHiroicBattleFields");
+			this.defineAccessor("eventsSisyo");
+			this.defineAccessor("eventsStory");
+			this.defineAccessor("eventsSubjugation");
+			this.defineAccessor("eventsCollaboration");
+			this.defineAccessor("eventsDiffendOrder");
+			this.defineAccessor("eventsOther");
+		},
+		save : function(t){
+			var _t = this;
+			_this.operation.properties.forEach(function(name){
+				_t[name] = t[name];
+			});
+		},
+		load : function(t){
+			return this.save.apply(t, [this]);
 		}
 	};
-
+	_this.operation.build();
 	return _this;
 }(hauteclaire);
 
