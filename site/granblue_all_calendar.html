@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="allCalendarApp" id="top">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="granblue fantasy イベントカレンダー">
+		<meta name="format-detection" content="telephone=no,address=no,email=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>granblue fantasy カレンダー</title>
+		<style>@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);</style>			
+		<link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+		<link rel="stylesheet" href="granbluefantasy/granblue_common.css"/>
+		<link rel="stylesheet" href="granbluefantasy/granblue_helo_calendar.css"/>
+		<link rel="stylesheet" href="granbluefantasy/granblue_event_calendar.css"/>
+		<!-- jquery, moment, and angular have to get included before fullcalendar -->
+		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-ui-calendar/calendar.js"></script>
+		<script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+		<script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		
+		<script type="text/javascript" src="granbluefantasy/granblue_common.js"></script>
+		<script type="text/javascript" src="granbluefantasy/granblue_all_controller.js"></script>
+	</head>
+	
+	<body>
+		<div class="main" ng-controller="currentController as controller" ng-init="init()">
+			<div>
+				<a class="header" href="./index.html">TOP</a>
+				<a class="header" href="./granblue_event_calendar.html">イベントカレンダー</a>
+				<a class="header" href="./granblue_helo_calendar.html">ヘイローカレンダー</a>
+
+			</div>
+			<div>
+				<select ng-selected="changeHeloGroup()" ng-model="heloGroupSelected" ng-options="e as e.name for e in heloGroups"></select></select>
+			</div>
+			<div id="calendar" ng-calendar />
+		</div>
+	</body>
+</html>
