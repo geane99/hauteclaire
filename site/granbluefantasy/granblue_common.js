@@ -208,8 +208,8 @@ hauteclaire = function(_this){
 			return localStorage.setItem(name, value);
 		},
 		_get : function(name){
-			var r = localStorage.getItem(name);
-			if(r === undefined || r === null || r === 'null')
+			var r = eval(localStorage.getItem(name));
+			if(r == null)
 				return true;
 			return r;
 		},

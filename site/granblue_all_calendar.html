@@ -86,20 +86,20 @@
 							<abbr title="3日に1度切り替わる討滅戦。表示したくない場合は表示するのチェックを外す。" class="initialism">討滅戦</abbr>
 						</div>
 						<div class="col-sm-9">
-							<input type="checkbox" ng-model="subjugationDisplayModel" ng-click="checkSubjugation($event)" /><label class="form-checkbox-label">表示する</label>
+							<input type="checkbox" ng-checked="subjugationDisplay" ng-click="checkSubjugation($event)" /><label class="form-checkbox-label">表示する</label>
 							<span ng-show="subjugationDisplay">
 								<!-- fire -->
-								<input type="checkbox" ng-checked="subjugationFire" /><label class="form-checkbox-label">イフリート</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'subjugationFire')" ng-checked="subjugationFire" /><label class="form-checkbox-label">イフリート</label>
 								<!-- water -->
-								<input type="checkbox" ng-checked="subjugationWater" /><label class="form-checkbox-label">コキュートス</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'subjugationWater')" ng-checked="subjugationWater" /><label class="form-checkbox-label">コキュートス</label>
 								<!-- earth -->
-								<input type="checkbox" ng-checked="subjugationEarth" /><label class="form-checkbox-label">ウォフマナフ</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'subjugationEarth')" ng-checked="subjugationEarth" /><label class="form-checkbox-label">ウォフマナフ</label>
 								<!-- wind -->
-								<input type="checkbox" ng-checked="subjugationWind" /><label class="form-checkbox-label">サジタリウス</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'subjugationWind')" ng-checked="subjugationWind" /><label class="form-checkbox-label">サジタリウス</label>
 								<!-- shine -->
-								<input type="checkbox" ng-checked="subjugationShine" /><label class="form-checkbox-label">コロゥ</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'subjugationShine')" ng-checked="subjugationShine" /><label class="form-checkbox-label">コロゥ</label>
 								<!-- darkness -->
-								<input type="checkbox" ng-checked="subjugationDarkness" /><label class="form-checkbox-label">ディアボロス</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'subjugationDarkness')" ng-checked="subjugationDarkness" /><label class="form-checkbox-label">ディアボロス</label>
 								
 							</span>
 						</div>
@@ -114,17 +114,17 @@
 							<input type="checkbox" ng-checked="ordealDisplay" ng-model="ordealDisplayModel" ng-click="checkOrdeal($event)"/><label class="form-checkbox-label">表示する</label>
 							<span ng-show="ordealDisplay">
 								<!-- fire -->
-								<input type="checkbox" ng-checked="ordealFire" /><label class="form-checkbox-label">業火の試練</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'ordealFire')" ng-checked="ordealFire" /><label class="form-checkbox-label">業火の試練</label>
 								<!-- water -->
-								<input type="checkbox" ng-checked="ordealWater" /><label class="form-checkbox-label">玉水の試練</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'ordealWater')" ng-checked="ordealWater" /><label class="form-checkbox-label">玉水の試練</label>
 								<!-- earth -->
-								<input type="checkbox" ng-checked="ordealEarth" /><label class="form-checkbox-label">荒土の試練</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'ordealEarth')" ng-checked="ordealEarth" /><label class="form-checkbox-label">荒土の試練</label>
 								<!-- wind -->
-								<input type="checkbox" ng-checked="ordealWind" /><label class="form-checkbox-label">狂風の試練</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'ordealWind')" ng-checked="ordealWind" /><label class="form-checkbox-label">狂風の試練</label>
 								<!-- shine -->
-								<input type="checkbox" ng-checked="ordealShine" /><label class="form-checkbox-label">極光の試練</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'ordealShine')" ng-checked="ordealShine" /><label class="form-checkbox-label">極光の試練</label>
 								<!-- darkness -->
-								<input type="checkbox" ng-checked="ordealDarkness" /><label class="form-checkbox-label">幽闇の試練</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'ordealDarkness')" ng-checked="ordealDarkness" /><label class="form-checkbox-label">幽闇の試練</label>
 							</span>
 						</div>
 					</div>
@@ -138,19 +138,19 @@
 							<input type="checkbox" ng-checked="ordealDisplay" ng-model="ordealDisplayModel" ng-click="checkEvents($event)"/><label class="form-checkbox-label">表示する</label>
 							<span ng-show="eventsDisplay">
 								<!-- hiroic battle fields -->
-								<input type="checkbox" ng-checked="eventsHiroicBattleFields" /><label class="form-checkbox-label">団イベ</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'eventsHiroicBattleFields')" ng-checked="eventsHiroicBattleFields" /><label class="form-checkbox-label">団イベ</label>
 								<!-- sisyou -->
-								<input type="checkbox" ng-checked="eventsSisyo" /><label class="form-checkbox-label">四象</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'eventsSisyo')" ng-checked="eventsSisyo" /><label class="form-checkbox-label">四象</label>
 								<!-- story_events -->
-								<input type="checkbox" ng-checked="eventsStory" /><label class="form-checkbox-label">シナリオイベント</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'eventsStory')" ng-checked="eventsStory" /><label class="form-checkbox-label">シナリオイベント</label>
 								<!-- subjugation -->
-								<input type="checkbox" ng-checked="eventsSubjugation" /><label class="form-checkbox-label">討滅</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'eventsSubjugation')" ng-checked="eventsSubjugation" /><label class="form-checkbox-label">討滅</label>
 								<!-- collaboration -->
-								<input type="checkbox" ng-checked="eventsCollaboration" /><label class="form-checkbox-label">コラボ</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'eventsCollaboration')" ng-checked="eventsCollaboration" /><label class="form-checkbox-label">コラボ</label>
 								<!-- diffend order -->
-								<input type="checkbox" ng-checked="eventsDiffendOrder" /><label class="form-checkbox-label">ディフェンドオーダー</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'eventsDiffendOrder')" ng-checked="eventsDiffendOrder" /><label class="form-checkbox-label">ディフェンドオーダー</label>
 								<!-- other -->
-								<input type="checkbox" ng-checked="eventsOther" /><label class="form-checkbox-label">その他</label>
+								<input type="checkbox" ng-click="toggleChecks($event,'eventsOther')" ng-checked="eventsOther" /><label class="form-checkbox-label">その他</label>
 							</span>
 						</div>
 					</div>

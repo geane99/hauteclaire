@@ -14,7 +14,7 @@ angular.module('allCalendarApp',['ui.calendar','ui.bootstrap'])
 })
 
 .controller('currentController',function($scope, $uibModal, $log){
-	_this = hauteclaire;
+	var _this = hauteclaire;
 	
 	_this.config.calendar.events = function(start,end,timezone,callback){
 		_this.app.clean();
@@ -56,7 +56,7 @@ angular.module('allCalendarApp',['ui.calendar','ui.bootstrap'])
 })
 
 angular.module('ui.bootstrap').controller('modalController', ['$scope', '$modalInstance', function($scope, $uibModalInstance){
-	_this = hauteclaire;
+	var _this = hauteclaire;
 	
 	$scope.heloGroups = _this.helo.groups;
 	$scope.ok = function(){
