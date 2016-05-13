@@ -204,11 +204,11 @@ hauteclaire = function(_this){
 
 hauteclaire = function(_this){
 	_this.operation = {
-		get group(){
-			return localStorage.group;
+		get groupId(){
+			return localStorage.getItem("groupId");
 		},
-		set group(group){
-			return localStorage.group;
+		set groupId(groupId){
+			return localStorage.setItem("groupId",groupId);
 		}
 	};
 
@@ -269,6 +269,14 @@ hauteclaire = function(_this){
 			{ name:"グループC&G", variate:2, id:2 },
 			{ name:"グループD&H", variate:3, id:3 }
 		],
+		getGroupById : function(id){
+			var r = null;
+			this.groups.forEach(function(item,index,array){
+				if(item.id == id)
+					r = item;
+			});
+			return r;
+		},
 		timeline:{
 			current:new Date(2016,0,5),
 			size:6,
@@ -301,8 +309,9 @@ hauteclaire = function(_this){
 			};
 			return r;
 		},
-		generate : function(agroup){
-			var group = agroup ? agroup : _this.helo.groups[0];
+		generate : function(groupId){
+			var group = groupId ? this.getGroupById(groupId) : this.groups[0];
+			group = group ? group : this.groups[0];
 			if(this.cache[group.id] && this.cache[group.id].length > 0)
 				return this.cache[group.id];
 			
@@ -344,7 +353,7 @@ hauteclaire = function(_this){
 }(hauteclaire);
 
 
-//build helo
+//build subjugation
 hauteclaire = function(_this){
 	_this.subjugation = {
 		id:2000,
@@ -450,7 +459,7 @@ hauteclaire = function(_this){
 }(hauteclaire);
 
 
-//build helo
+//build ordeal
 hauteclaire = function(_this){
 	_this.ordeal = {
 		current:new Date(2015,9,18),

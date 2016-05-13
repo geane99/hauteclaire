@@ -6,7 +6,7 @@ eventCalendarApp.controller('currentController',function($scope,$http){
 		_this.app.clean();
 		_this.app.addAll(_this.ordeal.generate());
 		_this.app.addAll(_this.subjugation.generate());
-		_this.app.addAll(_this.helo.generate($scope.heloGroupSelected));
+		_this.app.addAll(_this.helo.generate($scope.heloGroupSelected.id));
 		return callback(_this.app.findAll());
 	};
 	
