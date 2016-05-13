@@ -99,13 +99,11 @@ hauteclaire = function(_this){
 		this.release = function(arg){
 			if(this.uuid == arg){
 				this.uuid = null;
-//				alert("release:"+arg);
 			}
 		};
 		this.await = function(data){
 			var _t = this;
 			if(this.uuid == null){
-//				alert("register:"+data.uuid);
 				this.uuid = data.uuid;
 				return false;
 			}
@@ -114,7 +112,6 @@ hauteclaire = function(_this){
 				return false;
 			
 			setTimeout(function(){
-//				alert("await(this):"+_t.uuid+"\narg:"+data.uuid);
 				data.executor.apply(data.target, data.arguments);
 			},2000);
 			return true;
@@ -125,7 +122,7 @@ hauteclaire = function(_this){
 	_this.util = {
 		semaphore : new _this.Semaphore(),
 		load : function(target, uuid, array, finalize){
-			_semaphore = this.semaphore;
+			var _semaphore = this.semaphore;
 			if(_semaphore.await({
 				uuid : uuid,
 				executor : _this.util.load,
@@ -150,9 +147,10 @@ hauteclaire = function(_this){
 				success:function(data){
 					var results = site.process(data);
 					target.cache.addAll(results);
-					if(array.length===0)
+					if(array.length===0){
 						complete(finalize);
-						_semaphore.release(uuid);
+						return _semaphore.release(uuid);
+					}
 					_t.load(target, uuid, array, finalize);
 				},
 				error:function(XMLHttpRequest, textStatus, errorThrown){
