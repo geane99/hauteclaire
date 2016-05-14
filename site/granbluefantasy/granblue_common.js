@@ -15,22 +15,18 @@ hauteclaire = function(_this){
 		clean : function(){
 			this.cache = new Array();
 		},
-		filter : function(arg){
-			var contain = function(array, target){
-				var result = false;
-				array.forEach(function(item,index,array){
-					if(!result && item === target)
-						result = true;
-				});
-				return result;
-			};
-			var result = new Array();
-			_this.app.schedule.forEach(function(item,index,array){
-				if(contain(arg,item.type))
-					result.push(item);
+		filter : function(rule, force){
+			if(!force && this.cache2nd && this.cache2nd.length > 0)
+				return this.cache2nd;
+			var array = new Array();
+			this.cache.forEach(function(item){
+				if(rule.match(item))
+					array.push(item);
 			});
-			return result;
-		}
+			this.cache2nd = array;
+			return array;
+		},
+		cache2nd : new Array()
 	};
 	
 	_this.UUID = {
@@ -204,14 +200,83 @@ hauteclaire = function(_this){
 
 hauteclaire = function(_this){
 	_this.operation = {
-		get groupId(){
-			return localStorage.getItem("groupId");
+		_set : function(name, value){
+			return localStorage.setItem(name, value);
 		},
-		set groupId(groupId){
-			return localStorage.setItem("groupId",groupId);
+		_get : function(name){
+			var r = eval(localStorage.getItem(name));
+			if(r == null)
+				return true;
+			return r;
+		},
+		rules : new Array(),
+		properties : new Array(),
+		defineAccessor : function(name, targets){
+			var _t = this;
+			this.__defineGetter__(name, function(){
+				return this._get(name);
+			});
+			this.__defineSetter__(name, function(val){
+				return this._set(name, val);
+			});
+			this.properties.push(name);
+			if(targets != null)
+				this.rules.push(function(item){
+					var isOk = false;
+					if(_t._get(name))
+						targets.forEach(function(target){
+							if(item.className == target)
+								isOk = true;
+						});
+					return isOk;
+				});
+		},
+		build :function(){
+			this.defineAccessor("heloDisplay");
+			this.defineAccessor("heloGroupId");
+			this.defineAccessor("heloMorning", ["element_morning"]);
+			this.defineAccessor("heloNoon", ["element_noon"]);
+			this.defineAccessor("heloNight", ["element_night"]);
+			this.defineAccessor("subjugationDisplay");
+			this.defineAccessor("subjugationFire",["subjugation_fire"]);
+			this.defineAccessor("subjugationWater",["subjugation_water"]);
+			this.defineAccessor("subjugationEarth",["subjugation_earth"]);
+			this.defineAccessor("subjugationWind",["subjugation_wind"]);
+			this.defineAccessor("subjugationShine",["subjugation_shine"]);
+			this.defineAccessor("subjugationDarkness",["subjugation_darkness"]);
+			this.defineAccessor("ordealDisplay");
+			this.defineAccessor("ordealFire",["element_fire"]);
+			this.defineAccessor("ordealWater",["element_water"]);
+			this.defineAccessor("ordealEarth",["element_earth"]);
+			this.defineAccessor("ordealWind",["element_wind"]);
+			this.defineAccessor("ordealShine",["element_shine"]);
+			this.defineAccessor("ordealDarkness",["element_darkness"]);
+			this.defineAccessor("eventsDisplay");
+			this.defineAccessor("eventsHiroicBattleFields",["historic_battlefield"]);
+			this.defineAccessor("eventsSisyo",["sisyou"]);
+			this.defineAccessor("eventsStory",["story_events"]);
+			this.defineAccessor("eventsSubjugation",["subjugation"]);
+			this.defineAccessor("eventsCollaboration",["collaboration"]);
+			this.defineAccessor("eventsDiffendOrder",["diffend_order"]);
+			this.defineAccessor("eventsOther",["other"]);
+		},
+		save : function(t){
+			var _t = this;
+			_this.operation.properties.forEach(function(name){
+				_t[name] = t[name];
+			});
+		},
+		load : function(t){
+			return this.save.apply(t, [this]);
+		},
+		match :function(item){
+			for(i = 0; i < this.rules.length; i++)
+				if(this.rules[i](item))
+					return true;
+			return false;
 		}
 	};
-
+	_this.operation.build();
 	return _this;
 }(hauteclaire);
 
@@ -225,9 +290,6 @@ hauteclaire = function(_this){
 			process:function(data){
 				return data.events;
 		}}],
-		target:[
-			"currency","battelefield","subjugation","other","sisyou","arena","discount","maintenance","element"
-		],
 		generate : function(callback){
 			if(this.cache != null && this.cache.length > 0)
 				return callback();
