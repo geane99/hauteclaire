@@ -15,8 +15,8 @@ hauteclaire = function(_this){
 		clean : function(){
 			this.cache = new Array();
 		},
-		filter : function(rule){
-			if(this.cache2nd && this.cache2nd.length > 0)
+		filter : function(rule, force){
+			if(!force && this.cache2nd && this.cache2nd.length > 0)
 				return this.cache2nd;
 			var array = new Array();
 			this.cache.forEach(function(item){
@@ -211,7 +211,8 @@ hauteclaire = function(_this){
 		},
 		rules : new Array(),
 		properties : new Array(),
-		defineAccessor : function(name, ){
+		defineAccessor : function(name, targets){
+			var _t = this;
 			this.__defineGetter__(name, function(){
 				return this._get(name);
 			});
@@ -219,38 +220,45 @@ hauteclaire = function(_this){
 				return this._set(name, val);
 			});
 			this.properties.push(name);
-			this.rules.push(function(item){
-				
-			});
+			if(targets != null)
+				this.rules.push(function(item){
+					var isOk = false;
+					if(_t._get(name))
+						targets.forEach(function(target){
+							if(item.className == target)
+								isOk = true;
+						});
+					return isOk;
+				});
 		},
 		build :function(){
 			this.defineAccessor("heloDisplay");
 			this.defineAccessor("heloGroupId");
-			this.defineAccessor("heloMorning");
-			this.defineAccessor("heloNoon");
-			this.defineAccessor("heloNight");
+			this.defineAccessor("heloMorning", ["element_morning"]);
+			this.defineAccessor("heloNoon", ["element_noon"]);
+			this.defineAccessor("heloNight", ["element_night"]);
 			this.defineAccessor("subjugationDisplay");
-			this.defineAccessor("subjugationFire");
-			this.defineAccessor("subjugationWater");
-			this.defineAccessor("subjugationEarth");
-			this.defineAccessor("subjugationWind");
-			this.defineAccessor("subjugationShine");
-			this.defineAccessor("subjugationDarkness");
+			this.defineAccessor("subjugationFire",["subjugation_fire"]);
+			this.defineAccessor("subjugationWater",["subjugation_water"]);
+			this.defineAccessor("subjugationEarth",["subjugation_earth"]);
+			this.defineAccessor("subjugationWind",["subjugation_wind"]);
+			this.defineAccessor("subjugationShine",["subjugation_shine"]);
+			this.defineAccessor("subjugationDarkness",["subjugation_darkness"]);
 			this.defineAccessor("ordealDisplay");
-			this.defineAccessor("ordealFire");
-			this.defineAccessor("ordealWater");
-			this.defineAccessor("ordealEarth");
-			this.defineAccessor("ordealWind");
-			this.defineAccessor("ordealShine");
-			this.defineAccessor("ordealDarkness");
+			this.defineAccessor("ordealFire",["element_fire"]);
+			this.defineAccessor("ordealWater",["element_water"]);
+			this.defineAccessor("ordealEarth",["element_earth"]);
+			this.defineAccessor("ordealWind",["element_wind"]);
+			this.defineAccessor("ordealShine",["element_shine"]);
+			this.defineAccessor("ordealDarkness",["element_darkness"]);
 			this.defineAccessor("eventsDisplay");
-			this.defineAccessor("eventsHiroicBattleFields");
-			this.defineAccessor("eventsSisyo");
-			this.defineAccessor("eventsStory");
-			this.defineAccessor("eventsSubjugation");
-			this.defineAccessor("eventsCollaboration");
-			this.defineAccessor("eventsDiffendOrder");
-			this.defineAccessor("eventsOther");
+			this.defineAccessor("eventsHiroicBattleFields",["historic_battlefield"]);
+			this.defineAccessor("eventsSisyo",["sisyou"]);
+			this.defineAccessor("eventsStory",["story_events"]);
+			this.defineAccessor("eventsSubjugation",["subjugation"]);
+			this.defineAccessor("eventsCollaboration",["collaboration"]);
+			this.defineAccessor("eventsDiffendOrder",["diffend_order"]);
+			this.defineAccessor("eventsOther",["other"]);
 		},
 		save : function(t){
 			var _t = this;
@@ -262,6 +270,10 @@ hauteclaire = function(_this){
 			return this.save.apply(t, [this]);
 		},
 		match :function(item){
+			for(i = 0; i < this.rules.length; i++)
+				if(this.rules[i](item))
+					return true;
+			return false;
 		}
 	};
 	_this.operation.build();
@@ -278,9 +290,6 @@ hauteclaire = function(_this){
 			process:function(data){
 				return data.events;
 		}}],
-		target:[
-			"currency","battelefield","subjugation","other","sisyou","arena","discount","maintenance","element"
-		],
 		generate : function(callback){
 			if(this.cache != null && this.cache.length > 0)
 				return callback();

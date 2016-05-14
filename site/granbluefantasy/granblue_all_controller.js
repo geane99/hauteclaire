@@ -16,19 +16,23 @@ angular.module('allCalendarApp',['ui.calendar','ui.bootstrap'])
 .controller('currentController',function($scope, $uibModal, $log){
 	var _this = hauteclaire;
 	
-	_this.config.calendar.events = function(start,end,timezone,callback){
+	var generateCalendarElements = function(){
 		_this.app.clean();
 		_this.app.addAll(_this.ordeal.generate());
 		_this.app.addAll(_this.subjugation.generate());
 		_this.app.addAll(_this.helo.generate(_this.operation.groupId));
 		_this.app.addAll(_this.events.cache);
-		callback(_this.app.findAll());
+	};
+	
+	_this.config.calendar.events = function(start,end,timezone,callback){
+		callback(_this.app.filter(_this.operation));
 	};
 	_this.config.calendar.eventClick = function(item,jsEvent,view){
 		_this.util.openWindow(item.wiki);
 	};
 		
 	_this.events.generate(function(){
+		generateCalendarElements();
 		$('#calendar').fullCalendar('refetchEvents');
 	});
 	
@@ -46,10 +50,9 @@ angular.module('allCalendarApp',['ui.calendar','ui.bootstrap'])
 		});
 		
 		modal.result.then(function(data){
+			_this.app.filter(_this.operation, true);
 			$('#calendar').fullCalendar('refetchEvents');
-			//ok
 		},function(){
-			alert("dismiss");
 			//dismiss
 		});
 	};
@@ -63,31 +66,31 @@ angular.module('ui.bootstrap').controller('modalController', ['$scope', '$modalI
 		var r = {
 			heloDisplay : $scope.heloDisplay,
 			heloGroupId : $scope.selectedHeloGroup.id,
-			heloMorning : $scope.heloMorning,
-			heloNoon : $scope.heloNoon,
-			heloNight : $scope.heloNight,
+			heloMorning : !$scope.heloDisplay ? false : $scope.heloMorning,
+			heloNoon : !$scope.heloDisplay ? false : $scope.heloNoon,
+			heloNight : !$scope.heloDisplay ? false : $scope.heloNight,
 			subjugationDisplay : $scope.subjugationDisplay,
-			subjugationFire : $scope.subjugationFire,
-			subjugationWater : $scope.subjugationWater,
-			subjugationEarth : $scope.subjugationEarth,
-			subjugationWind : $scope.subjugationWind,
-			subjugationShine :$scope.subjugationShine,
-			subjugationDarkness :$scope.subjugationDarkness,
+			subjugationFire : !$scope.subjugationDisplay ? false : $scope.subjugationFire,
+			subjugationWater : !$scope.subjugationDisplay ? false : $scope.subjugationWater,
+			subjugationEarth : !$scope.subjugationDisplay ? false : $scope.subjugationEarth,
+			subjugationWind : !$scope.subjugationDisplay ? false : $scope.subjugationWind,
+			subjugationShine : !$scope.subjugationDisplay ? false : $scope.subjugationShine,
+			subjugationDarkness : !$scope.subjugationDisplay ? false : $scope.subjugationDarkness,
 			ordealDisplay : $scope.ordealDisplay,
-			ordealFire : $scope.ordealFire,
-			ordealWater : $scope.ordealWater,
-			ordealEarth : $scope.ordealEarth,
-			ordealWind : $scope.ordealWind,
-			ordealShine :$scope.ordealShine,
-			ordealDarkness :$scope.ordealDarkness,
+			ordealFire : !$scope.ordealDisplay ? false : $scope.ordealFire,
+			ordealWater : !$scope.ordealDisplay ? false : $scope.ordealWater,
+			ordealEarth : !$scope.ordealDisplay ? false : $scope.ordealEarth,
+			ordealWind : !$scope.ordealDisplay ? false : $scope.ordealWind,
+			ordealShine : !$scope.ordealDisplay ? false : $scope.ordealShine,
+			ordealDarkness : !$scope.ordealDisplay ? false :$scope.ordealDarkness,
 			eventsDisplay : $scope.eventsDisplay,
-			eventsHiroicBattleFields : $scope.eventsHiroicBattleFields,
-			eventsSisyo :$scope.eventsSisyo,
-			eventsStory : $scope.eventsStory,
-			eventsSubjugation :$scope.eventsSubjugation,
-			eventsCollaboration :$scope.eventsCollaboration,
-			eventsDiffendOrder : $scope.eventsDiffendOrder,
-			eventsOther : $scope.eventsOther
+			eventsHiroicBattleFields : !$scope.eventsDisplay ? false : $scope.eventsHiroicBattleFields,
+			eventsSisyo : !$scope.eventsDisplay ? false : $scope.eventsSisyo,
+			eventsStory : !$scope.eventsDisplay ? false : $scope.eventsStory,
+			eventsSubjugation : !$scope.eventsDisplay ? false : $scope.eventsSubjugation,
+			eventsCollaboration :!$scope.eventsDisplay ? false : $scope.eventsCollaboration,
+			eventsDiffendOrder : !$scope.eventsDisplay ? false : $scope.eventsDiffendOrder,
+			eventsOther : !$scope.eventsDisplay ? false : $scope.eventsOther
 		};
 		_this.operation.save(r);
 		$uibModalInstance.close(r);

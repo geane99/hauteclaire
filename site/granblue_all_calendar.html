@@ -111,7 +111,7 @@
 							<abbr title="2日に1度切り替わる属性別試練。表示したくない場合は表示するのチェックを外す。" class="initialism">属性試練</abbr>
 						</div>
 						<div class="col-sm-9">
-							<input type="checkbox" ng-checked="ordealDisplay" ng-model="ordealDisplayModel" ng-click="checkOrdeal($event)"/><label class="form-checkbox-label">表示する</label>
+							<input type="checkbox" ng-checked="ordealDisplay" ng-click="checkOrdeal($event)"/><label class="form-checkbox-label">表示する</label>
 							<span ng-show="ordealDisplay">
 								<!-- fire -->
 								<input type="checkbox" ng-click="toggleChecks($event,'ordealFire')" ng-checked="ordealFire" /><label class="form-checkbox-label">業火の試練</label>
@@ -135,7 +135,7 @@
 							<abbr title="各種イベント。表示したくない場合は表示するのチェックを外す。" class="initialism">イベント</abbr>
 						</div>
 						<div class="col-sm-9">
-							<input type="checkbox" ng-checked="ordealDisplay" ng-model="ordealDisplayModel" ng-click="checkEvents($event)"/><label class="form-checkbox-label">表示する</label>
+							<input type="checkbox" ng-checked="eventsDisplay" ng-model="ordealDisplayModel" ng-click="checkEvents($event)"/><label class="form-checkbox-label">表示する</label>
 							<span ng-show="eventsDisplay">
 								<!-- hiroic battle fields -->
 								<input type="checkbox" ng-click="toggleChecks($event,'eventsHiroicBattleFields')" ng-checked="eventsHiroicBattleFields" /><label class="form-checkbox-label">団イベ</label>
