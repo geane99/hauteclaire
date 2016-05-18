@@ -1,0 +1,14 @@
+{
+	"events":[
+		{
+			"id":10000,
+			"title":"APBP半額",
+			"start":"2016-05-13 19:00:00",
+			"end":"2016-05-25 17:00:00",
+			"className":"discount",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"discount"
+		}
+	]
+}
