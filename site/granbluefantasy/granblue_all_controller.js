@@ -20,7 +20,7 @@ angular.module('allCalendarApp',['ui.calendar','ui.bootstrap'])
 		_this.app.clean();
 		_this.app.addAll(_this.ordeal.generate());
 		_this.app.addAll(_this.subjugation.generate());
-		_this.app.addAll(_this.helo.generate(_this.operation.groupId));
+		_this.app.addAll(_this.helo.generate(_this.operation.heloGroupId));
 		_this.app.addAll(_this.events.cache);
 	};
 	
@@ -50,6 +50,7 @@ angular.module('allCalendarApp',['ui.calendar','ui.bootstrap'])
 		});
 		
 		modal.result.then(function(data){
+			generateCalendarElements();
 			_this.app.filter(_this.operation, true);
 			$('#calendar').fullCalendar('refetchEvents');
 		},function(){
