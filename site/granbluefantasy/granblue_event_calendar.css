@@ -2,32 +2,6 @@
 
 /*
 	http://www.colorschemer.com/online.html
-
-	background(薄) <-> font-color(濃)
-	赤：FFCCCC / FF0000
-	オレンジ：FFE6CC / FF8000
-	橙：FFFFCC / FFFF3D
-	黄：FFFF8F / CCCC66
-	薄緑：E6FFCC / 3DB87A
-	緑：CCFFCC / 2E8A5C
-	青緑：CCFFE6 / 66CC66
-	青：CCFFFF / 00FFFF
-	青紫：CCCCFF / 6666CC
-	紫：E6CCFF / 9966CC
-	赤紫：FFCCFF / CC66CC
-	ピンク：FFCCE6 / B83D7A
-	
-	純色レベル
-	赤：FF0000
-	青：0380B7
-	
-	
-	紫：団イベ
-	緑：シナリオ
-	黄色：四象
-	青紫：討滅
-	赤紫：コラボ
-	ピンク：その他
 	
 */
 
@@ -74,7 +48,8 @@
 	cursor:pointer;
 }
 
-.maintenance{
+.maintenance,
+.discount{
 	background-color:#FF0000 !important;
 	font-size:11px !important;
 }
