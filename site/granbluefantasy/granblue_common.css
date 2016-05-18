@@ -49,3 +49,24 @@ body *{
 .calendar-modal-window{
 	width:700px;
 }
+
+.display-sub-groups{
+	padding-left : 10px;
+}
+
+.calendar-config-row{
+	padding-bottom : 5px;
+	height:28px;
+}
+
+.display-sub-groups-detail{
+	padding-left : 5px;
+}
+.calendar-config-group-label{
+	white-space:nowrap;
+}
+
+.calendar-config-cell-value{
+	height:28px;
+	vertical-align:top;
+}

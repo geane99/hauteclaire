@@ -89,8 +89,9 @@ angular.module('ui.bootstrap').controller('modalController', ['$scope', '$modalI
 			eventsStory : !$scope.eventsDisplay ? false : $scope.eventsStory,
 			eventsSubjugation : !$scope.eventsDisplay ? false : $scope.eventsSubjugation,
 			eventsCollaboration :!$scope.eventsDisplay ? false : $scope.eventsCollaboration,
-			eventsDiffendOrder : !$scope.eventsDisplay ? false : $scope.eventsDiffendOrder,
-			eventsOther : !$scope.eventsDisplay ? false : $scope.eventsOther
+			eventsOther : !$scope.eventsDisplay ? false : $scope.eventsOther,
+			systemDiscount : !$scope.eventsDisplay ? false : $scope.systemDiscount,
+			systemMaintenance : !$scope.eventsDisplay ? false : $scope.systemMaintenance
 		};
 		_this.operation.save(r);
 		$uibModalInstance.close(r);
@@ -126,6 +127,13 @@ angular.module('ui.bootstrap').controller('modalController', ['$scope', '$modalI
 			$scope.eventsDisplay = false;
 		else
 			$scope.eventsDisplay = true;
+	};
+	
+	$scope.checkSystem = function($event){
+		if(!$event.target.checked)
+			$scope.systemDisplay = false;
+		else
+			$scope.systemDisplay = true;
 	};
 	
 	$scope.toggleChecks = function($event, name){

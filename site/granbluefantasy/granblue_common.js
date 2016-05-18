@@ -117,7 +117,9 @@ hauteclaire = function(_this){
 	
 	_this.util = {
 		semaphore : new _this.Semaphore(),
-		load : function(target, uuid, array, finalize){
+		load : function(target, uuid, array, finalize, recursive){
+			if(!recursive && target.cache && target.cache.length > 0)
+				return complete(finalize);
 			var _semaphore = this.semaphore;
 			if(_semaphore.await({
 				uuid : uuid,
@@ -132,8 +134,6 @@ hauteclaire = function(_this){
 				callback();
 			};
 
-			if(target.cache && target.cache.length > 0)
-				return complete(finalize);
 			var site = array.pop();
 			var surl = site.url;
 			
@@ -147,7 +147,7 @@ hauteclaire = function(_this){
 						complete(finalize);
 						return _semaphore.release(uuid);
 					}
-					_t.load(target, uuid, array, finalize);
+					_t.load(target, uuid, array, finalize,true);
 				},
 				error:function(XMLHttpRequest, textStatus, errorThrown){
 					alert(errorThrown);
@@ -259,6 +259,9 @@ hauteclaire = function(_this){
 			this.defineAccessor("eventsCollaboration",["collaboration"]);
 			this.defineAccessor("eventsDiffendOrder",["diffend_order"]);
 			this.defineAccessor("eventsOther",["other"]);
+			this.defineAccessor("systemDisplay");
+			this.defineAccessor("systemDiscount",["discount"]);
+			this.defineAccessor("systemMaintenance",["maintenance"]);
 		},
 		save : function(t){
 			var _t = this;
@@ -289,7 +292,13 @@ hauteclaire = function(_this){
 			url:"./granbluefantasy/granblue_event_data.json",
 			process:function(data){
 				return data.events;
-		}}],
+			}
+		},{
+			url:"./granbluefantasy/granblue_systemevent_data.json",
+			process:function(data){
+				return data.events;
+			}
+		}],
 		generate : function(callback){
 			if(this.cache != null && this.cache.length > 0)
 				return callback();
