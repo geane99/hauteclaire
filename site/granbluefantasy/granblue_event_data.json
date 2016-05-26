@@ -1420,10 +1420,22 @@
 			"className":"historic_battlefield",
 			"isReprint":false,
 			"isCollaboration":false,
-			"type":"battelefield"
+			"type":"battelefield",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8127_%2821%B2%F3%CC%DC%29%B7%E8%C0%EF%A1%AA%C0%B1%A4%CE%B8%C5%C0%EF%BE%EC"
 		},
 		{
 			"id":119,
+			"title":"TAITO特別コラボ",
+			"start":"2016-05-17 19:00:00",
+			"end":"2016-07-31 17:00:00",
+			"className":"other",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"other",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8126_TAITO%C6%C3%CA%CC%A5%B3%A5%E9%A5%DC"
+		},
+		{
+			"id":120,
 			"title":"シナリオイベント",
 			"start":"2016-05-31 19:00:00",
 			"end":"2016-06-11 17:00:00",
