@@ -1436,9 +1436,54 @@
 		},
 		{
 			"id":120,
-			"title":"シナリオイベント",
+			"title":"リペイント・ザ・メモリー",
 			"start":"2016-05-31 19:00:00",
-			"end":"2016-06-11 17:00:00",
+			"end":"2016-06-08 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8128_%A5%EA%A5%DA%A5%A4%A5%F3%A5%C8%A1%A6%A5%B6%A1%A6%A5%E1%A5%E2%A5%EA%A1%BC"
+		},
+		
+		{
+			"id":121,
+			"title":"交差する運命の物語(2)",
+			"start":"2016-06-06 19:00:00",
+			"end":"2016-06-16 17:00:00",
+			"className":"collaboration",
+			"isReprint":true,
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8129_%282%B2%F3%CC%DC%29%B8%F2%BA%B9%A4%B9%A4%EB%B1%BF%CC%BF%A4%CE%CA%AA%B8%EC"
+		},
+		
+		{
+			"id":122,
+			"title":"新イベント",
+			"start":"2016-06-13 19:00:00",
+			"end":"2016-06-23 17:00:00",
+			"className":"collaboration",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"subjugation"
+		},
+		{
+			"id":123,
+			"title":"四象降臨(3)",
+			"start":"2016-06-23 19:00:00",
+			"end":"2016-06-30 17:00:00",
+			"className":"sisyou",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"sisyou"
+		},
+
+		{
+			"id":124,
+			"title":"シナリオイベント",
+			"start":"2016-06-30 19:00:00",
+			"end":"2016-07-08 17:00:00",
 			"className":"story_events",
 			"isReprint":false,
 			"isCollaboration":false,
