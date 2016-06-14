@@ -1460,13 +1460,14 @@
 		
 		{
 			"id":122,
-			"title":"新イベント",
+			"title":"空で繋ぐ絆の物語",
 			"start":"2016-06-13 19:00:00",
 			"end":"2016-06-23 17:00:00",
 			"className":"collaboration",
 			"isReprint":false,
 			"isCollaboration":true,
-			"type":"subjugation"
+			"type":"subjugation",
+			"wiki""http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8130_%B6%F5%A4%C7%B7%D2%A4%B0%E5%AB%A4%CE%CA%AA%B8%EC"
 		},
 		{
 			"id":123,
