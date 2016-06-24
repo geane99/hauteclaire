@@ -1477,16 +1477,28 @@
 			"className":"sisyou",
 			"isReprint":true,
 			"isCollaboration":false,
-			"type":"sisyou"
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8131_%BB%CD%BE%DD%B9%DF%CE%D7"
 		},
 
 		{
 			"id":124,
-			"title":"シナリオイベント",
+			"title":"ロボミ外伝",
 			"start":"2016-06-30 19:00:00",
 			"end":"2016-07-08 17:00:00",
 			"className":"story_events",
 			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency"
+		},
+
+		{
+			"id":125,
+			"title":"ロボミ(2)",
+			"start":"2016-06-30 19:00:00",
+			"end":"2016-07-08 17:00:00",
+			"className":"story_events",
+			"isReprint":true,
 			"isCollaboration":false,
 			"type":"currency"
 		}
