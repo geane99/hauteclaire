@@ -1467,7 +1467,7 @@
 			"isReprint":false,
 			"isCollaboration":true,
 			"type":"subjugation",
-			"wiki""http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8130_%B6%F5%A4%C7%B7%D2%A4%B0%E5%AB%A4%CE%CA%AA%B8%EC"
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8130_%B6%F5%A4%C7%B7%D2%A4%B0%E5%AB%A4%CE%CA%AA%B8%EC"
 		},
 		{
 			"id":123,
@@ -1480,28 +1480,57 @@
 			"type":"sisyou",
 			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8131_%BB%CD%BE%DD%B9%DF%CE%D7"
 		},
-
 		{
 			"id":124,
-			"title":"ロボミ外伝",
+			"title":"ロボミ・ロボミ外伝",
 			"start":"2016-06-30 19:00:00",
 			"end":"2016-07-08 17:00:00",
 			"className":"story_events",
 			"isReprint":false,
 			"isCollaboration":false,
-			"type":"currency"
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8132_%282%B2%F3%CC%DC%29%A5%ED%A5%DC%A5%DF%A1%F5%A5%ED%A5%DC%A5%DF%B3%B0%C5%C1"
 		},
-
 		{
 			"id":125,
-			"title":"ロボミ(2)",
-			"start":"2016-06-30 19:00:00",
-			"end":"2016-07-08 17:00:00",
+			"title":"蒼海を征く暗黒巨大魚(2)",
+			"start":"2016-07-08 19:00:00",
+			"end":"2016-07-15 17:00:00",
 			"className":"story_events",
 			"isReprint":true,
 			"isCollaboration":false,
 			"type":"currency"
-		}
+		},
 		
+		{
+			"id":126,
+			"title":"薫風、白波を蹴立てる(2)",
+			"start":"2016-07-15 19:00:00",
+			"end":"2016-07-22 17:00:00",
+			"className":"story_events",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency"
+		},
+		{
+			"id":127,
+			"title":"決戦！星の古戦場(22)",
+			"start":"2016-07-23 19:00:00",
+			"end":"2016-07-30 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield"
+		},
+		{
+			"id":128,
+			"title":"シナリオイベント",
+			"start":"2016-07-31 19:00:00",
+			"end":"2016-08-08 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency"
+		}
 	]
 }
