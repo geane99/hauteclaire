@@ -1472,7 +1472,7 @@
 		
 		{
 			"id":123,
-			"title":"四象降臨(3)",
+			"title":"四象降臨",
 			"start":"2016-06-23 19:00:00",
 			"end":"2016-06-30 17:00:00",
 			"className":"sisyou",
@@ -1540,13 +1540,14 @@
 		
 		{
 			"id":129,
-			"title":"四象降臨(4)",
+			"title":"四象降臨(2)",
 			"start":"2016-08-08 19:00:00",
 			"end":"2016-08-15 17:00:00",
 			"className":"sisyou",
 			"isReprint":true,
 			"isCollaboration":false,
-			"type":"sisyou"
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8137_%282%B2%F3%CC%DC%29%BB%CD%BE%DD%B9%DF%CE%D7"
 		},
 		
 		{
@@ -1557,7 +1558,8 @@
 			"className":"subjugation",
 			"isReprint":true,
 			"isCollaboration":false,
-			"type":"subjugation"
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8139_%284%B2%F3%CC%DC%29%A5%B1%A5%EB%A5%D9%A5%ED%A5%B9%C6%A4%CC%C7%C0%EF"
 		},
 		
 		{
@@ -1568,7 +1570,8 @@
 			"className":"subjugation",
 			"isReprint":true,
 			"isCollaboration":false,
-			"type":"subjugation"
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8140_%282%B2%F3%CC%DC%29%A5%D5%A5%A7%A5%F3%A5%EA%A5%EB%C6%A4%CC%C7%C0%EF"
 		},
 		{
 			"id":132,
@@ -1589,6 +1592,17 @@
 			"isReprint":false,
 			"isCollaboration":false,
 			"type":"currency"
+		},
+		{
+			"id":134,
+			"title":"グラブルTCG特別コラボ",
+			"start":"2016-08-12 19:00:00",
+			"end":"2016-10-12 17:00:00",
+			"className":"other",
+			"isReprint":false,
+			"isCollaboration":true,
+			"type":"other",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8138_%A5%B0%A5%E9%A5%D6%A5%EBTCG%C6%C3%CA%CC%A5%B3%A5%E9%A5%DC"
 		}
 		
 	]
