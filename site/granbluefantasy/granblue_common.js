@@ -322,7 +322,7 @@ hauteclaire = function(_this){
 hauteclaire = function(_this){
 	_this.helo = {
 		id:1000,
-		range:90,
+		range:120,
 		rule:{
 			size:9,
 			current:new Date(2016,0,6),
@@ -429,8 +429,8 @@ hauteclaire = function(_this){
 	_this.subjugation = {
 		id:2000,
 		cache:new Array(),
-		current:new Date(2016,3,12),
-		range:90,
+		current:new Date(2016,7,19),
+		range:120,
 		size:18,
 		pattern:[{
 				minVariation:0,
@@ -534,7 +534,7 @@ hauteclaire = function(_this){
 hauteclaire = function(_this){
 	_this.ordeal = {
 		current:new Date(2015,9,18),
-		range:90,
+		range:120,
 		id:3000,
 		cache:new Array(),
 		size:12,
