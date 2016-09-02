@@ -91,6 +91,7 @@ angular.module('ui.bootstrap').controller('modalController', ['$scope', '$modalI
 			eventsSubjugation : !$scope.eventsDisplay ? false : $scope.eventsSubjugation,
 			eventsCollaboration :!$scope.eventsDisplay ? false : $scope.eventsCollaboration,
 			eventsOther : !$scope.eventsDisplay ? false : $scope.eventsOther,
+			eventsArcarum : !$scope.eventsDisplay ? false : $scope.eventsArcarum,
 			systemDiscount : !$scope.eventsDisplay ? false : $scope.systemDiscount,
 			systemMaintenance : !$scope.eventsDisplay ? false : $scope.systemMaintenance
 		};

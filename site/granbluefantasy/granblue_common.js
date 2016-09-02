@@ -258,6 +258,7 @@ hauteclaire = function(_this){
 			this.defineAccessor("eventsSubjugation",["subjugation"]);
 			this.defineAccessor("eventsCollaboration",["collaboration"]);
 			this.defineAccessor("eventsDiffendOrder",["diffend_order"]);
+			this.defineAccessor("eventsArcarum",["arcarum"]);
 			this.defineAccessor("eventsOther",["other"]);
 			this.defineAccessor("systemDisplay");
 			this.defineAccessor("systemDiscount",["discount"]);
