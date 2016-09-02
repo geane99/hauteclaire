@@ -15,7 +15,10 @@
 }
 
 /* 団イベ */
-.historic_battlefield{
+/* アーカルムの転生 */
+.historic_battlefield,
+.arcarum
+{
 	background-color:#FFE300 !important;
 	color:#7F7B26 !important;
 	font-size:11px !important;
