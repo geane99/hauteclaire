@@ -290,12 +290,12 @@ hauteclaire = function(_this){
 	_this.events = {
 		cache:new Array(),
 		resources:[{
-			url:"./granbluefantasy/granblue_event_data.json",
+			url:"./granbluefantasy/calendar/data_event.json",
 			process:function(data){
 				return data.events;
 			}
 		},{
-			url:"./granbluefantasy/granblue_systemevent_data.json",
+			url:"./granbluefantasy/calendar/data_system.json",
 			process:function(data){
 				return data.events;
 			}
@@ -634,5 +634,80 @@ hauteclaire = function(_this){
 			return this.cache;
 		}
 	};
+	return _this;
+}(hauteclaire);
+
+
+//build graph
+hauteclaire = function(_this){
+	_this.graph = {
+		cache:new Array(),
+		clear : function(){
+			this.cache = new Array();
+		},
+		datatype : {
+			bookmaker : function(data){
+				return data;
+			},
+			ranking : function(data){
+				return data;
+			}
+		},
+		chart : function(chartName, data, id, elem, options){
+			nv.addGraph({
+				generate: function() {
+					var chart = nv.models[chartName]()
+						.options(options)
+						.width(nv.utils.windowSize().width)
+						.height(_this.graph.height)
+						.stacked(true);
+					chart.dispatch.on('renderEnd', function(){
+					});
+					var svg = d3.select('#'+id+' '+elem).datum(data);
+					svg.transition().duration(0).call(chart);
+					return chart;
+				},
+				callback: function(graph) {
+					nv.utils.windowResize(function(){
+						graph.width(width).height(height);
+						d3
+							.select('#'+id+' '+elem)
+							.attr('width', nv.utils.windowSize().width)
+							.attr('height', _this.graph.height)
+							.transition().duration(0)
+							.call(graph);
+					});
+				}
+			});
+		},
+		generate : function(path, id, elem, graphName, converter){
+			if(this.cache != null && this.cache.length > 0)
+				return callback();
+				
+			var uuid = _this.UUID.generate(1);
+			_this.util.load(this, uuid, { url : path, process : function(data){ return data;}}, function(){
+				var cdata = converter(_this.cache[0]);
+				_this.graph.chart(graphName, cdata, id, elem);
+			});
+		},
+		locale : {
+			"decimal": ".",
+			"thousands": ",",
+			"grouping": [3],
+			"currency": ["", "円"],
+			"dateTime": "%a %b %e %X %Y",
+			"date": "%Y/%m/%d",
+			"time": "%H:%M:%S",
+			"periods": ["AM", "PM"],
+			"days": ["日", "月", "火", "水", "木", "金", "土"],
+			"shortDays": ["日", "月", "火", "水", "木", "金", "土"],
+			"months": ["01月", "02月", "03月", "04月", "05月", "06月", "07月", "08月", "09月", "10月", "11月", "12月"],
+			"shortMonths": ["01月", "02月", "03月", "04月", "05月", "06月", "07月", "08月", "09月", "10月", "11月", "12月"]
+		},
+		multibarchart:function(path, id, elem, converter){
+			_this.graph.generate(path,id,elem,"multiBarChart",converter);
+		}
+	};
+	
 	return _this;
 }(hauteclaire);

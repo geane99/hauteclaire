@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" ng-app="eventCalendarApp" id="top">
+<html lang="ja" id="top">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="description" content="granblue fantasy イベントカレンダー">
@@ -7,38 +7,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="refresh" content="0; URL=/granble_all_calendar.html">
 		<title>granblue fantasy イベントカレンダー</title>
-		<style>@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);</style>
 		
-		<link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
-
-		<link rel="stylesheet" href="granbluefantasy/granblue_common.css"/>
-		<link rel="stylesheet" href="granbluefantasy/granblue_event_calendar.css"/>
-		
-		<!-- jquery, moment, and angular have to get included before fullcalendar -->
-		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript" src="bower_components/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-		<script type="text/javascript" src="bower_components/angular-ui-calendar/calendar.js"></script>
-		<script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
-		<script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-		<script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
-		
-		<script type="text/javascript" src="granbluefantasy/granblue_common.js"></script>
-		<script type="text/javascript" src="granbluefantasy/granblue_event_controller.js"></script>
-	</head>
-	
 	<body>
-		<div class="main" ng-controller="currentController">
-			<div>
-				<a class="header" href="./index.html">TOP</a>
-
-				<a class="header" href="./granblue_helo_calendar.html">ヘイローカレンダー</a>
-				<a class="header" href="./granblue_all_calendar.html">全カレンダー</a>
-			</div>
-			<div class="calendar" id='calendar'></div>
-		</div>
 	</body>
 </html>

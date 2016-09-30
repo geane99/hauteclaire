@@ -1,5 +1,64 @@
 @charset "UTF-8";
 
+/*
+	http://www.colorschemer.com/online.html
+	
+*/
+
+
+/* 四象 */
+.sisyou{
+	background-color:#009AFF !important;
+	color:#FFFFFF !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+/* 団イベ */
+/* アーカルムの転生 */
+.historic_battlefield,
+.arcarum
+{
+	background-color:#FFE300 !important;
+	color:#7F7B26 !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+/* ストーリーイベント */
+/* 復刻ストーリーイベント */
+/* その他 */
+/* 討滅 */
+.story_events, 
+.story_events_reprint,
+.subjugation,
+.subjugation_reprint,
+.other
+{
+	background-color:#00E824 !important;
+	color:#FFFFFF !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+/* コラボ */
+/* 復刻コラボ */
+.collaboration, 
+.collaboration_reprint{
+	background-color:#8B00E8 !important;
+	color:#FFFFFF !important;
+	font-size:11px !important;
+	cursor:pointer;
+}
+
+.maintenance,
+.discount{
+	background-color:#FF0000 !important;
+	font-size:11px !important;
+}
+
+@charset "UTF-8";
+
 .element_morning{
 	background-color:#FFFFFF !important;
 	color:#666633 !important;
