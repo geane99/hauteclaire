@@ -119,7 +119,7 @@ hauteclaire = function(_this){
 		semaphore : new _this.Semaphore(),
 		load : function(target, uuid, array, finalize, recursive){
 			if(!recursive && target.cache && target.cache.length > 0)
-				return complete(finalize);
+				return finalize();
 			var _semaphore = this.semaphore;
 			if(_semaphore.await({
 				uuid : uuid,
@@ -641,37 +641,59 @@ hauteclaire = function(_this){
 //build graph
 hauteclaire = function(_this){
 	_this.graph = {
+		id : "graph_main",
+		element : "svg",
 		cache:new Array(),
 		clear : function(){
 			this.cache = new Array();
 		},
-		datatype : {
-			bookmaker : function(data){
-				return data;
+		type : [
+			{ 
+				name : "MultiBarChart", 
+				method : "multiBarChart", 
+				revert : false,
+				options : {
+					stacked:true,
+					useInteractiveGuideline:true,
+					interactive:true,
+					showLegend:true
+				}
 			},
-			ranking : function(data){
-				return data;
+			{ 
+				name : "lineChart", 
+				method : "lineChart", 
+				revert : false,
+				options : {
+					useInteractiveGuideline: true
+				}
 			}
-		},
-		chart : function(chartName, data, id, elem, options){
+		],
+		chart : function(g, data){
+			d3.select("svg").selectAll("*").remove();
 			nv.addGraph({
 				generate: function() {
-					var chart = nv.models[chartName]()
-						.options(options)
-						.width(nv.utils.windowSize().width)
-						.height(_this.graph.height)
-						.stacked(true);
+					var chart = nv.models[g.method]()
+						.width(nv.utils.windowSize().width-35)
+						.height(nv.utils.windowSize().height-10)
+						.margin({left:100, bottom:100});
+					chart.options(g.options);
+					chart.yAxis.tickFormat(d3.format('.d'));
+					chart.xAxis.tickFormat(function(d){
+						return d3.time.format("%H:%M")(new Date(d));
+					});
 					chart.dispatch.on('renderEnd', function(){
 					});
-					var svg = d3.select('#'+id+' '+elem).datum(data);
-					svg.transition().duration(0).call(chart);
+					var svg = d3.select('#'+_this.graph.id+' '+_this.graph.element).datum(data);
+					svg.transition().duration(100).call(chart);
 					return chart;
 				},
 				callback: function(graph) {
 					nv.utils.windowResize(function(){
-						graph.width(width).height(height);
+						graph
+							.width(nv.utils.windowSize().width-35)
+							.height(nv.utils.windowSize().height-10);
 						d3
-							.select('#'+id+' '+elem)
+							.select('#'+_this.graph.id+' '+_this.graph.element)
 							.attr('width', nv.utils.windowSize().width)
 							.attr('height', _this.graph.height)
 							.transition().duration(0)
@@ -680,14 +702,19 @@ hauteclaire = function(_this){
 				}
 			});
 		},
-		generate : function(path, id, elem, graphName, converter){
-			if(this.cache != null && this.cache.length > 0)
-				return callback();
-				
+		generate : function(path, g, algorithm){
+			if(this.cache != null && this.cache.length > 0){
+				var cdata = algorithm.run(_this.graph.cache[0], g.revert);
+				_this.graph.chart(g, cdata);
+			}
+			_this.graph.cache.addAll = function(data){
+				_this.graph.cache.push(data);
+			};
+
 			var uuid = _this.UUID.generate(1);
-			_this.util.load(this, uuid, { url : path, process : function(data){ return data;}}, function(){
-				var cdata = converter(_this.cache[0]);
-				_this.graph.chart(graphName, cdata, id, elem);
+			_this.util.load(this, uuid, [{ url : path, process : function(data){ return data;}}], function(){
+				var cdata = algorithm.run(_this.graph.cache[0], g.revert);
+				_this.graph.chart(g, cdata);
 			});
 		},
 		locale : {
@@ -703,9 +730,6 @@ hauteclaire = function(_this){
 			"shortDays": ["日", "月", "火", "水", "木", "金", "土"],
 			"months": ["01月", "02月", "03月", "04月", "05月", "06月", "07月", "08月", "09月", "10月", "11月", "12月"],
 			"shortMonths": ["01月", "02月", "03月", "04月", "05月", "06月", "07月", "08月", "09月", "10月", "11月", "12月"]
-		},
-		multibarchart:function(path, id, elem, converter){
-			_this.graph.generate(path,id,elem,"multiBarChart",converter);
 		}
 	};
 	

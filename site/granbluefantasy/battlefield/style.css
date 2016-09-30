@@ -71,4 +71,5 @@ html, body, #graph_main, svg { margin: 0px; padding: 0px; height: 100%; width: 1
 .highlight .vg { color: #40ffff } /* Name.Variable.Global */
 .highlight .vi { color: #40ffff } /* Name.Variable.Instance */
 .highlight .il { color: #3677a9 } /* Literal.Number.Integer.Long */
-#graph_main { border: 1px solid #666; width: 100%; margin-top: 10px; height: 400px; }
+#graph_main { border: 1px solid #666; width: 97%; margin: 10px; height:100%;}
+.graph_content{ height:92%;}
