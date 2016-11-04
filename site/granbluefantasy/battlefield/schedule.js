@@ -57,8 +57,8 @@ hauteclaire = function(_this){
 		schedules : [
 			{
 				name:'2015年12月度',
-				bookmaker:'./granbluefantasy/battlefield/data/bookmaker_201512.json',
-				hightscore:'./granbluefantasy/battlefield/data/highscore_201512.json'
+				bookmaker:'./granbluefantasy/battlefield/data/bookmaker_25.json',
+				hightscore:'./granbluefantasy/battlefield/data/highscore_25.json'
 			}
 		]
 	};
