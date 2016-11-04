@@ -15,7 +15,6 @@ angular.module('allCalendarApp',['ui.calendar','ui.bootstrap'])
 
 .controller('currentController',function($scope, $uibModal, $log){
 	var _this = hauteclaire;
-	
 	var generateCalendarElements = function(){
 		_this.app.clean();
 		_this.app.addAll(_this.ordeal.generate());
