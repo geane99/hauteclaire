@@ -39,26 +39,26 @@ hauteclaire = function(_this){
 		},
 		algorithm : [
 			{ name : '1日目', run : function(data, revert){
-				return _this.battlefield.grouping.aggregateByDaily(data.round1.data, revert);
+				return _this.battlefield.grouping.aggregateByDaily(data.round1.score, revert);
 			} },
 			{ name : '2日目', run : function(data, revert){
-				return _this.battlefield.grouping.aggregateByDaily(data.round2.data, revert);
+				return _this.battlefield.grouping.aggregateByDaily(data.round2.score, revert);
 			} },
 			{ name : '3日目', run : function(data, revert){
-				return _this.battlefield.grouping.aggregateByDaily(data.round3.data, revert);
+				return _this.battlefield.grouping.aggregateByDaily(data.round3.score, revert);
 			} },
 			{ name : '4日目', run : function(data, revert){
-				return _this.battlefield.grouping.aggregateByDaily(data.round4.data, revert);
+				return _this.battlefield.grouping.aggregateByDaily(data.round4.score, revert);
 			} },
 			{ name : '5日目', run : function(data, revert){
-				return _this.battlefield.grouping.aggregateByDaily(data.round5.data, revert);
+				return _this.battlefield.grouping.aggregateByDaily(data.round5.score, revert);
 			} }
 		],
 		schedules : [
 			{
-				name:'2015年12月度',
-				bookmaker:'./granbluefantasy/battlefield/data/bookmaker_25.json',
-				hightscore:'./granbluefantasy/battlefield/data/highscore_25.json'
+				name:'動作検証用',
+				bookmaker:'./granbluefantasy/battlefield/data/bookmaker_1.json',
+				hightscore:'./granbluefantasy/battlefield/data/highscore_1.json'
 			}
 		]
 	};

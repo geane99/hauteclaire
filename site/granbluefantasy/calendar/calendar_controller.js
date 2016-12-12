@@ -19,7 +19,6 @@ angular.module('allCalendarApp',['ui.calendar','ui.bootstrap'])
 		_this.app.clean();
 		_this.app.addAll(_this.ordeal.generate());
 		_this.app.addAll(_this.subjugation.generate());
-		_this.app.addAll(_this.helo.generate(_this.operation.heloGroupId));
 		_this.app.addAll(_this.events.cache);
 	};
 	
@@ -64,11 +63,6 @@ angular.module('ui.bootstrap').controller('modalController', ['$scope', '$modalI
 	$scope.heloGroups = _this.helo.groups;
 	$scope.ok = function(){
 		var r = {
-			heloDisplay : $scope.heloDisplay,
-			heloGroupId : $scope.selectedHeloGroup.id,
-			heloMorning : !$scope.heloDisplay ? false : $scope.heloMorning,
-			heloNoon : !$scope.heloDisplay ? false : $scope.heloNoon,
-			heloNight : !$scope.heloDisplay ? false : $scope.heloNight,
 			subjugationDisplay : $scope.subjugationDisplay,
 			subjugationFire : !$scope.subjugationDisplay ? false : $scope.subjugationFire,
 			subjugationWater : !$scope.subjugationDisplay ? false : $scope.subjugationWater,

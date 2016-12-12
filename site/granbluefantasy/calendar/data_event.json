@@ -1741,7 +1741,8 @@
 			"className":"sisyou",
 			"isReprint":true,
 			"isCollaboration":false,
-			"type":"sisyou"
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8154_%284%B2%F3%CC%DC%29%BB%CD%BE%DD%B9%DF%CE%D7"
 		},
 		{
 			"id":147,
@@ -1751,7 +1752,8 @@
 			"className":"story_events",
 			"isReprint":true,
 			"isCollaboration":false,
-			"type":"currency"
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8155_%282%B2%F3%CC%DC%29%B2%E1%C6%FC%A4%CE%BA%AF%A1%A2%CC%C0%C6%FC%A4%D8%A4%CE%C8%E2"
 		},
 		{
 			"id":148,
@@ -1761,7 +1763,8 @@
 			"className":"story_events",
 			"isReprint":true,
 			"isCollaboration":false,
-			"type":"currency"
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8156_%283%B2%F3%CC%DC%29%B5%DF%B9%F1%A4%CE%C3%E9%B5%B3%BB%CE"
 		},
 		{
 			"id":149,
@@ -1771,13 +1774,79 @@
 			"className":"story_events",
 			"isReprint":true,
 			"isCollaboration":false,
-			"type":"currency"
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8157_%282%B2%F3%CC%DC%29%CB%B4%B9%F1%A4%CE%BB%CD%B5%B3%BB%CE"
 		},
 		{
 			"id":150,
-			"title":"シナリオイベント",
+			"title":"氷炎牆に鬩ぐ",
 			"start":"2016-11-30 19:00:00",
 			"end":"2016-12-08 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8158_%C9%B9%B1%EA%E0%AF%A4%CB%F2%AB%A4%B0"
+		},
+		{
+			"id":151,
+			"title":"ケルベロス討滅戦(5)",
+			"start":"2016-12-08 19:00:00",
+			"end":"2016-12-13 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8139_%284%B2%F3%CC%DC%29%A5%B1%A5%EB%A5%D9%A5%ED%A5%B9%C6%A4%CC%C7%C0%EF"
+		},
+		
+		{
+			"id":152,
+			"title":"聖夜のスターダスト・メモリーズ(4)",
+			"start":"2016-12-08 19:00:00",
+			"end":"2016-12-13 17:00:00",
+			"className":"subjugation",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8140_%282%B2%F3%CC%DC%29%A5%D5%A5%A7%A5%F3%A5%EA%A5%EB%C6%A4%CC%C7%C0%EF"
+		},
+		{
+			"id":153,
+			"title":"自由をその手に(2)",
+			"start":"2016-12-14 19:00:00",
+			"end":"2016-12-19 17:00:00",
+			"className":"story_events",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8160_%282%B2%F3%CC%DC%29%BC%AB%CD%B3%A4%F2%A4%BD%A4%CE%BC%EA%A4%CB"
+		},
+		{
+			"id":154,
+			"title":"決戦！星の古戦場 特別編「ホーリーナイトスペシャルマッチ」(26)",
+			"start":"2016-12-18 19:00:00",
+			"end":"2016-12-25 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield"
+		},
+		{
+			"id":155,
+			"title":"エクストラクエスト",
+			"start":"2016-12-26 19:00:00",
+			"end":"2016-12-31 17:00:00",
+			"className":"story_events",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency"
+		},
+		{
+			"id":156,
+			"title":"シナリオイベント",
+			"start":"2016-12-31 19:00:00",
+			"end":"2017-01-08 17:00:00",
 			"className":"story_events",
 			"isReprint":false,
 			"isCollaboration":false,

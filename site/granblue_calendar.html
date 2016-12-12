@@ -51,40 +51,6 @@
 			</div>
 			<div class="modal-body">
 				<div class="container">
-				
-					<!-- helo -->
-					<div class="row calendar-config-row">
-						<div class="col-sm-1">
-							<abbr title="★ヘイロー。表示したくない場合は表示するのチェックを外す。" class="initialism calendar-config-group-label">★ヘイロー</abbr>
-						</div>
-						<div class="col-sm-10 calendar-config-cell-value">
-							<input type="checkbox" ng-checked="heloDisplay" ng-click="checkHelo($event)" /><label class="form-checkbox-label">表示する</label>
-							<span class="display-sub-groups" ng-show="heloDisplay">
-								<!-- group -->
-								<span class="display-sub-groups-detail">
-									<select ng-selected="changeHeloGroup()" ng-model="selectedHeloGroup" ng-options="e as e.name for e in heloGroups"></select>
-								</span>
-								
-								<!-- timeline -->
-								<!-- morning -->
-								<span class="display-sub-groups-detail">
-									<input type="checkbox" ng-checked="heloMorning" ng-click="toggleChecks($event,'heloMorning')" />
-									<label class="form-checkbox-label">朝</label>
-								</span>
-								<!-- noon -->
-								<span class="display-sub-groups-detail">
-									<input type="checkbox" ng-checked="heloNoon" ng-click="toggleChecks($event,'heloNoon')" />
-									<label class="form-checkbox-label">昼</label>
-								</span>
-								<!-- night -->
-								<span class="display-sub-groups-detail">
-									<input type="checkbox" ng-checked="heloNight" ng-click="toggleChecks($event,'heloNight')" />
-									<label class="form-checkbox-label">夜</label>
-								</span>
-							</span>
-						</div>
-					</div>
-					
 					<!-- Subjugation -->
 					<div class="row calendar-config-row">
 						<div class="col-sm-1">
