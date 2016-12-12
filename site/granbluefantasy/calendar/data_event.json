@@ -1774,6 +1774,14 @@
 			"className":"story_events",
 			"isReprint":true,
 			"isCollaboration":false,
+			"type":"currency"
+		},
+		{
+			"id":150,
+			"title":"シナリオイベント",
+			"start":"2016-11-30 19:00:00",
+			"end":"2016-12-08 17:00:00",
+			"className":"story_events",
 			"type":"currency",
 			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8157_%282%B2%F3%CC%DC%29%CB%B4%B9%F1%A4%CE%BB%CD%B5%B3%BB%CE"
 		},
