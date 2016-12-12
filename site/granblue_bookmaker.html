@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="graphBookmakerApp" id="top">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="granblue fantasy ブックメーカー">
+		<meta name="format-detection" content="telephone=no,address=no,email=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>granblue fantasy カレンダー</title>
+		
+		<style>@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);</style>
+		
+		<link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css" />
+
+		<link rel="stylesheet" href="granbluefantasy/common/style.css"/>
+		<link rel="stylesheet" href="granbluefantasy/battlefield/style.css"/>
+		<link rel="stylesheet" href="bower_components/nvd3/css/nv.d3.min.css" />
+		
+		<!-- jquery, moment, and angular have to get included before fullcalendar -->
+		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		<script type="text/javascript" src="bower_components/nvd3/js/d3.min.3.5.2.js"></script>
+		<script type="text/javascript" src="bower_components/nvd3/js/nv.d3.js"></script>
+		
+		
+		<script type="text/javascript" src="granbluefantasy/common/granbluefantasy.js"></script>
+		<script type="text/javascript" src="granbluefantasy/battlefield/schedule.js"></script>
+		<script type="text/javascript" src="granbluefantasy/battlefield/bookmaker_controller.js"></script>
+	</head>
+	
+	<body>
+		<div ng-controller="currentController as controller" data-ng-init="init()" class="graph_content">
+			<div>
+				<a class="header" href="./index.html">TOP</a>
+			</div>
+			<div>
+				<!-- months -->
+				<span>
+					<select ng-model="selectedBattlefieldSchedule" ng-options="e as e.name for e in battilefieldSchedules"></select>
+				</span>
+				<!-- rounds -->
+				<span>
+					<select ng-model="selectedBattlefieldAlgorithm" ng-options="e as e.name for e in battilefieldAlgorithm"></select>
+				</span>
+				<span>
+					<select ng-model="selectedBattlefieldChart" ng-options="e as e.name for e in battilefieldChart"></select>
+				</span>
+				<button class="btn btn-warning btn-xs" type="button" ng-click="openGraph()">表示</button>
+			</div>
+								
+			<div id="graph_main">
+		    	<svg></svg>
+			</div>
+		</div>
+	</body>
+</html>
