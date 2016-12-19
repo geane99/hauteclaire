@@ -216,6 +216,12 @@ hauteclaire = function(_this){
 					useInteractiveGuideline:true,
 					interactive:true,
 					showLegend:true
+				},
+				xTickFormat:function(d3, val){
+					return d3.time.format("%H:%M")(new Date(val));
+				},
+				yTickFormat:function(d3, val){
+					return d3.format(",.2f");
 				}
 			},
 			{ 
@@ -224,6 +230,12 @@ hauteclaire = function(_this){
 				revert : false,
 				options : {
 					useInteractiveGuideline: true
+				},
+				xTickFormat:function(d3, val){
+					return d3.time.format("%H:%M")(new Date(val));
+				},
+				yTickFormat:function(d3){
+					return d3.format(",.2f");
 				}
 			},
 			{ 
@@ -232,6 +244,12 @@ hauteclaire = function(_this){
 				revert : false,
 				options : {
 					useInteractiveGuideline: true
+				},
+				xTickFormat:function(d3, val){
+					d3.time.format("%H:%M")(new Date(val));
+				},
+				yTickFormat:function(d3, val){
+					return d3.format(",.2f");
 				}
 			}
 		],
@@ -242,12 +260,22 @@ hauteclaire = function(_this){
 					var chart = nv.models[g.method]()
 						.width(nv.utils.windowSize().width-35)
 						.height(nv.utils.windowSize().height-10)
-						.margin({left:100, bottom:100});
+						.rightAlignYAxis(true)
+						.margin({right:100, bottom:100});
 					chart.options(g.options);
-					chart.yAxis.tickFormat(d3.format('.d'));
-					chart.xAxis.tickFormat(function(d){
-						return d3.time.format("%H:%M")(new Date(d));
-					});
+					if(!g.revert){
+						chart.yAxis.tickFormat(g.yTickFormat(d3));
+						chart.xAxis.tickFormat(function(val){
+							return g.xTickFormat(d3,val);
+						});
+					}
+					else{
+						chart.xAxis.tickFormat(g.yTickFormat(d3));
+						chart.yAxis.tickFormat(function(val){
+							return g.xTickFormat(d3,val);
+						});
+					}
+					
 					chart.dispatch.on('renderEnd', function(){
 					});
 					var svg = d3.select('#'+_this.graph.id+' '+_this.graph.element).datum(data);

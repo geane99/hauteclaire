@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ja" ng-app="graphBookmakerApp" id="top">
+<html lang="ja" ng-app="battlefieldApp" id="top">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="description" content="granblue fantasy ブックメーカー">
+		<meta name="description" content="granblue fantasy 古戦場グラフ">
 		<meta name="format-detection" content="telephone=no,address=no,email=no">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -28,7 +28,7 @@
 		
 		<script type="text/javascript" src="granbluefantasy/common/granbluefantasy.js"></script>
 		<script type="text/javascript" src="granbluefantasy/battlefield/schedule.js"></script>
-		<script type="text/javascript" src="granbluefantasy/battlefield/bookmaker_controller.js"></script>
+		<script type="text/javascript" src="granbluefantasy/battlefield/battlefield_controller.js"></script>
 	</head>
 	
 	<body>
@@ -41,10 +41,15 @@
 				<span>
 					<select ng-model="selectedBattlefieldSchedule" ng-options="e as e.name for e in battilefieldSchedules"></select>
 				</span>
-				<!-- rounds -->
+				<!-- graph type -->
+				<span>
+					<select ng-model="selectedBattlefieldType" ng-options="e as e.name for e in battilefieldTypes" ng-change="selectedAlgorith();"></select>
+				</span>
+				<!-- rounds or algorithm -->
 				<span>
 					<select ng-model="selectedBattlefieldAlgorithm" ng-options="e as e.name for e in battilefieldAlgorithm"></select>
 				</span>
+				<!-- chart -->
 				<span>
 					<select ng-model="selectedBattlefieldChart" ng-options="e as e.name for e in battilefieldChart"></select>
 				</span>
