@@ -1,4 +1,68 @@
 hauteclaire = function(_this){
+	_this.viewer = {
+		graph : {
+			dailyLine : {
+				init : function(startd,endd){
+					this.startDate = startd;
+					this.endDate = endd;
+				},
+				method : "lineChart", 
+				revert : false,
+				options : {
+					clamp : true,
+					useInteractiveGuideline: true
+				},
+				spec:function(nv,d3,chart){
+				},
+				xAxis:function(nv, d3, chart, xAxis){
+					xAxis
+						.axisLabel("日時")
+						.domain([this.startDate,this.endDate])
+						.tickFormat(function(val){
+							return d3.time.format("%H:%M")(new Date(val));
+						})
+						;//.ticks(d3.time.minute, 1);
+				},
+				yAxis:function(nv, d3, chart, yAxis){
+					yAxis
+						.axisLabel("スコア(1 / 100,000,000)")
+						.tickFormat(d3.format(",.2f"));
+				}
+			},
+			ndaysLine : { 
+				init : function(startd,endd){
+					this.startDate = startd;
+					this.end_date = endd;
+				},
+				method : "lineChart", 
+				revert : false,
+				options : {
+					clamp : true,
+					useInteractiveGuideline: true
+				},
+				spec:function(nv,d3,chart){
+				},
+				xAxis:function(nv, d3, chart, xAxis){
+					xAxis
+						.axisLabel("日時")
+						.domain([this.startDate,this.endDate])
+						.tickFormat(function(val){
+							return d3.time.format("%m/%d %H:%M")(new Date(val));
+						})
+						.ticks(d3.time.minute,60);
+				},
+				yAxis:function(nv, d3, chart, yAxis){
+					yAxis
+						.axisLabel("スコア(1 / 10,000)")
+						.tickFormat(d3.format(",.2f"));
+				}
+			}
+		}
+	};
+	return _this;
+}(hauteclaire);
+
+hauteclaire = function(_this){
 	_this.battlefield = {
 		label : {
 			north : "north",
@@ -81,41 +145,72 @@ hauteclaire = function(_this){
 				{id : "qualifying", name:"予選ランキング"},
 				{id : "ranking", name:"個人ランキング"}
 			],
-			bookmaker: [
-				{ name : '1日目', run : function(data, revert){
-					return _this.battlefield.grouping.aggregateByDaily(data.round1.score, revert);
-				} },
-				{ name : '2日目', run : function(data, revert){
-					return _this.battlefield.grouping.aggregateByDaily(data.round2.score, revert);
-				} },
-				{ name : '3日目', run : function(data, revert){
-					return _this.battlefield.grouping.aggregateByDaily(data.round3.score, revert);
-				} },
-				{ name : '4日目', run : function(data, revert){
-					return _this.battlefield.grouping.aggregateByDaily(data.round4.score, revert);
-				} },
-				{ name : '5日目', run : function(data, revert){
-					return _this.battlefield.grouping.aggregateByDaily(data.round5.score, revert);
-				} }
-			],
-			qualifying : [
-				{ name : '予選ランキング', run : function(data, revert){
+			bookmaker: [{ 
+					name : '1日目',
+					graph : _this.viewer.graph.dailyLine,
+					run : function(data, revert){
+						return _this.battlefield.grouping.aggregateByDaily(data.round1.score, revert);
+					},
+					buildGraph : function(data){
+						this.graph.init(Date.parse(data.round1.start_date), Date.parse(data.round1.end_date));
+					}
+				},{ 
+					name : '2日目', 
+					graph : _this.viewer.graph.dailyLine,
+					run : function(data, revert){
+						return _this.battlefield.grouping.aggregateByDaily(data.round2.score, revert);
+					},
+					buildGraph : function(data){
+						this.graph.init(Date.parse(data.round2.start_date), Date.parse(data.round2.end_date));
+					}
+				},{ 
+					name : '3日目', 
+					graph : _this.viewer.graph.dailyLine,
+					run : function(data, revert){
+						return _this.battlefield.grouping.aggregateByDaily(data.round3.score, revert);
+					},
+					buildGraph : function(data){
+						this.graph.init(Date.parse(data.round3.start_date), Date.parse(data.round3.end_date));
+					}
+				},{ 
+					name : '4日目', 
+					graph : _this.viewer.graph.dailyLine,
+					run : function(data, revert){
+						return _this.battlefield.grouping.aggregateByDaily(data.round4.score, revert);
+					},
+					buildGraph : function(data){
+						this.graph.init(Date.parse(data.round4.start_date), Date.parse(data.round4.end_date));
+					}
+				},{ 
+					name : '5日目', 
+					graph : _this.viewer.graph.dailyLine,
+					run : function(data, revert){
+						return _this.battlefield.grouping.aggregateByDaily(data.round5.score, revert);
+					},
+					buildGraph : function(data){
+						this.graph.init(Date.parse(data.round5.datetime+" 07:00:00"), Date.parse(data.round5.end_date+" 23:59:59"));
+					}
+			}],
+			qualifying : [{ 
+				name : '通算スコア', 
+				graph : _this.viewer.graph.ndaysLine,
+				run : function(data, revert){
 					return _this.battlefield.grouping.aggregateByTeam(data.score, revert);
-				}}
-			],
-			ranking:[
-				{ name : '個人ランキング', run : function(data, revert){
+				},
+				buildGraph : function(data){
+					this.graph.init(Date.parse(data.start_date), Date.parse(data.end_date));
+			}}],
+			ranking:[{ 
+				name : '通算スコア', 
+				graph : _this.viewer.graph.ndaysLine,
+				run : function(data, revert){
 					return _this.battlefield.grouping.aggregateByIndividual(data.score, revert);
-				}}
-			]
+				},
+				buildGraph : function(data){
+					this.graph.init(Date.parse(data.start_date), Date.parse(data.end_date));
+			}}]
 		},
 		schedules : [
-			{
-				name:'動作検証用',
-				bookmaker:'./granbluefantasy/battlefield/data/bookmaker_1.json',
-				ranking:'./granbluefantasy/battlefield/data/ranking_1.json',
-				qualifying:'./granbluefantasy/battlefield/data/qualifying_1.json'
-			},
 			{
 				name:'2016年12月',
 				bookmaker:'./granbluefantasy/battlefield/data/bookmaker_26.json',

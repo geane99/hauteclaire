@@ -32,7 +32,7 @@
 	</head>
 	
 	<body>
-		<div ng-controller="currentController as controller" data-ng-init="init()" class="graph_content">
+		<div id="root" ng-controller="currentController as controller" data-ng-init="init()" class="graph_content">
 			<div>
 				<a class="header" href="./index.html">TOP</a>
 			</div>
@@ -48,10 +48,6 @@
 				<!-- rounds or algorithm -->
 				<span>
 					<select ng-model="selectedBattlefieldAlgorithm" ng-options="e as e.name for e in battilefieldAlgorithm"></select>
-				</span>
-				<!-- chart -->
-				<span>
-					<select ng-model="selectedBattlefieldChart" ng-options="e as e.name for e in battilefieldChart"></select>
 				</span>
 				<button class="btn btn-warning btn-xs" type="button" ng-click="openGraph()">表示</button>
 			</div>

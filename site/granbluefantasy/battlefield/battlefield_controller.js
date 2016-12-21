@@ -4,9 +4,8 @@ battlefieldApp.controller('currentController',function($scope,$http){
 	$scope.battilefieldSchedules = _this.battlefield.schedules;
 	$scope.battilefieldTypes = _this.battlefield.algorithm.types;
 	$scope.battilefieldAlgorithm = [];
-	$scope.battilefieldChart = _this.graph.type;
 	$scope.init = function(){
-		//
+		_this.util.removeAd();
 	};
 	$scope.selectedAlgorith = function(){
 		selected = $scope.selectedBattlefieldType;
@@ -17,7 +16,7 @@ battlefieldApp.controller('currentController',function($scope,$http){
 		selected = $scope.selectedBattlefieldType;
 		var path = $scope.selectedBattlefieldSchedule[selected.id];
 		var algorithm =  $scope.selectedBattlefieldAlgorithm;
-		var chart = $scope.selectedBattlefieldChart;
+		var chart = algorithm.graph;
 		_this.graph.generate(path,chart,algorithm);
 	};
 });

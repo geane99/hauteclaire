@@ -139,10 +139,13 @@ hauteclaire = function(_this){
 			
 			return $.ajax({
 				url:surl,
-				dataType:'json',
-				success:function(data){
+				dataType:'text',
+				success:function(text){
+					stext = text.replace(/\?/g,"");
+					data = (new Function("return " + stext))();
 					var results = site.process(data);
-					target.cache.addAll(results);
+					if(target.cache != null && target.cache.addAll != null)
+						target.cache.addAll(results);
 					if(array.length===0){
 						complete(finalize);
 						return _semaphore.release(uuid);
@@ -172,6 +175,11 @@ hauteclaire = function(_this){
 				isCollaboration:elem.isCollaboration,
 				type:elem.type
 			};
+		},
+		removeAd : function(){
+			if(document.location.href.indexOf("fc2") > 0){
+				$("#root ~").remove();
+			}
 		}
 	};
 	
@@ -206,74 +214,25 @@ hauteclaire = function(_this){
 		clear : function(){
 			this.cache = new Array();
 		},
-		type : [
-			{ 
-				name : "MultiBarChart", 
-				method : "multiBarChart", 
-				revert : false,
-				options : {
-					stacked:true,
-					useInteractiveGuideline:true,
-					interactive:true,
-					showLegend:true
-				},
-				xTickFormat:function(d3, val){
-					return d3.time.format("%H:%M")(new Date(val));
-				},
-				yTickFormat:function(d3, val){
-					return d3.format(",.2f");
-				}
-			},
-			{ 
-				name : "LineChart", 
-				method : "lineChart", 
-				revert : false,
-				options : {
-					useInteractiveGuideline: true
-				},
-				xTickFormat:function(d3, val){
-					return d3.time.format("%H:%M")(new Date(val));
-				},
-				yTickFormat:function(d3){
-					return d3.format(",.2f");
-				}
-			},
-			{ 
-				name : "CumulativeLineChart", 
-				method : "cumulativeLineChart", 
-				revert : false,
-				options : {
-					useInteractiveGuideline: true
-				},
-				xTickFormat:function(d3, val){
-					d3.time.format("%H:%M")(new Date(val));
-				},
-				yTickFormat:function(d3, val){
-					return d3.format(",.2f");
-				}
-			}
-		],
 		chart : function(g, data){
 			d3.select("svg").selectAll("*").remove();
 			nv.addGraph({
 				generate: function() {
 					var chart = nv.models[g.method]()
-						.width(nv.utils.windowSize().width-35)
-						.height(nv.utils.windowSize().height-10)
+						.width(nv.utils.windowSize().width-30)
+						.height(nv.utils.windowSize().height-15)
 						.rightAlignYAxis(true)
 						.margin({right:100, bottom:100});
 					chart.options(g.options);
+					g.spec(nv,d3,chart);
+					
 					if(!g.revert){
-						chart.yAxis.tickFormat(g.yTickFormat(d3));
-						chart.xAxis.tickFormat(function(val){
-							return g.xTickFormat(d3,val);
-						});
+						g.xAxis(nv,d3,chart,chart.xAxis);
+						g.yAxis(nv,d3,chart,chart.yAxis);
 					}
 					else{
-						chart.xAxis.tickFormat(g.yTickFormat(d3));
-						chart.yAxis.tickFormat(function(val){
-							return g.xTickFormat(d3,val);
-						});
+						g.xAxis(nv,d3,chart,chart.yAxis);
+						g.yAxis(nv,d3,chart,chart.xAxis);
 					}
 					
 					chart.dispatch.on('renderEnd', function(){
@@ -285,8 +244,8 @@ hauteclaire = function(_this){
 				callback: function(graph) {
 					nv.utils.windowResize(function(){
 						graph
-							.width(nv.utils.windowSize().width-35)
-							.height(nv.utils.windowSize().height-10);
+							.width(nv.utils.windowSize().width-30)
+							.height(nv.utils.windowSize().height-15);
 						d3
 							.select('#'+_this.graph.id+' '+_this.graph.element)
 							.attr('width', nv.utils.windowSize().width)
@@ -298,18 +257,13 @@ hauteclaire = function(_this){
 			});
 		},
 		generate : function(path, g, algorithm){
-			if(this.cache != null && this.cache.length > 0){
-				var cdata = algorithm.run(_this.graph.cache[0], g.revert);
-				_this.graph.chart(g, cdata);
-			}
-			_this.graph.cache.addAll = function(data){
-				_this.graph.cache.push(data);
-			};
-
 			var uuid = _this.UUID.generate(1);
-			_this.util.load(this, uuid, [{ url : path, process : function(data){ return data;}}], function(){
-				var cdata = algorithm.run(_this.graph.cache[0], g.revert);
+			_this.util.load(this, uuid, [{ url : path, process : function(data){ 
+				var cdata = algorithm.run(data, g.revert);
+				algorithm.buildGraph(data);
 				_this.graph.chart(g, cdata);
+				return data;
+			}}], function(){
 			});
 		},
 		locale : {
