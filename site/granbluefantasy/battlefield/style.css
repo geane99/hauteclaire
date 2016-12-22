@@ -71,5 +71,57 @@ html, body, #graph_main, svg { margin: 0px; padding: 0px; height: 100%; width: 1
 .highlight .vg { color: #40ffff } /* Name.Variable.Global */
 .highlight .vi { color: #40ffff } /* Name.Variable.Instance */
 .highlight .il { color: #3677a9 } /* Literal.Number.Integer.Long */
+body { overflow:hidden; }
 #graph_main { border: 1px solid #666; width: 97%; margin: 10px; height:100%;}
-.graph_content{ height:92%;}
+.graph_content{ height:95%;}
+.graph_header{ height: 45px; margin: 5px; 5px; 5px; 5px; }
+.data_panel_main{ height: 100%; }
+.data_tabs{ }
+.data_panel{ height: 100%; }
+.data_panel_graph{ height: 92%; }
+.data_panel_table{ height: 92%; }
+.bookmaker-all{ width:95%; margin: 10px; height:400px; overflow-y:auto; }
+
+table.table-headerfixed {
+/*    width: 100%;*/
+}
+
+table.table-headerfixed thead,
+table.table-headerfixed tbody,
+table.table-headerfixed tr,
+table.table-headerfixed td,
+table.table-headerfixed th {
+    display: block;
+}
+
+table.table-headerfixed tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.bookmaker-all tbody{
+    height: 700px;
+}
+table.table-headerfixed tbody {
+    overflow-y: scroll;
+}
+
+table.table-headerfixed thead {
+    /* fallback */
+    width: 99%;
+    /* minus scroll bar width */
+    width: calc(100% - 17px);
+}
+
+table.table-headerfixed tbody td,
+table.table-headerfixed thead th {
+    float: left;
+    height: 38px;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

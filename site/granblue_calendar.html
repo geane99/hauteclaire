@@ -31,19 +31,6 @@
 		<script type="text/javascript" src="granbluefantasy/common/granbluefantasy.js"></script>
 		<script type="text/javascript" src="granbluefantasy/calendar/calendar.js"></script>
 		<script type="text/javascript" src="granbluefantasy/calendar/calendar_controller.js"></script>
-	</head>
-	
-	<body>
-		<div class="main" ng-controller="currentController as controller" ng-init="init()">
-			<div>
-				<a class="header" href="./index.html">TOP</a>
-			</div>
-			<div>
-				<button class="btn btn-warning btn-xs" type="button" ng-click="openModal()">設定</button>
-				
-			</div>
-			<div id="calendar" ng-calendar />
-		</div>
 		
 		<script type="text/ng-template" id="modal.html">
 			<div class="modal-header">
@@ -208,6 +195,19 @@
 				<button class="btn btn-primary" type="button" ng-click="ok()">反映する</button>
 				<button class="btn btn-default" type="button" ng-click="cancel()">キャンセル</button>
 			</div>
-		</script>
+		</script>		
+	</head>
+	
+	<body>
+		<div id="root" class="main" ng-controller="currentController as controller" ng-init="init()">
+			<div>
+				<a class="header" href="./index.html">TOP</a>
+			</div>
+			<div>
+				<button class="btn btn-warning btn-xs" type="button" ng-click="openModal()">設定</button>
+				
+			</div>
+			<div id="calendar" ng-calendar />
+		</div>
 	</body>
 </html>

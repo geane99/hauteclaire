@@ -163,7 +163,24 @@ hauteclaire = function(_this){
 			window.open(url);
 		},
 		dateToString : function(baseDate){
-			return [baseDate.getFullYear(),(baseDate.getMonth()+1)<10?"0"+(baseDate.getMonth()+1):(baseDate.getMonth()+1),(baseDate.getDate()<10?"0"+baseDate.getDate():baseDate.getDate())].join("-");	
+			return [
+				baseDate.getFullYear(),
+				(baseDate.getMonth()+1)<10?"0"+(baseDate.getMonth()+1):(baseDate.getMonth()+1),
+				(baseDate.getDate()<10?"0"+baseDate.getDate():baseDate.getDate())
+			].join("-");	
+		},
+		datetimeToString : function(baseDate){
+			return this.dateToString(baseDate) + " " + ([
+				(baseDate.getHours()<10?"0"+baseDate.getHours():baseDate.getHours()),
+				(baseDate.getMinutes()<10?"0"+baseDate.getMinutes():baseDate.getMinutes()),
+				(baseDate.getSeconds()<10?"0"+baseDate.getSeconds():baseDate.getSeconds())
+			].join(":"));
+		},
+		stringToDate:function(sdate){
+			return Date.parse(sdate);
+		},
+		integerToDate:function(val){
+			return new Date(val);
 		},
 		cloneElement : function(elem){
 			return {
@@ -220,7 +237,7 @@ hauteclaire = function(_this){
 				generate: function() {
 					var chart = nv.models[g.method]()
 						.width(nv.utils.windowSize().width-30)
-						.height(nv.utils.windowSize().height-15)
+						.height(nv.utils.windowSize().height-65)
 						.rightAlignYAxis(true)
 						.margin({right:100, bottom:100});
 					chart.options(g.options);
@@ -245,7 +262,7 @@ hauteclaire = function(_this){
 					nv.utils.windowResize(function(){
 						graph
 							.width(nv.utils.windowSize().width-30)
-							.height(nv.utils.windowSize().height-15);
+							.height(nv.utils.windowSize().height-65);
 						d3
 							.select('#'+_this.graph.id+' '+_this.graph.element)
 							.attr('width', nv.utils.windowSize().width)
@@ -256,15 +273,24 @@ hauteclaire = function(_this){
 				}
 			});
 		},
-		generate : function(path, g, algorithm){
+		generate : function(path, g, algorithm, callback){
 			var uuid = _this.UUID.generate(1);
 			_this.util.load(this, uuid, [{ url : path, process : function(data){ 
-				var cdata = algorithm.run(data, g.revert);
+				gdata = algorithm.calc(data);
+				var cdata = algorithm.run(gdata, g.revert);
 				algorithm.buildGraph(data);
 				_this.graph.chart(g, cdata);
+				callback(cdata, data);
 				return data;
 			}}], function(){
 			});
+		},
+		bind:function(data, graph, algorithm, callback){
+			var cdata = algorithm.run(gdata, g.revert);
+			algorithm.buildGraph(data);
+			_this.graph.chart(g, cdata);
+			callback(cdata, data);
+			return data;
 		},
 		locale : {
 			"decimal": ".",

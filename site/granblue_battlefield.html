@@ -33,27 +33,74 @@
 	
 	<body>
 		<div id="root" ng-controller="currentController as controller" data-ng-init="init()" class="graph_content">
-			<div>
-				<a class="header" href="./index.html">TOP</a>
+			<div class="graph_header">
+				<div>
+					<a class="header" href="./index.html">TOP</a>
+				</div>
+				<div>
+					<!-- months -->
+					<span>
+						<select ng-model="selectedBattlefieldSchedule" ng-options="e as e.name for e in battilefieldSchedules"></select>
+					</span>
+					<!-- graph type -->
+					<span>
+						<select ng-model="selectedBattlefieldType" ng-options="e as e.name for e in battilefieldTypes" ng-change="selectedAlgorith();"></select>
+					</span>
+					<!-- rounds or algorithm -->
+					<span>
+						<select ng-model="selectedBattlefieldAlgorithm" ng-options="e as e.name for e in battilefieldAlgorithm"></select>
+					</span>
+					<button class="btn btn-warning btn-xs" type="button" ng-click="openGraph()">表示</button>
+				</div>
 			</div>
-			<div>
-				<!-- months -->
-				<span>
-					<select ng-model="selectedBattlefieldSchedule" ng-options="e as e.name for e in battilefieldSchedules"></select>
-				</span>
-				<!-- graph type -->
-				<span>
-					<select ng-model="selectedBattlefieldType" ng-options="e as e.name for e in battilefieldTypes" ng-change="selectedAlgorith();"></select>
-				</span>
-				<!-- rounds or algorithm -->
-				<span>
-					<select ng-model="selectedBattlefieldAlgorithm" ng-options="e as e.name for e in battilefieldAlgorithm"></select>
-				</span>
-				<button class="btn btn-warning btn-xs" type="button" ng-click="openGraph()">表示</button>
-			</div>
-								
-			<div id="graph_main">
-		    	<svg></svg>
+			
+			<div class="data_panel_main">
+				<ul class="nav nav-tabs data_tabs">
+					<li class="active"><a href="#data_panel_graph" data-toggle="tab"><i class="glyphicon glyphicon-signal"></i>グラフ</a></li>
+					<li><a href="#data_panel_tables" data-toggle="tab"><i class="glyphicon glyphicon-th"></i>詳細</a></li>
+				</ul>
+
+				<div class="tab-content data_panel">
+					<div class="tab-pane active data_panel_graph" id="data_panel_graph">
+						<div id="graph_main" height="100%">
+					    	<svg></svg>
+						</div>
+					</div>
+					<div class="tab-pane data_panel_table" id="data_panel_tables">
+						<div id="data_panel_table_bookmaker" ng-show="visibleTableBookmaker">
+							<table class="table table-condensed table-hover bookmaker-all table-headerfixed">
+								<thead>
+									<tr>
+										<th width="3%"><i class="glyphicon glyphicon-remove" /></th>
+										<th width="13%">time</th>
+										<th width="11%">east</th>
+										<th width="10%"></th>
+										<th width="11%">west</th>
+										<th width="10%"></th>
+										<th width="11%">south</th>
+										<th width="10%"></th>
+										<th width="11%">north</th>
+										<th width="10%"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="e in bookmakerAllScore.score" ng-class={"danger":e.isFake}>
+										<td width="3%"><i class="glyphicon" ng-class={"glyphicon-remove":e.isFake!=0}></i></td>
+										<td width="13%" class="small" scope="row">{{e.time}}</td>
+										<td width="11%" class="small">{{e.east}}</td>
+										<td width="10%" class="small" ng-class={"text-danger":e.east_gap!=0}>{{e.east_gap}}</td>
+										<td width="11%" class="small">{{e.west}}</td>
+										<td width="10%" class="small" ng-class={"text-danger":e.west_gap!=0}>{{e.west_gap}}</td>
+										<td width="11%" class="small">{{e.south}}</td>
+										<td width="10%" class="small" ng-class={"text-danger":e.south_gap!=0}>{{e.south_gap}}</td>
+										<td width="11%" class="small">{{e.north}}</td>
+										<td width="10%" class="small" ng-class={"text-danger":e.north_gap!=0}>{{e.north_gap}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

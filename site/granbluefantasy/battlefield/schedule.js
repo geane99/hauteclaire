@@ -91,9 +91,9 @@ hauteclaire = function(_this){
 				//y : score
 				data.forEach(function(element,idx, array){
 					if(revert)
-						r.push({y:Date.parse(element.time), x:rounding(element[area])});
+						r.push({y:_this.util.stringToDate(element.time), x:rounding(element[area])});
 					else
-						r.push({x:Date.parse(element.time), y:rounding(element[area])});
+						r.push({x:_this.util.stringToDate(element.time), y:rounding(element[area])});
 				});
 				return r;
 			},
@@ -109,6 +109,27 @@ hauteclaire = function(_this){
 				aggregate(result,"south",data);
 				aggregate(result,"east",data);
 				aggregate(result,"west",data);
+				return result;
+			},
+			aggregateByArea : function(area, dataArray, revert){
+				rounds = dataArray.filter(function(e){ return e!=null && e.score != null && e.score.length > 0});
+				var result = new Array();
+				if(rounds.length == 0)
+					return result;
+				rounds.forEach(function(each,index,array){
+					each.score.forEach(function(e,idx,ar){
+						spdate = e.time.split(" ");
+						if(idx+1 == ar.length && spdate[1] == "00:00:00")
+							e.time = rounds[0].datetime + " 23:59:59";
+						else
+							e.time = rounds[0].datetime + " "+spdate[1];
+					});
+					
+					result.push({
+						key: (index+1)+"日目",
+						values : _this.battlefield.grouping.findByArea(area,each.score,revert,100000000)
+					});
+				});
 				return result;
 			},
 			aggregateByTeam : function(data, revert){
@@ -137,6 +158,83 @@ hauteclaire = function(_this){
 				aggregate(result,"ranking3000", data);
 				aggregate(result,"ranking20000", data);
 				return result;
+			},
+			calcurateDailyBookmaker: function(data){
+				var bookmakerTerm = 20;
+				
+				var score = data.score;
+				if(score.length == 0)
+					return data;
+				
+				var keys = Object.keys(data.score[0]);
+				keys.some(function(element,idx){
+					if(element == "time")
+						keys.splice(idx,1);
+				});
+				var cscore = [];
+				//generate fake data
+				if(score.length > 1){
+					accelertor = function(before,after,gapTotal,term){
+						acceleration = after - before;
+						return Math.round(before + ((acceleration * term) / gapTotal));
+					};
+					score.forEach(function(element, idx, array){
+						if(idx > 0){
+							before = array[idx-1];
+							bdate = _this.util.stringToDate(before.time);
+							ndate = _this.util.stringToDate(element.time);
+							
+							gapMillsec = ndate - bdate;
+							//        millsec      sec    min
+							gapMinutes = gapMillsec / 1000 / 60;
+							gapTerm = (gapMinutes / bookmakerTerm) -1;
+							
+							acceleratorKeys = [];
+							keys.forEach(function(key,idx,array){
+								acceleratorKeys[key] = accelertor.bind(null,parseInt(before[key]), parseInt(element[key]), gapTerm+1);
+							});
+							
+							if(gapTerm > 0){
+								for(var i=1; i<=gapTerm; i++){
+									gdate = _this.util.integerToDate(bdate + (i*1000*60*bookmakerTerm));
+									generated = {};
+									keys.forEach(function(key,idx,array){
+										generated[key] = acceleratorKeys[key](i);
+									});
+									generated.time = _this.util.datetimeToString(gdate);
+									generated.isFake = true;
+									cscore.push(generated);
+								}
+							}
+						}
+						cscore.push(element);
+					});
+				}
+				//generate acceleration
+				if(cscore.length > 1){
+					
+				}
+				
+				//calc gap
+				cscore.forEach(function(element,idx, array){
+					var maxKey = null;
+					var maxValue = null;
+					keys.forEach(function(key, i, ar){
+						if(element[key] > maxValue){
+							maxValue = element[key];
+							maxKey = key;
+						}
+					});
+					keys.forEach(function(key,i,ar){
+						element[key+"_gap"] = (maxValue - element[key]) != 0 ? -1 * (maxValue - element[key]) : 0;
+						element[key+"_gap"] = Math.round(element[key]);
+					});
+					if(!element.isFake)
+						element.isFake = false;
+				});
+				
+				data.score = cscore;
+				return data;
 			}
 		},
 		algorithm : {
@@ -152,8 +250,16 @@ hauteclaire = function(_this){
 						return _this.battlefield.grouping.aggregateByDaily(data.round1.score, revert);
 					},
 					buildGraph : function(data){
-						this.graph.init(Date.parse(data.round1.start_date), Date.parse(data.round1.end_date));
-					}
+						this.graph.init(_this.util.stringToDate(data.round1.start_date), _this.util.stringToDate(data.round1.end_date));
+					},
+					calc:function(data){
+						data.round1 = _this.battlefield.grouping.calcurateDailyBookmaker(data.round1);
+						return data;
+					},
+					round:function(data){
+						return data.round1;
+					},
+					type:"bookmaker"
 				},{ 
 					name : '2日目', 
 					graph : _this.viewer.graph.dailyLine,
@@ -161,8 +267,16 @@ hauteclaire = function(_this){
 						return _this.battlefield.grouping.aggregateByDaily(data.round2.score, revert);
 					},
 					buildGraph : function(data){
-						this.graph.init(Date.parse(data.round2.start_date), Date.parse(data.round2.end_date));
-					}
+						this.graph.init(_this.util.stringToDate(data.round2.start_date), _this.util.stringToDate(data.round2.end_date));
+					},
+					calc:function(data){
+						data.round2 = _this.battlefield.grouping.calcurateDailyBookmaker(data.round2);
+						return data;
+					},
+					round:function(data){
+						return data.round2;
+					},
+					type:"bookmaker"
 				},{ 
 					name : '3日目', 
 					graph : _this.viewer.graph.dailyLine,
@@ -170,8 +284,16 @@ hauteclaire = function(_this){
 						return _this.battlefield.grouping.aggregateByDaily(data.round3.score, revert);
 					},
 					buildGraph : function(data){
-						this.graph.init(Date.parse(data.round3.start_date), Date.parse(data.round3.end_date));
-					}
+						this.graph.init(_this.util.stringToDate(data.round3.start_date), _this.util.stringToDate(data.round3.end_date));
+					},
+					calc:function(data){
+						data.round3 = _this.battlefield.grouping.calcurateDailyBookmaker(data.round3);
+						return data;
+					},
+					round:function(data){
+						return data.round3;
+					},
+					type:"bookmaker"
 				},{ 
 					name : '4日目', 
 					graph : _this.viewer.graph.dailyLine,
@@ -179,8 +301,16 @@ hauteclaire = function(_this){
 						return _this.battlefield.grouping.aggregateByDaily(data.round4.score, revert);
 					},
 					buildGraph : function(data){
-						this.graph.init(Date.parse(data.round4.start_date), Date.parse(data.round4.end_date));
-					}
+						this.graph.init(_this.util.stringToDate(data.round4.start_date), _this.util.stringToDate(data.round4.end_date));
+					},
+					calc:function(data){
+						data.round4 = _this.battlefield.grouping.calcurateDailyBookmaker(data.round4);
+						return data;
+					},
+					round:function(data){
+						return data.round4;
+					},
+					type:"bookmaker"
 				},{ 
 					name : '5日目', 
 					graph : _this.viewer.graph.dailyLine,
@@ -188,26 +318,107 @@ hauteclaire = function(_this){
 						return _this.battlefield.grouping.aggregateByDaily(data.round5.score, revert);
 					},
 					buildGraph : function(data){
-						this.graph.init(Date.parse(data.round5.datetime+" 07:00:00"), Date.parse(data.round5.end_date+" 23:59:59"));
-					}
-			}],
+						this.graph.init(_this.util.stringToDate(data.round5.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
+					},
+					calc:function(data){
+						data.round5 = _this.battlefield.grouping.calcurateDailyBookmaker(data.round5);
+						return data;
+					},
+					round:function(data){
+						return data.round5;
+					},
+					type:"bookmaker"
+				}, {
+					name : 'east', 
+					graph : _this.viewer.graph.dailyLine,
+					run : function(data, revert){
+						return _this.battlefield.grouping.aggregateByArea("east",[data.round1,data.round2,data.round3,data.round4,data.round5], revert);
+					},
+					buildGraph : function(data){
+						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
+					},
+					calc:function(data){
+						return data;
+					},
+					round:function(data){
+						return data;
+					},
+					type:"bookmaker_area"
+				}, {
+					name : 'west', 
+					graph : _this.viewer.graph.dailyLine,
+					run : function(data, revert){
+						return _this.battlefield.grouping.aggregateByArea("west",[data.round1,data.round2,data.round3,data.round4,data.round5], revert);
+					},
+					buildGraph : function(data){
+						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
+					},
+					calc:function(data){
+						return data;
+					},
+					round:function(data){
+						return data;
+					},
+					type:"bookmaker_area"
+				}, {
+					name : 'south', 
+					graph : _this.viewer.graph.dailyLine,
+					run : function(data, revert){
+						return _this.battlefield.grouping.aggregateByArea("south",[data.round1,data.round2,data.round3,data.round4,data.round5], revert);
+					},
+					buildGraph : function(data){
+						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
+					},
+					calc:function(data){
+						return data;
+					},
+					round:function(data){
+						return data;
+					},
+					type:"bookmaker_area"
+				}, {
+					name : 'north', 
+					graph : _this.viewer.graph.dailyLine,
+					run : function(data, revert){
+						return _this.battlefield.grouping.aggregateByArea("north",[data.round1,data.round2,data.round3,data.round4,data.round5], revert);
+					},
+					buildGraph : function(data){
+						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
+					},
+					calc:function(data){
+						return data;
+					},
+					round:function(data){
+						return data;
+					},
+					type:"bookmaker_area"
+				}
+			],
 			qualifying : [{ 
 				name : '通算スコア', 
 				graph : _this.viewer.graph.ndaysLine,
+				type:"qualifying",
 				run : function(data, revert){
 					return _this.battlefield.grouping.aggregateByTeam(data.score, revert);
 				},
+				calc:function(data){
+					return data;
+				},
 				buildGraph : function(data){
-					this.graph.init(Date.parse(data.start_date), Date.parse(data.end_date));
+					this.graph.init(_this.util.stringToDate(data.start_date), _this.util.stringToDate(data.end_date));
 			}}],
 			ranking:[{ 
 				name : '通算スコア', 
 				graph : _this.viewer.graph.ndaysLine,
+				type:"ranking",
 				run : function(data, revert){
 					return _this.battlefield.grouping.aggregateByIndividual(data.score, revert);
 				},
+				calc:function(data){
+					return data;
+				},
 				buildGraph : function(data){
-					this.graph.init(Date.parse(data.start_date), Date.parse(data.end_date));
+					this.graph.init(_this.util.stringToDate(data.start_date), _this.util.stringToDate(data.end_date));
 			}}]
 		},
 		schedules : [

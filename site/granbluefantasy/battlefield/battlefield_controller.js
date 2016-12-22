@@ -7,6 +7,8 @@ battlefieldApp.controller('currentController',function($scope,$http){
 	$scope.init = function(){
 		_this.util.removeAd();
 	};
+	$scope.visibleTableBookmaker = false;
+	$scope.bookmakerAllScore = [];
 	$scope.selectedAlgorith = function(){
 		selected = $scope.selectedBattlefieldType;
 		$scope.battilefieldAlgorithm = _this.battlefield.algorithm[selected.id];
@@ -15,9 +17,28 @@ battlefieldApp.controller('currentController',function($scope,$http){
 	$scope.openGraph = function(){
 		selected = $scope.selectedBattlefieldType;
 		var path = $scope.selectedBattlefieldSchedule[selected.id];
-		var algorithm =  $scope.selectedBattlefieldAlgorithm;
-		var chart = algorithm.graph;
-		_this.graph.generate(path,chart,algorithm);
+		$scope.algorithm =  $scope.selectedBattlefieldAlgorithm;
+		$scope.chart = $scope.algorithm.graph;
+		_this.graph.generate(path,$scope.chart,$scope.algorithm, function(calcData, data){
+			$scope.graphBaseData = data;
+			$scope.graphData = calcData;
+			if($scope.algorithm.type == "bookmaker"){
+				$scope.visibleTableBookmaker = true;
+				$scope.$apply(function(){
+					angular.copy($scope.algorithm.round(data), $scope.bookmakerAllScore);
+				});
+			}
+			else if($scope.algorithm.type == "ranking"){
+				$scope.$apply(function(){
+					$scope.visibleTableBookmaker = false;
+				});
+			}
+			else if($scope.algorithm.type == "qualifying"){
+				$scope.$apply(function(){
+					$scope.visibleTableBookmaker = false;
+				});
+			}
+		});
 	};
 });
 
