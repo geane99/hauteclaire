@@ -332,7 +332,13 @@ hauteclaire = function(_this){
 					name : 'east', 
 					graph : _this.viewer.graph.dailyLine,
 					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByArea("east",[data.round1,data.round2,data.round3,data.round4,data.round5], revert);
+						return _this.battlefield.grouping.aggregateByArea("east",[
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round1),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round2),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round3),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round4),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round5)
+						], revert);
 					},
 					buildGraph : function(data){
 						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
@@ -348,7 +354,13 @@ hauteclaire = function(_this){
 					name : 'west', 
 					graph : _this.viewer.graph.dailyLine,
 					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByArea("west",[data.round1,data.round2,data.round3,data.round4,data.round5], revert);
+						return _this.battlefield.grouping.aggregateByArea("west",[
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round1),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round2),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round3),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round4),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round5)
+						], revert);
 					},
 					buildGraph : function(data){
 						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
@@ -364,7 +376,13 @@ hauteclaire = function(_this){
 					name : 'south', 
 					graph : _this.viewer.graph.dailyLine,
 					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByArea("south",[data.round1,data.round2,data.round3,data.round4,data.round5], revert);
+						return _this.battlefield.grouping.aggregateByArea("south",[
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round1),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round2),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round3),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round4),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round5)
+						], revert);
 					},
 					buildGraph : function(data){
 						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
@@ -380,7 +398,13 @@ hauteclaire = function(_this){
 					name : 'north', 
 					graph : _this.viewer.graph.dailyLine,
 					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByArea("north",[data.round1,data.round2,data.round3,data.round4,data.round5], revert);
+						return _this.battlefield.grouping.aggregateByArea("north",[
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round1),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round2),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round3),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round4),
+							_this.battlefield.grouping.calcurateDailyBookmaker(data.round5)
+						], revert);
 					},
 					buildGraph : function(data){
 						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));

@@ -38,6 +38,11 @@ battlefieldApp.controller('currentController',function($scope,$http){
 					$scope.visibleTableBookmaker = false;
 				});
 			}
+			else if($scope.algorithm.type == "bookmaker_area"){
+				$scope.$apply(function(){
+					$scope.visibleTableBookmaker = false;
+				});
+			}
 		});
 	};
 });

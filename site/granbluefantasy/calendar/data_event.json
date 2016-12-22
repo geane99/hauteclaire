@@ -1778,15 +1778,6 @@
 		},
 		{
 			"id":150,
-			"title":"シナリオイベント",
-			"start":"2016-11-30 19:00:00",
-			"end":"2016-12-08 17:00:00",
-			"className":"story_events",
-			"type":"currency",
-			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8157_%282%B2%F3%CC%DC%29%CB%B4%B9%F1%A4%CE%BB%CD%B5%B3%BB%CE"
-		},
-		{
-			"id":150,
 			"title":"氷炎牆に鬩ぐ",
 			"start":"2016-11-30 19:00:00",
 			"end":"2016-12-08 17:00:00",
@@ -1794,7 +1785,7 @@
 			"isReprint":false,
 			"isCollaboration":false,
 			"type":"currency",
-			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8158_%C9%B9%B1%EA%E0%AF%A4%CB%F2%AB%A4%B0"
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8157_%282%B2%F3%CC%DC%29%CB%B4%B9%F1%A4%CE%BB%CD%B5%B3%BB%CE"
 		},
 		{
 			"id":151,
