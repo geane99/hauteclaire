@@ -167,7 +167,7 @@ hauteclaire = function(_this){
 				baseDate.getFullYear(),
 				(baseDate.getMonth()+1)<10?"0"+(baseDate.getMonth()+1):(baseDate.getMonth()+1),
 				(baseDate.getDate()<10?"0"+baseDate.getDate():baseDate.getDate())
-			].join("-");	
+			].join("-");
 		},
 		datetimeToString : function(baseDate){
 			return this.dateToString(baseDate) + " " + ([
@@ -175,6 +175,11 @@ hauteclaire = function(_this){
 				(baseDate.getMinutes()<10?"0"+baseDate.getMinutes():baseDate.getMinutes()),
 				(baseDate.getSeconds()<10?"0"+baseDate.getSeconds():baseDate.getSeconds())
 			].join(":"));
+		},
+		nextDateByStringDate:function(stringDate){
+			base = this.stringToDate(stringDate);
+			basedate = this.integerToDate(base + (24*60*60*1000));
+			return this.dateToString(basedate);
 		},
 		stringToDate:function(sdate){
 			return Date.parse(sdate);
@@ -275,22 +280,21 @@ hauteclaire = function(_this){
 		},
 		generate : function(path, g, algorithm, callback){
 			var uuid = _this.UUID.generate(1);
-			_this.util.load(this, uuid, [{ url : path, process : function(data){ 
-				gdata = algorithm.calc(data);
-				var cdata = algorithm.run(gdata, g.revert);
-				algorithm.buildGraph(data);
-				_this.graph.chart(g, cdata);
-				callback(cdata, data);
+			_this.util.load(this, uuid, [{ url : path, process : function(serverData){ 
+				var correctData = algorithm.correct(serverData);
+				callback(correctData);
+				var graphData = algorithm.calc(correctData, g.revert);
+				_this.graph.chart(g, graphData);
 				return data;
 			}}], function(){
 			});
 		},
-		bind:function(data, graph, algorithm, callback){
-			var cdata = algorithm.run(gdata, g.revert);
-			algorithm.buildGraph(data);
+		bind:function(data, g, algorithm, filterconf, callback){
+			var fdata = algorithm.filter(data,filterconf);
+			callback(fdata);
+			var cdata = algorithm.calc(fdata, g.revert, filterconf.type);
 			_this.graph.chart(g, cdata);
-			callback(cdata, data);
-			return data;
+			return fdata;
 		},
 		locale : {
 			"decimal": ".",

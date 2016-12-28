@@ -80,7 +80,7 @@ body { overflow:hidden; }
 .data_panel{ height: 100%; }
 .data_panel_graph{ height: 92%; }
 .data_panel_table{ height: 92%; }
-.bookmaker-all{ width:95%; margin: 10px; height:400px; overflow-y:auto; }
+.bookmaker-all, .bookmaker-area-all, .ranking-all, .qualifying-all{ width:95%; margin: 10px; height:400px; overflow-y:auto; }
 
 table.table-headerfixed {
 /*    width: 100%;*/
@@ -100,7 +100,7 @@ table.table-headerfixed tr:after {
     visibility: hidden;
     clear: both;
 }
-.bookmaker-all tbody{
+.bookmaker-all tbody, .bookmaker-area-all tbody, .ranking-all tbody, .qualifying-all tbody{
     height: 700px;
 }
 table.table-headerfixed tbody {

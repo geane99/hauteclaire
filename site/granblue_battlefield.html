@@ -16,6 +16,8 @@
 		<link rel="stylesheet" href="granbluefantasy/common/style.css"/>
 		<link rel="stylesheet" href="granbluefantasy/battlefield/style.css"/>
 		<link rel="stylesheet" href="bower_components/nvd3/css/nv.d3.min.css" />
+		<link rel="stylesheet" href="bower_components/timepicker/css/bootstrap-timepicker.min.css" />
+		<link rel="stylesheet" href="bower_components/datepicker/css/bootstrap-datepicker3.min.css" />
 		
 		<!-- jquery, moment, and angular have to get included before fullcalendar -->
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -24,11 +26,157 @@
 		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 		<script type="text/javascript" src="bower_components/nvd3/js/d3.min.3.5.2.js"></script>
 		<script type="text/javascript" src="bower_components/nvd3/js/nv.d3.js"></script>
+		<script type="text/javascript" src="bower_components/timepicker/js/bootstrap-timepicker.min.js"></script>
+		<script type="text/javascript" src="bower_components/datepicker/js/bootstrap-datepicker.min.js"></script>
+		<script type="text/javascript" src="bower_components/datepicker/js/bootstrap-datepicker.lang.min.js"></script>
 		
 		
 		<script type="text/javascript" src="granbluefantasy/common/granbluefantasy.js"></script>
 		<script type="text/javascript" src="granbluefantasy/battlefield/schedule.js"></script>
 		<script type="text/javascript" src="granbluefantasy/battlefield/battlefield_controller.js"></script>
+		
+		<script type="text/ng-template" id="configRanking.html">
+			<div class="modal-header">
+				<h3 class="modal-title">個人ランキング（トータルスコア）設定</h3>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row battlefield-config-row">
+						<div class="col-sm-2">
+							<i class="glyphicon glyphicon-time"></i>
+							<abbr title="グラフに表示するデータの時間。" class="initialism calendar-config-group-label">時間</abbr>
+						</div>
+						<div class="col-sm-5">
+							<div class="form-inline">
+								<input ng-datepicker class="form-control datepicker input-sm" ng-model="rankingStartDate" />
+								<input ng-timepicker class="form-control timepicker input-sm" ng-model="rankingStartDatetime" />
+								<label>～</label>
+								<input ng-datepicker class="form-control datepicker input-sm" ng-model="rankingEndDate" />
+								<input ng-timepicker class="form-control timepicker input-sm" ng-model="rankingEndDatetime" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="ok()">反映する</button>
+				<button class="btn btn-default" type="button" ng-click="cancel()">キャンセル</button>
+			</div>
+		</script>
+		
+		<script type="text/ng-template" id="configQualifying.html">
+			<div class="modal-header">
+				<h3 class="modal-title">予選（トータルスコア）設定</h3>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row battlefield-config-row">
+						<div class="col-sm-2">
+							<i class="glyphicon glyphicon-time"></i>
+							<abbr title="グラフに表示するデータの時間。" class="initialism calendar-config-group-label">時間</abbr>
+						</div>
+						<div class="col-sm-5">
+							<div class="form-inline">
+								<input ng-datepicker class="form-control datepicker input-sm" ng-model="qualifyingStartDate" />
+								<input ng-timepicker class="form-control timepicker input-sm" ng-model="qualifyingStartDatetime" />
+								<label>～</label>
+								<input ng-datepicker class="form-control datepicker input-sm" ng-model="qualifyingEndDate" />
+								<input ng-timepicker class="form-control timepicker input-sm" ng-model="qualifyingEndDatetime" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="ok()">反映する</button>
+				<button class="btn btn-default" type="button" ng-click="cancel()">キャンセル</button>
+			</div>
+		</script>
+		
+		<script type="text/ng-template" id="configBookmaker.html">
+			<div class="modal-header">
+				<h3 class="modal-title">ブックメーカー（日別）設定</h3>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row battlefield-config-row">
+						<div class="col-sm-2">
+							<i class="glyphicon glyphicon-sort-by-attributes"></i>
+							<abbr title="グラフに表示するデータの種別。スコアはスコア合計をグラフに、速度は20分前からのスコア増加量をグラフにする。" class="initialism calendar-config-group-label">データ種別</abbr>
+						</div>
+						
+						<div class="col-sm-5">
+							<label class="radio-inline">
+								<input type="radio" ng-model="bookmakerGraphType" value="total" />スコア
+							</label>
+							<label class="radio-inline">
+								<input type="radio" ng-model="bookmakerGraphType" value="acceleration" />速度
+							</label>
+						</div>
+					</div>
+					<div class="row battlefield-config-row">
+						<div class="col-sm-2">
+							<i class="glyphicon glyphicon-time"></i>
+							<abbr title="グラフに表示するデータの時間。07:00～00:00（翌日）まで設定可能。" class="initialism calendar-config-group-label">時間</abbr>
+						</div>
+						<div class="col-sm-5">
+							<div class="form-inline">
+								<input ng-timepicker class="form-control timepicker input-sm" ng-model="bookmakerStartDate" />
+								<label>～</label>
+								<input ng-timepicker class="form-control timepicker input-sm" ng-model="bookmakerEndDate" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="ok()">反映する</button>
+				<button class="btn btn-default" type="button" ng-click="cancel()">キャンセル</button>
+			</div>
+		</script>
+		
+		
+		<script type="text/ng-template" id="configBookmakerArea.html">
+			<div class="modal-header">
+				<h3 class="modal-title">ブックメーカー（エリア別）設定</h3>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row battlefield-config-row">
+						<div class="col-sm-2">
+							<i class="glyphicon glyphicon-sort-by-attributes"></i>
+							<abbr title="グラフに表示するデータの種別。スコアはスコア合計をグラフに、速度は20分前からのスコア増加量をグラフにする。" class="initialism calendar-config-group-label">データ種別</abbr>
+						</div>
+						
+						<div class="col-sm-5">
+							<label class="radio-inline">
+								<input type="radio" ng-model="bookmakerAreaGraphType" value="total" />スコア
+							</label>
+							<label class="radio-inline">
+								<input type="radio" ng-model="bookmakerAreaGraphType" value="acceleration" />速度
+							</label>
+						</div>
+					</div>
+					<div class="row battlefield-config-row">
+						<div class="col-sm-2">
+							<i class="glyphicon glyphicon-time"></i>
+							<abbr title="グラフに表示するデータの時間。07:00～00:00（翌日）まで設定可能。" class="initialism calendar-config-group-label">時間</abbr>
+						</div>
+						<div class="col-sm-5">
+							<div class="form-inline">
+								<input ng-timepicker class="form-control timepicker input-sm" ng-model="bookmakerAreaStartDate" />
+								<label>～</label>
+								<input ng-timepicker class="form-control timepicker input-sm" ng-model="bookmakerAreaEndDate" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="ok()">反映する</button>
+				<button class="btn btn-default" type="button" ng-click="cancel()">キャンセル</button>
+			</div>
+		</script>
 	</head>
 	
 	<body>
@@ -51,13 +199,18 @@
 						<select ng-model="selectedBattlefieldAlgorithm" ng-options="e as e.name for e in battilefieldAlgorithm"></select>
 					</span>
 					<button class="btn btn-warning btn-xs" type="button" ng-click="openGraph()">表示</button>
+					
+					<button class="btn btn-warning btn-xs" type="button" ng-show="visibleQualifying" ng-click="configQualifying()" style="float:right">設定</button>
+					<button class="btn btn-warning btn-xs" type="button" ng-show="visibleRanking" ng-click="configRanking()" style="float:right">設定</button>
+					<button class="btn btn-warning btn-xs" type="button" ng-show="visibleBookmakerArea" ng-click="configBookmakerArea()" style="float:right">設定</button>
+					<button class="btn btn-warning btn-xs" type="button" ng-show="visibleBookmaker" ng-click="configBookmaker()" style="float:right">設定</button>
 				</div>
 			</div>
 			
 			<div class="data_panel_main">
 				<ul class="nav nav-tabs data_tabs">
 					<li class="active"><a href="#data_panel_graph" data-toggle="tab"><i class="glyphicon glyphicon-signal"></i>グラフ</a></li>
-					<li><a href="#data_panel_tables" data-toggle="tab"><i class="glyphicon glyphicon-th"></i>詳細</a></li>
+					<li><a href="#data_panel_tables" data-toggle="tab"><i class="glyphicon glyphicon-th"></i>データ</a></li>
 				</ul>
 
 				<div class="tab-content data_panel">
@@ -67,11 +220,13 @@
 						</div>
 					</div>
 					<div class="tab-pane data_panel_table" id="data_panel_tables">
-						<div id="data_panel_table_bookmaker" ng-show="visibleTableBookmaker">
+						
+						<!-- bookmaker -->
+						<div id="data_panel_table_bookmaker" ng-show="visibleBookmaker">
 							<table class="table table-condensed table-hover bookmaker-all table-headerfixed">
 								<thead>
 									<tr>
-										<th width="3%"><i class="glyphicon glyphicon-remove" /></th>
+										<th width="3%"><abbr title="×（赤色の行）：自動生成されたスコア" class="initialism calendar-config-group-label"><i class="glyphicon glyphicon-remove" /></abbr></th>
 										<th width="13%">time</th>
 										<th width="11%">east</th>
 										<th width="10%"></th>
@@ -88,13 +243,87 @@
 										<td width="3%"><i class="glyphicon" ng-class={"glyphicon-remove":e.isFake!=0}></i></td>
 										<td width="13%" class="small" scope="row">{{e.time}}</td>
 										<td width="11%" class="small">{{e.east}}</td>
-										<td width="10%" class="small" ng-class={"text-danger":e.east_gap!=0}>{{e.east_gap}}</td>
+										<td width="10%" class="small" ng-class={"text-danger":e.east_gap!=0}>{{bookmakerGraphType == "total" ? e.east_gap : e.east_acceleration}}</td>
 										<td width="11%" class="small">{{e.west}}</td>
-										<td width="10%" class="small" ng-class={"text-danger":e.west_gap!=0}>{{e.west_gap}}</td>
+										<td width="10%" class="small" ng-class={"text-danger":e.west_gap!=0}>{{bookmakerGraphType == "total" ? e.west_gap : e.west_acceleration}}</td>
 										<td width="11%" class="small">{{e.south}}</td>
-										<td width="10%" class="small" ng-class={"text-danger":e.south_gap!=0}>{{e.south_gap}}</td>
+										<td width="10%" class="small" ng-class={"text-danger":e.south_gap!=0}>{{bookmakerGraphType == "total" ? e.south_gap : e.south_acceleration}}</td>
 										<td width="11%" class="small">{{e.north}}</td>
-										<td width="10%" class="small" ng-class={"text-danger":e.north_gap!=0}>{{e.north_gap}}</td>
+										<td width="10%" class="small" ng-class={"text-danger":e.north_gap!=0}>{{bookmakerGraphType == "total" ? e.north_gap : e.north_acceleration}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						
+						
+						<!-- bookmaker area -->
+						<div id="data_panel_table_bookmaker_area" ng-show="visibleBookmakerArea">
+							<table class="table table-condensed table-hover bookmaker-area-all table-headerfixed">
+								<thead>
+									<tr>
+										<th width="15%">time</th>
+										<th width="17%">1日目</th>
+										<th width="17%">2日目</th>
+										<th width="17%">3日目</th>
+										<th width="17%">4日目</th>
+										<th width="17%">5日目</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="e in bookmakerAllScore.round1.score">
+										<td width="15%" class="small" scope="row">{{e.time.split(' ')[1]}}</td>
+										<td width="17%" class="small">{{bookmakerAllScore.choise(1,$index)}}</td>
+										<td width="17%" class="small">{{bookmakerAllScore.choise(2,$index)}}</td>
+										<td width="17%" class="small">{{bookmakerAllScore.choise(3,$index)}}</td>
+										<td width="17%" class="small">{{bookmakerAllScore.choise(4,$index)}}</td>
+										<td width="17%" class="small">{{bookmakerAllScore.choise(5,$index)}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						
+						
+						<!-- qualifying -->
+						<div id="data_panel_table_qualifying" ng-show="visibleQualifying">
+							<table class="table table-condensed table-hover qualifying-all table-headerfixed">
+								<thead>
+									<tr>
+										<th width="16%">time</th>
+										<th width="21%">シード120位</th>
+										<th width="21%">シード660位</th>
+										<th width="21%">予選120位</th>
+										<th width="21%">予選3000位</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="e in qualifyingAllScore">
+										<td width="16%" class="small" scope="row">{{e.time}}</td>
+										<td width="21%" class="small">{{e.seed120}}</td>
+										<td width="21%" class="small">{{e.seed660}}</td>
+										<td width="21%" class="small">{{e.qualifying120}}</td>
+										<td width="21%" class="small">{{e.qualifying3000}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						
+						<!-- ranking -->
+						<div id="data_panel_table_ranking" ng-show="visibleRanking">
+							<table class="table table-condensed table-hover ranking-all table-headerfixed">
+								<thead>
+									<tr>
+										<th width="16%">time</th>
+										<th width="28%">1000位</th>
+										<th width="28%">3000位</th>
+										<th width="28%">20000位</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="e in rankingAllScore">
+										<td width="16%" class="small" scope="row">{{e.time}}</td>
+										<td width="28%" class="small">{{e.ranking1000}}</td>
+										<td width="28%" class="small">{{e.ranking3000}}</td>
+										<td width="28%" class="small">{{e.ranking20000}}</td>
 									</tr>
 								</tbody>
 							</table>

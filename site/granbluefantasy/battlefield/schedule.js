@@ -1,11 +1,87 @@
 hauteclaire = function(_this){
+	var OperationBuilder = function(){
+		this._set = function(name, value){
+			return localStorage.setItem(name, value);
+		};
+		this._get = function(name){
+			var r = localStorage.getItem(name);
+			return r;
+		};
+		this.properties = new Array();
+		this.defineAccessor = function(name, targets){
+			var _t = this;
+			this.__defineGetter__(name, function(){
+				return this._get(name);
+			});
+			this.__defineSetter__(name, function(val){
+				return this._set(name, val);
+			});
+			this.properties.push(name);
+		};
+		this.build = function(){
+		};
+		this.save = function(t){
+			var _t = this;
+			var prop = t.properties ? t : _t;
+			prop.properties.forEach(function(name){
+				if(t[name])
+					_t[name] = t[name];
+				else
+					_t[name] = "";
+			});
+		};
+		this.load = function(t){
+			return this.save.apply(t, [this]);
+		};
+	};
+	
+	var operationBookmaker = new OperationBuilder();
+	operationBookmaker.build = function(){
+		this.defineAccessor("bookmakerGraphType");
+		this.defineAccessor("bookmakerStartDate");
+		this.defineAccessor("bookmakerEndDate");
+	};
+	operationBookmaker.build();
+	
+	var operationBookmakerArea = new OperationBuilder();
+	operationBookmakerArea.build = function(){
+		this.defineAccessor("bookmakerAreaGraphType");
+		this.defineAccessor("bookmakerAreaStartDate");
+		this.defineAccessor("bookmakerAreaEndDate");
+	};
+	operationBookmakerArea.build();
+	
+	var operationQualifying = new OperationBuilder();
+	operationQualifying.build = function(){
+		this.defineAccessor("qualifyingStartDate");
+		this.defineAccessor("qualifyingStartDatetime");
+		this.defineAccessor("qualifyingEndDate");
+		this.defineAccessor("qualifyingEndDatetime");
+	};
+	operationQualifying.build();
+	
+	var operationRanking = new OperationBuilder();
+	operationRanking.build = function(){
+		this.defineAccessor("rankingStartDate");
+		this.defineAccessor("rankingStartDatetime");
+		this.defineAccessor("rankingEndDate");
+		this.defineAccessor("rankingEndDatetime");
+	};
+	operationRanking.build();
+			
+	_this.operation = {
+		bookmaker : operationBookmaker,
+		bookmakerArea : operationBookmakerArea,
+		qualifying:operationQualifying,
+		ranking:operationRanking
+	};
+	return _this;
+}(hauteclaire);
+
+hauteclaire = function(_this){
 	_this.viewer = {
 		graph : {
 			dailyLine : {
-				init : function(startd,endd){
-					this.startDate = startd;
-					this.endDate = endd;
-				},
 				method : "lineChart", 
 				revert : false,
 				options : {
@@ -14,7 +90,7 @@ hauteclaire = function(_this){
 				},
 				spec:function(nv,d3,chart){
 				},
-				xAxis:function(nv, d3, chart, xAxis){
+				xAxis:function(nv, d3, chart, xAxis, conf){
 					xAxis
 						.axisLabel("日時")
 						.domain([this.startDate,this.endDate])
@@ -23,17 +99,13 @@ hauteclaire = function(_this){
 						})
 						;//.ticks(d3.time.minute, 1);
 				},
-				yAxis:function(nv, d3, chart, yAxis){
+				yAxis:function(nv, d3, chart, yAxis, conf){
 					yAxis
 						.axisLabel("スコア(1 / 100,000,000)")
 						.tickFormat(d3.format(",.2f"));
 				}
 			},
 			ndaysLine : { 
-				init : function(startd,endd){
-					this.startDate = startd;
-					this.end_date = endd;
-				},
 				method : "lineChart", 
 				revert : false,
 				options : {
@@ -42,16 +114,16 @@ hauteclaire = function(_this){
 				},
 				spec:function(nv,d3,chart){
 				},
-				xAxis:function(nv, d3, chart, xAxis){
+				xAxis:function(nv, d3, chart, xAxis,conf){
 					xAxis
 						.axisLabel("日時")
-						.domain([this.startDate,this.endDate])
+						.domain([conf.startDate,conf.endDate])
 						.tickFormat(function(val){
 							return d3.time.format("%m/%d %H:%M")(new Date(val));
 						})
 						.ticks(d3.time.minute,60);
 				},
-				yAxis:function(nv, d3, chart, yAxis){
+				yAxis:function(nv, d3, chart, yAxis,conf){
 					yAxis
 						.axisLabel("スコア(1 / 10,000)")
 						.tickFormat(d3.format(",.2f"));
@@ -63,119 +135,70 @@ hauteclaire = function(_this){
 }(hauteclaire);
 
 hauteclaire = function(_this){
-	_this.battlefield = {
-		label : {
-			north : "north",
-			west : "west",
-			east : "east",
-			south : "south",
-			ranking1000 : "1000位",
-			ranking3000 : "3000位",
-			ranking20000 : "20000位",
-			qualifying120 : "予選1200位",
-			qualifying2400 : "予選2400位",
-			seed120 : "シード120位",
-			seed660 : "シード660位"
+	_this.label = {
+		north : "north",
+		north_acceleration : "north(速度)",
+		west : "west",
+		west_acceleration : "west(速度)",
+		east : "east",
+		east_acceleration : "east(速度)",
+		south : "south",
+		south_acceleration : "south(速度)",
+		ranking1000 : "1000位",
+		ranking3000 : "3000位",
+		ranking20000 : "20000位",
+		qualifying120 : "予選120位",
+		qualifying2400 : "予選2400位",
+		qualifying3000 : "予選3000位",
+		seed120 : "シード120位",
+		seed660 : "シード660位"
+	};
+	return _this;
+}(hauteclaire);
+
+hauteclaire = function(_this){
+	_this.calc = {
+		to2dimension : function(key, data, revert, round){
+			var r = new Array();
+			
+			rounding = function(val){
+				if(round != null && round > 0)
+					return parseInt(val) / round;
+				return parseInt(val);
+			};
+			
+			//x : time
+			//y : score
+			data.forEach(function(element,idx, array){
+				if(revert)
+					r.push({y:_this.util.stringToDate(element.time), x:rounding(element[key])});
+				else
+					r.push({x:_this.util.stringToDate(element.time), y:rounding(element[key])});
+			});
+			return r;
 		},
-		grouping : {
-			findByArea : function(area, data, revert, round){
-				var r = new Array();
-				
-				rounding = function(val){
-					if(round != null && round > 0)
-						return parseInt(val) / round;
-					return parseInt(val);
-				};
-				
-				//x : time
-				//y : score
-				data.forEach(function(element,idx, array){
-					if(revert)
-						r.push({y:_this.util.stringToDate(element.time), x:rounding(element[area])});
-					else
-						r.push({x:_this.util.stringToDate(element.time), y:rounding(element[area])});
-				});
-				return r;
-			},
-			aggregateByDaily : function(data, revert){
-				var result = new Array();
-				var aggregate = function(array, target, data){
-					array.push({
-						key: _this.battlefield.label[target],
-						values : _this.battlefield.grouping.findByArea(target,data,revert,100000000)
-					});
-				};
-				aggregate(result,"north",data);
-				aggregate(result,"south",data);
-				aggregate(result,"east",data);
-				aggregate(result,"west",data);
-				return result;
-			},
-			aggregateByArea : function(area, dataArray, revert){
-				rounds = dataArray.filter(function(e){ return e!=null && e.score != null && e.score.length > 0});
-				var result = new Array();
-				if(rounds.length == 0)
-					return result;
-				rounds.forEach(function(each,index,array){
-					each.score.forEach(function(e,idx,ar){
-						spdate = e.time.split(" ");
-						if(idx+1 == ar.length && spdate[1] == "00:00:00")
-							e.time = rounds[0].datetime + " 23:59:59";
-						else
-							e.time = rounds[0].datetime + " "+spdate[1];
-					});
-					
-					result.push({
-						key: (index+1)+"日目",
-						values : _this.battlefield.grouping.findByArea(area,each.score,revert,100000000)
-					});
-				});
-				return result;
-			},
-			aggregateByTeam : function(data, revert){
-				var result = [];
-				var aggregate = function(array, target, data){
-					array.push({
-						key: _this.battlefield.label[target],
-						values : _this.battlefield.grouping.findByArea(target,data,revert,100000)
-					});
-				};
-				aggregate(result,"qualifying120", data);
-				aggregate(result,"qualifying2400", data);
-				aggregate(result,"seed120", data);
-				aggregate(result,"seed660", data);
-				return result;
-			},
-			aggregateByIndividual :function(data, revert){
-				var result = [];
-				var aggregate = function(array, target, data){
-					array.push({
-						key: _this.battlefield.label[target],
-						values : _this.battlefield.grouping.findByArea(target,data,revert,100000)
-					});
-				};
-				aggregate(result,"ranking1000", data);
-				aggregate(result,"ranking3000", data);
-				aggregate(result,"ranking20000", data);
-				return result;
-			},
-			calcurateDailyBookmaker: function(data){
+		bookmaker : {
+			correct : function(data){
 				var bookmakerTerm = 20;
 				
 				var score = data.score;
 				if(score.length == 0)
 					return data;
 				
-				var keys = Object.keys(data.score[0]);
-				keys.some(function(element,idx){
-					if(element == "time")
-						keys.splice(idx,1);
-				});
+				var keys = ["east","west","south","north"];
+				keys.maxValue = function(val){
+					return Math.max.apply(null, this.map(function(elem){
+						return parseInt(val[elem]);
+					}));
+				};
+				keys.toNumber = function(val){
+					return parseInt(val);
+				};
 				var cscore = [];
 				//generate fake data
 				if(score.length > 1){
 					accelertor = function(before,after,gapTotal,term){
-						acceleration = after - before;
+						var acceleration = after - before;
 						return Math.round(before + ((acceleration * term) / gapTotal));
 					};
 					score.forEach(function(element, idx, array){
@@ -183,17 +206,13 @@ hauteclaire = function(_this){
 							before = array[idx-1];
 							bdate = _this.util.stringToDate(before.time);
 							ndate = _this.util.stringToDate(element.time);
-							
 							gapMillsec = ndate - bdate;
-							//        millsec      sec    min
 							gapMinutes = gapMillsec / 1000 / 60;
 							gapTerm = (gapMinutes / bookmakerTerm) -1;
-							
 							acceleratorKeys = [];
 							keys.forEach(function(key,idx,array){
-								acceleratorKeys[key] = accelertor.bind(null,parseInt(before[key]), parseInt(element[key]), gapTerm+1);
+								acceleratorKeys[key] = accelertor.bind(null,keys.toNumber(before[key]), keys.toNumber(element[key]), gapTerm+1);
 							});
-							
 							if(gapTerm > 0){
 								for(var i=1; i<=gapTerm; i++){
 									gdate = _this.util.integerToDate(bdate + (i*1000*60*bookmakerTerm));
@@ -210,249 +229,371 @@ hauteclaire = function(_this){
 						cscore.push(element);
 					});
 				}
-				//generate acceleration
-				if(cscore.length > 1){
-					
-				}
-				
-				//calc gap
+
 				cscore.forEach(function(element,idx, array){
-					var maxKey = null;
-					var maxValue = null;
-					keys.forEach(function(key, i, ar){
-						if(element[key] > maxValue){
-							maxValue = element[key];
-							maxKey = key;
-						}
-					});
+					var maxValue = keys.maxValue(element);
 					keys.forEach(function(key,i,ar){
-						element[key+"_gap"] = (maxValue - element[key]) != 0 ? -1 * (maxValue - element[key]) : 0;
-						element[key+"_gap"] = Math.round(element[key]);
+						//calc top gap
+						var xVal = keys.toNumber(element[key]);
+						element[key+"_gap"] = maxValue - xVal;
+						if(element[key+"_gap"] != 0)
+							element[key+"_gap"] *= -1;
+						
+						//calc acceleration
+						if(idx > 0)
+							element[key+"_acceleration"] = xVal - keys.toNumber(array[idx-1][key]);
+						else
+							element[key+"_acceleration"] = 0;
 					});
 					if(!element.isFake)
 						element.isFake = false;
 				});
-				
 				data.score = cscore;
 				return data;
-			}
-		},
-		algorithm : {
-			types : [
-				{id : "bookmaker", name:"ブックメーカー"},
-				{id : "qualifying", name:"予選ランキング"},
-				{id : "ranking", name:"個人ランキング"}
-			],
-			bookmaker: [{ 
-					name : '1日目',
-					graph : _this.viewer.graph.dailyLine,
-					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByDaily(data.round1.score, revert);
+			},
+			filter :function(data,conf){
+				var strstart = conf.datetime + " "+conf.from;
+				var strend = null;
+				if(conf.to != "00:00" && conf.to != "0:00" && conf.to != "0:0")
+					strend = conf.datetime + " "+conf.to;
+				else
+					strend = _this.util.nextDateByStringDate(conf.datetime) + " "+conf.to
+					
+				var start = _this.util.stringToDate(strstart);
+				var end = _this.util.stringToDate(strend);
+				
+				var r = [];
+				data.score.forEach(function(element,idx,array){
+					var target = _this.util.stringToDate(element.time);
+					if(start <= target && target <= end)
+						r.push(element);
+				});
+				data.score = r;
+				return data;
+			},
+			aggregateDay : function(data, revert, keys, rounding){
+				var result = new Array();
+				var aggregate = function(array, target, data){
+					array.push({
+						key: _this.label[target],
+						values : _this.calc.to2dimension(target,data,revert,rounding)
+					});
+				};
+				keys.forEach(function(element,idx,array){
+					aggregate(result,element,data);
+				});
+				return result;
+			},
+			aggregateArea : function(area, dataArray, revert){
+				rounds = dataArray.filter(function(e){ return e!=null && e.score != null && e.score.length > 0});
+				var result = new Array();
+				if(rounds.length == 0)
+					return result;
+				rounds.forEach(function(each,index,array){
+					each.score.forEach(function(e,idx,ar){
+						spdate = e.time.split(" ");
+						if(idx+1 == ar.length && spdate[1] == "00:00:00")
+							e.time = _this.util.nextDateByStringDate(rounds[0].datetime) + " 00:00:00";
+						else
+							e.time = rounds[0].datetime + " "+spdate[1];
+					});
+					
+					result.push({
+						key: (index+1)+"日目",
+						values : _this.calc.to2dimension(area,each.score,revert,100000000)
+					});
+				});
+				return result;
+			},
+			createAlgorithm :function(conf){
+				return {
+					name : conf.name,
+					type:conf.type,
+					graph : conf.graph,
+					conf:function(){
+						return conf;
 					},
-					buildGraph : function(data){
-						this.graph.init(_this.util.stringToDate(data.round1.start_date), _this.util.stringToDate(data.round1.end_date));
+					calc : function(data, revert, type){
+						if(type == "total" || type == null)
+							return _this.calc.bookmaker.aggregateDay(conf.selectRound(data).score, revert, ["east","west","south","north"],100000000);
+						else if(type == "acceleration")
+							return _this.calc.bookmaker.aggregateDay(conf.selectRound(data).score, revert, ["east_acceleration","west_acceleration","south_acceleration","north_acceleration"],100000000);
 					},
-					calc:function(data){
-						data.round1 = _this.battlefield.grouping.calcurateDailyBookmaker(data.round1);
+					correct:function(data){
+						var r = _this.calc.bookmaker.correct(conf.selectRound(data));
+						conf.updateRound(data,r);
 						return data;
 					},
-					round:function(data){
-						return data.round1;
+					select:function(data){
+						return conf.selectRound(data);
 					},
-					type:"bookmaker"
-				},{ 
-					name : '2日目', 
-					graph : _this.viewer.graph.dailyLine,
-					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByDaily(data.round2.score, revert);
+					filter:function(data,filterconf){
+						filterconf.datetime = conf.selectRound(data).datetime;
+						var r = _this.calc.bookmaker.filter(conf.selectRound(data),filterconf);
+						conf.updateRound(data,r);
+						return data;
+					}
+				};
+			},
+			createAreaAlgorithm:function(conf){
+				return {
+					name : conf.name,
+					type:conf.type,
+					graph : conf.graph,
+					conf:function(){
+						return conf;
 					},
-					buildGraph : function(data){
-						this.graph.init(_this.util.stringToDate(data.round2.start_date), _this.util.stringToDate(data.round2.end_date));
-					},
-					calc:function(data){
-						data.round2 = _this.battlefield.grouping.calcurateDailyBookmaker(data.round2);
+					correct:function(data){
+						["round1","round2","round3","round4","round5"].forEach(function(element,idx,array){
+							data[element] = _this.calc.bookmaker.correct(data[element]);
+						});
 						return data;
 					},
-					round:function(data){
-						return data.round2;
+					calc : function(data, revert, type){
+						var area = null;
+						if(type == "total" || type == null)
+							area = conf.area;
+						else if(type == "acceleration")
+							area = conf.area + "_acceleration";
+						return _this.calc.bookmaker.aggregateArea(area, [data.round1,data.round2,data.round3,data.round4,data.round5], revert);
 					},
-					type:"bookmaker"
-				},{ 
-					name : '3日目', 
-					graph : _this.viewer.graph.dailyLine,
-					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByDaily(data.round3.score, revert);
-					},
-					buildGraph : function(data){
-						this.graph.init(_this.util.stringToDate(data.round3.start_date), _this.util.stringToDate(data.round3.end_date));
-					},
-					calc:function(data){
-						data.round3 = _this.battlefield.grouping.calcurateDailyBookmaker(data.round3);
+					select:function(data){
+						["round1","round2","round3","round4","round5"].forEach(function(element,idx,array){
+							data[element] = _this.calc.bookmaker.correct(data[element]);
+						});
 						return data;
 					},
-					round:function(data){
-						return data.round3;
-					},
-					type:"bookmaker"
-				},{ 
-					name : '4日目', 
-					graph : _this.viewer.graph.dailyLine,
-					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByDaily(data.round4.score, revert);
-					},
-					buildGraph : function(data){
-						this.graph.init(_this.util.stringToDate(data.round4.start_date), _this.util.stringToDate(data.round4.end_date));
-					},
-					calc:function(data){
-						data.round4 = _this.battlefield.grouping.calcurateDailyBookmaker(data.round4);
+					filter:function(data,filterconf){
+						filterconf.datetime = data.round1.datetime;
+						["round1","round2","round3","round4","round5"].forEach(function(element,idx,array){
+							data[element] = _this.calc.bookmaker.filter(data[element],filterconf);
+						});
 						return data;
-					},
-					round:function(data){
-						return data.round4;
-					},
-					type:"bookmaker"
-				},{ 
-					name : '5日目', 
-					graph : _this.viewer.graph.dailyLine,
-					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByDaily(data.round5.score, revert);
-					},
-					buildGraph : function(data){
-						this.graph.init(_this.util.stringToDate(data.round5.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
-					},
-					calc:function(data){
-						data.round5 = _this.battlefield.grouping.calcurateDailyBookmaker(data.round5);
-						return data;
-					},
-					round:function(data){
-						return data.round5;
-					},
-					type:"bookmaker"
-				}, {
-					name : 'east', 
-					graph : _this.viewer.graph.dailyLine,
-					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByArea("east",[
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round1),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round2),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round3),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round4),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round5)
-						], revert);
-					},
-					buildGraph : function(data){
-						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
-					},
-					calc:function(data){
-						return data;
-					},
-					round:function(data){
-						return data;
-					},
-					type:"bookmaker_area"
-				}, {
-					name : 'west', 
-					graph : _this.viewer.graph.dailyLine,
-					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByArea("west",[
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round1),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round2),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round3),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round4),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round5)
-						], revert);
-					},
-					buildGraph : function(data){
-						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
-					},
-					calc:function(data){
-						return data;
-					},
-					round:function(data){
-						return data;
-					},
-					type:"bookmaker_area"
-				}, {
-					name : 'south', 
-					graph : _this.viewer.graph.dailyLine,
-					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByArea("south",[
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round1),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round2),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round3),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round4),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round5)
-						], revert);
-					},
-					buildGraph : function(data){
-						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
-					},
-					calc:function(data){
-						return data;
-					},
-					round:function(data){
-						return data;
-					},
-					type:"bookmaker_area"
-				}, {
-					name : 'north', 
-					graph : _this.viewer.graph.dailyLine,
-					run : function(data, revert){
-						return _this.battlefield.grouping.aggregateByArea("north",[
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round1),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round2),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round3),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round4),
-							_this.battlefield.grouping.calcurateDailyBookmaker(data.round5)
-						], revert);
-					},
-					buildGraph : function(data){
-						this.graph.init(_this.util.stringToDate(data.round1.datetime+" 07:00:00"), _this.util.stringToDate(data.round5.end_date+" 23:59:59"));
-					},
-					calc:function(data){
-						return data;
-					},
-					round:function(data){
-						return data;
-					},
-					type:"bookmaker_area"
+					}
 				}
-			],
-			qualifying : [{ 
-				name : '通算スコア', 
-				graph : _this.viewer.graph.ndaysLine,
-				type:"qualifying",
-				run : function(data, revert){
-					return _this.battlefield.grouping.aggregateByTeam(data.score, revert);
-				},
-				calc:function(data){
-					return data;
-				},
-				buildGraph : function(data){
-					this.graph.init(_this.util.stringToDate(data.start_date), _this.util.stringToDate(data.end_date));
-			}}],
-			ranking:[{ 
-				name : '通算スコア', 
-				graph : _this.viewer.graph.ndaysLine,
-				type:"ranking",
-				run : function(data, revert){
-					return _this.battlefield.grouping.aggregateByIndividual(data.score, revert);
-				},
-				calc:function(data){
-					return data;
-				},
-				buildGraph : function(data){
-					this.graph.init(_this.util.stringToDate(data.start_date), _this.util.stringToDate(data.end_date));
-			}}]
-		},
-		schedules : [
-			{
-				name:'2016年12月',
-				bookmaker:'./granbluefantasy/battlefield/data/bookmaker_26.json',
-				ranking:'./granbluefantasy/battlefield/data/ranking_26.json',
-				qualifying:'./granbluefantasy/battlefield/data/qualifying_26.json'
 			}
+		},
+		ranking : {
+			aggregateTotal :function(data, revert){
+				var result = [];
+				var aggregate = function(array, target, data){
+					array.push({
+						key: _this.label[target],
+						values : _this.calc.to2dimension(target,data,revert,100000)
+					});
+				};
+				aggregate(result,"ranking1000", data);
+				aggregate(result,"ranking3000", data);
+				aggregate(result,"ranking20000", data);
+				return result;
+			},
+			filter:function(data,filterconf){
+				var start = _this.util.stringToDate(filterconf.fromDate + " "+filterconf.fromTime);
+				var end = _this.util.stringToDate(filterconf.toDate + " "+filterconf.toTime);
+				
+				var r = [];
+				data.score.forEach(function(element,idx,array){
+					var target = _this.util.stringToDate(element.time);
+					if(start <= target && target <= end)
+						r.push(element);
+				});
+				return r;
+			},
+			createAlgorithm :function(conf){
+				return {
+					name : conf.name,
+					type:conf.type,
+					graph : conf.graph,
+					conf:function(){
+						return conf;
+					},
+					correct:function(data){
+						return data;
+					},
+					calc : function(data, revert, type){
+						return _this.calc.ranking.aggregateTotal(data.score, revert);
+					},
+					select:function(data){
+						return data.score;
+					},
+					filter:function(data,filterconf){
+						data.score = _this.calc.ranking.filter(data, filterconf);
+						return data;
+					}
+				}
+			}
+		},
+		qualifying : {
+			aggregateTotal : function(data, revert){
+				if(data == null || data.length == 0)
+					return [];
+				var result = [];
+				var aggregate = function(array, target, data){
+					array.push({
+						key: _this.label[target],
+						values : _this.calc.to2dimension(target,data,revert,100000)
+					});
+				};
+				aggregate(result,"qualifying120", data);
+				aggregate(result,"qualifying3000", data);
+				aggregate(result,"seed120", data);
+				aggregate(result,"seed660", data);
+				return result;
+			},
+			filter:function(data,filterconf){
+				var start = _this.util.stringToDate(filterconf.fromDate + " "+filterconf.fromTime);
+				var end = _this.util.stringToDate(filterconf.toDate + " "+filterconf.toTime);
+				
+				var r = [];
+				data.score.forEach(function(element,idx,array){
+					var target = _this.util.stringToDate(element.time);
+					if(start <= target && target <= end)
+						r.push(element);
+				});
+				return r;
+			},
+			createAlgorithm:function(conf){
+				return {
+					name : conf.name,
+					type:conf.type,
+					graph : conf.graph,
+					conf:function(){
+						return conf;
+					},
+					correct:function(data){
+						return data;
+					},
+					calc : function(data, revert, type){
+						return _this.calc.qualifying.aggregateTotal(data.score, revert);
+					},
+					select:function(data){
+						return data.score;
+					},
+					filter:function(data,filterconf){
+						data.score = _this.calc.qualifying.filter(data, filterconf);
+						return data;
+					}
+				}
+			}
+		}
+	};
+	return _this;
+}(hauteclaire);	
+	
+hauteclaire = function(_this){
+	_this.algorithm = {
+		types : [
+			{id : "bookmaker", name:"ブックメーカー"},
+			{id : "qualifying", name:"予選ランキング"},
+			{id : "ranking", name:"個人ランキング"}
+		],
+		bookmaker: [
+			_this.calc.bookmaker.createAlgorithm({
+				name : '1日目',
+				type:"bookmaker",
+				graph : _this.viewer.graph.dailyLine,
+				selectRound : function(data){
+					return data.round1;
+				},
+				updateRound :function(data,round){
+					data.round1 = round;
+				}
+			}),
+			_this.calc.bookmaker.createAlgorithm({
+				name : '2日目',
+				type:"bookmaker",
+				graph : _this.viewer.graph.dailyLine,
+				selectRound : function(data){
+					return data.round2;
+				},
+				updateRound :function(data,round){
+					data.round2 = round;
+				}
+			}),
+			_this.calc.bookmaker.createAlgorithm({
+				name : '3日目',
+				type:"bookmaker",
+				graph : _this.viewer.graph.dailyLine,
+				selectRound : function(data){
+					return data.round3;
+				},
+				updateRound :function(data,round){
+					data.round3 = round;
+				}
+			}),
+			_this.calc.bookmaker.createAlgorithm({
+				name : '4日目',
+				type:"bookmaker",
+				graph : _this.viewer.graph.dailyLine,
+				selectRound : function(data){
+					return data.round4;
+				},
+				updateRound :function(data,round){
+					data.round4 = round;
+				}
+			}),
+			_this.calc.bookmaker.createAlgorithm({
+				name : '5日目',
+				type:"bookmaker",
+				graph : _this.viewer.graph.dailyLine,
+				selectRound : function(data){
+					return data.round5;
+				},
+				updateRound :function(data,round){
+					data.round5 = round;
+				}
+			}),
+			_this.calc.bookmaker.createAreaAlgorithm({
+				name : 'east',
+				area : 'east',
+				type:"bookmaker_area",
+				graph : _this.viewer.graph.dailyLine
+			}),
+			_this.calc.bookmaker.createAreaAlgorithm({
+				name : 'west',
+				area : 'west',
+				type:"bookmaker_area",
+				graph : _this.viewer.graph.dailyLine
+			}),
+			_this.calc.bookmaker.createAreaAlgorithm({
+				name : 'south',
+				area : 'south',
+				type:"bookmaker_area",
+				graph : _this.viewer.graph.dailyLine
+			}),
+			_this.calc.bookmaker.createAreaAlgorithm({
+				name : 'north',
+				area : 'north',
+				type:"bookmaker_area",
+				graph : _this.viewer.graph.dailyLine
+			}),			
+		],
+		qualifying : [
+			_this.calc.qualifying.createAlgorithm({
+				name : 'トータルスコア',
+				type:"qualifying",
+				graph : _this.viewer.graph.dailyLine
+			})
+		],
+		ranking:[
+			_this.calc.ranking.createAlgorithm({
+				name : 'トータルスコア',
+				type:"ranking",
+				graph : _this.viewer.graph.dailyLine
+			})
 		]
 	};
+	return _this;
+}(hauteclaire);
+	
+hauteclaire = function(_this){
+	_this.schedules = [
+		{
+			name:'2016年12月',
+			bookmaker:'./granbluefantasy/battlefield/data/bookmaker_26.json',
+			ranking:'./granbluefantasy/battlefield/data/ranking_26.json',
+			qualifying:'./granbluefantasy/battlefield/data/qualifying_26.json'
+		}
+	];
 	return _this;
 }(hauteclaire);

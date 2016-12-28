@@ -54,8 +54,8 @@ body *{
 	padding-left : 10px;
 }
 
-.calendar-config-row{
-	padding-bottom : 5px;
+.calendar-config-row, .battlefield-config-row{
+	margin-bottom : 10px;
 	height:28px;
 }
 
@@ -69,4 +69,11 @@ body *{
 .calendar-config-cell-value{
 	height:28px;
 	vertical-align:top;
+}
+
+.timepicker{
+	width: 70px !important;
+}
+input.datepicker{
+	width:100px !important;
 }
