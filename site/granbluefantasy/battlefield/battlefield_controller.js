@@ -261,7 +261,6 @@ angular.module('battlefieldApp',['ui.bootstrap'])
 			else
 				$scope.$apply(function(){
 					angular.copy(d, $scope.rankingSearchAllScore);
-					console.log($scope.rankingSearchAllScore);
 				});
 		});
 	};
@@ -277,6 +276,7 @@ angular.module('battlefieldApp',['ui.bootstrap'])
 		
 		modal.result.then(function(condition){
 			//ok
+			console.log(condition);
 			var $button = $("#searchComplex");
 			$button.button("loading");
 			$scope.visibleRankingSearch = true;
@@ -287,7 +287,6 @@ angular.module('battlefieldApp',['ui.bootstrap'])
 				else
 					$scope.$apply(function(){
 						angular.copy(d, $scope.rankingSearchAllScore);
-						console.log($scope.rankingSearchAllScore);
 					});
 			});
 		},function(){
@@ -303,7 +302,7 @@ angular.module('battlefieldApp',['ui.bootstrap'])
 	$scope.ok = function(){
 		var r = [];
 		$scope.conditions.forEach(function(elem,idx,array){
-			if(elem.condition != null && elem.operator == null && elem.value == null)
+			if(elem.condition != null && elem.operator != null && elem.value != null)
 				r.push(elem);
 		});
 		$uibModalInstance.close(r);
