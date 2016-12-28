@@ -35,8 +35,32 @@
 		<script type="text/javascript" src="granbluefantasy/battlefield/schedule.js"></script>
 		<script type="text/javascript" src="granbluefantasy/battlefield/battlefield_controller.js"></script>
 		
-		<script type="text/ng-template" id="loading.html">
-			
+		<script type="text/ng-template" id="searchRankingDetail.html">
+			<div class="modal-header">
+				<h3 class="modal-title">個人ランキング 検索条件</h3>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row battlefield-config-row" data-ng-repeat="e in conditions">
+						<div class="col-sm-2">
+							<select ng-model="e.condition" ng-options="e as e.label for e in keys"></select>
+						</div>
+						<div class="col-sm-3">
+							<input type="text" ng-model="e.value" />
+						</div>
+						<div class="col-sm-2">
+							<select ng-model="e.operator" ng-options="e as e.label for e in operators"></select>
+						</div>
+						<div class="col-sm-1">
+							<i class="glyphicon glyphicon-plus" style="cursor:pointer;" ng-click="appendCondition();"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="ok()">検索</button>
+				<button class="btn btn-default" type="button" ng-click="cancel()">キャンセル</button>
+			</div>
 		</script>
 		
 		<script type="text/ng-template" id="configRanking.html">
@@ -338,6 +362,7 @@
 						<div class="ranking_simple_idsearch_area">
 							<input type="text" ng-model="rankingSearchSimpleId" />
 							<button id="searchSimpleId" class="btn btn-warning btn-xs" data-loading-text="Processing" type="button" ng-show="visibleRanking" ng-click="searchRanking()">ID検索</button>
+							<button id="searchComplex" class="btn btn-warning btn-xs" data-loading-text="Processing" type="button" ng-show="visibleRanking" ng-click="searchRankingDetail()">詳細検索</button>
 						</div>
 						
 						<!-- ranking -->

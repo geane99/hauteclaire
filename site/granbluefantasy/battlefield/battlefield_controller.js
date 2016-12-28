@@ -265,7 +265,56 @@ angular.module('battlefieldApp',['ui.bootstrap'])
 				});
 		});
 	};
+	
+	$scope.searchRankingDetail = function(){
+		var modal = $uibModal.open({
+			animation:false,
+			templateUrl:'searchRankingDetail.html',
+			controller:'searchRankingDetailController',
+			backdrop : 'static',
+			size:'lg'
+		});
+		
+		modal.result.then(function(condition){
+			//ok
+			var $button = $("#searchComplex");
+			$button.button("loading");
+			$scope.visibleRankingSearch = true;
+			_this.calc.ranking.search.simple(condition,$scope.selectedBattlefieldSchedule.rankingAll,function(d, useCache){
+				$button.button("reset");
+				if(useCache)
+					angular.copy(d, $scope.rankingSearchAllScore);
+				else
+					$scope.$apply(function(){
+						angular.copy(d, $scope.rankingSearchAllScore);
+						console.log($scope.rankingSearchAllScore);
+					});
+			});
+		},function(){
+			//dismiss
+		});
+	};
 })
+.controller('searchRankingDetailController', ['$scope', '$modalInstance', function($scope, $uibModalInstance){
+	var _this = hauteclaire;
+	$scope.conditions = [{}];
+	$scope.keys = _this.calc.ranking.search.config;
+	$scope.operators = _this.calc.ranking.search.operator;
+	$scope.ok = function(){
+		var r = [];
+		$scope.conditions.forEach(function(elem,idx,array){
+			if(elem.condition != null && elem.operator == null && elem.value == null)
+				r.push(elem);
+		});
+		$uibModalInstance.close(r);
+	};
+	$scope.cancel = function(){
+		$uibModalInstance.dismiss();
+	};
+	$scope.appendCondition = function(){
+		$scope.conditions.push({});
+	};
+}])
 .controller('configRankingController', ['$scope', '$modalInstance', function($scope, $uibModalInstance){
 	var _this = hauteclaire;
 	_this.operation.ranking.load($scope);
