@@ -7,12 +7,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<title>granblue fantasy カレンダー</title>
+		<title>granblue fantasy 古戦場集計</title>
 		
 		<style>@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);</style>
 		
 		<link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css" />
-
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="granbluefantasy/common/style.css"/>
 		<link rel="stylesheet" href="granbluefantasy/battlefield/style.css"/>
 		<link rel="stylesheet" href="bower_components/nvd3/css/nv.d3.min.css" />
@@ -34,6 +34,10 @@
 		<script type="text/javascript" src="granbluefantasy/common/granbluefantasy.js"></script>
 		<script type="text/javascript" src="granbluefantasy/battlefield/schedule.js"></script>
 		<script type="text/javascript" src="granbluefantasy/battlefield/battlefield_controller.js"></script>
+		
+		<script type="text/ng-template" id="loading.html">
+			
+		</script>
 		
 		<script type="text/ng-template" id="configRanking.html">
 			<div class="modal-header">
@@ -211,6 +215,7 @@
 				<ul class="nav nav-tabs data_tabs">
 					<li class="active"><a href="#data_panel_graph" data-toggle="tab"><i class="glyphicon glyphicon-signal"></i>グラフ</a></li>
 					<li><a href="#data_panel_tables" data-toggle="tab"><i class="glyphicon glyphicon-th"></i>データ</a></li>
+					<li><a href="#data_panel_search" data-toggle="tab" ng-show="visibleRanking"><i class="glyphicon glyphicon-search"></i>検索</a></li>
 				</ul>
 
 				<div class="tab-content data_panel">
@@ -324,6 +329,38 @@
 										<td width="28%" class="small">{{e.ranking1000}}</td>
 										<td width="28%" class="small">{{e.ranking3000}}</td>
 										<td width="28%" class="small">{{e.ranking20000}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab-pane data_panel_search" id="data_panel_search" ng-show="visibleRanking">
+						<div class="ranking_simple_idsearch_area">
+							<input type="text" ng-model="rankingSearchSimpleId" />
+							<button id="searchSimpleId" class="btn btn-warning btn-xs" data-loading-text="Processing" type="button" ng-show="visibleRanking" ng-click="searchRanking()">ID検索</button>
+						</div>
+						
+						<!-- ranking -->
+						<div id="data_panel_table_ranking_all" ng-show="visibleRankingSearch">
+							<table class="table table-condensed table-hover ranking-all table-headerfixed">
+								<thead>
+									<tr>
+										<th width="19%">ID</th>
+										<th width="19%">名前</th>
+										<th width="19%">順位</th>
+										<th width="19%">スコア</th>
+										<th width="19%">ランク</th>
+										<th width="5%"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="e in rankingSearchAllScore">
+										<td width="19%" class="small" scope="row">{{e.user_id}}</td>
+										<td width="19%" class="small">{{e.name}}</td>
+										<td width="19%" class="small">{{e.rank}}</td>
+										<td width="19%" class="small">{{e.point}}</td>
+										<td width="19%" class="small">{{e.level}}</td>
+										<td width="5%" class="small"><a target="_blank" href="http://gbf.game.mbga.jp/#profile/{{e.user_id}}"><i class="glyphicon glyphicon-share-alt"></i></td>
 									</tr>
 								</tbody>
 							</table>

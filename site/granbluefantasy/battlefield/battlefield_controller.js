@@ -66,10 +66,12 @@ angular.module('battlefieldApp',['ui.bootstrap'])
 	$scope.visibleBookmakerArea = false;
 	$scope.visibleRanking = false;
 	$scope.visibleQualifying = false;
-
+	$scope.visibleRankingSearch = false;
+	
 	$scope.bookmakerAllScore = [];
 	$scope.bookmakerAreaScore = [];
 	$scope.rankingAllScore = [];
+	$scope.rankingSearchAllScore = [];
 	$scope.qualifyingAllScore = [];
 	
 	$scope.selectedAlgorith = function(){
@@ -246,7 +248,23 @@ angular.module('battlefieldApp',['ui.bootstrap'])
 		},function(){
 			//dismiss
 		});
-	};	
+	};
+	
+	$scope.searchRanking = function(){
+		var $button = $("#searchSimpleId");
+		$button.button("loading");
+		$scope.visibleRankingSearch = true;
+		_this.calc.ranking.search.idSearch($scope.rankingSearchSimpleId,$scope.selectedBattlefieldSchedule.rankingAll,function(d, useCache){
+			$button.button("reset");
+			if(useCache)
+				angular.copy(d, $scope.rankingSearchAllScore);
+			else
+				$scope.$apply(function(){
+					angular.copy(d, $scope.rankingSearchAllScore);
+					console.log($scope.rankingSearchAllScore);
+				});
+		});
+	};
 })
 .controller('configRankingController', ['$scope', '$modalInstance', function($scope, $uibModalInstance){
 	var _this = hauteclaire;

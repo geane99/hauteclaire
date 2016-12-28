@@ -421,6 +421,86 @@ hauteclaire = function(_this){
 						return data;
 					}
 				}
+			},
+			search:{
+				cache : [],
+				config : [
+					{ "key" : "name", "label" : "名前" },
+					{ "key" : "level", "label" :"ランク" },
+					{ "key" : "defeat", "label" : "討伐数" },
+					{ "key" : "point", "label" : "スコア" },
+					{ "key" : "rank", "label" : "順位" },
+					{ "key" : "user_id", "label" : "ID" }
+				],
+				operator : [
+					{ "key" : "equals", "label" : "一致", "test" : function(was,expect){ return was == expect; } },
+					{ "key" : "contains", "label" : "含む", "test" : function(was,expect){ return was.indexOf(expect) > 0; } },
+					{ "key" : "greaterThan", "label" : "より大きい", "test" :function(was, expect){ return parseInt(was) > parseInt(expect); } },
+					{ "key" : "greaterThanEquals", "label" : "以上", "test" : function(was, expect){ return parseint(was) >= parseInt(expect); } },
+ 					{ "key" : "lessThan", "label" :"未満", "test" :function(was,expect){ return parseInt(was) <= parseInt(expect); } },
+					{ "key" : "lessThanEquals", "label" : "以下", "test" : function(was,expect){ return parseInt(was) < parseInt(expect); } }
+				],
+				condition : function(conditionarray, and){
+					var exec = function(was, expect, test){
+						try{
+							return test(was,expect);
+						}
+						catch(error){
+							return false;
+						}
+					};
+					return function(element){
+						var r = null;
+						conditionarray.forEach(function(each,idx,array){
+							var eachr = exec(element[each.condition.key], each.value, each.operator.test);
+							if(r == null){
+								r = eachr
+							}
+							else{
+								if(and)
+									r &= eachr;
+								else
+									r |= eachr;
+							}
+						});
+						return r;
+					};
+				},
+				idSearch : function(id, url, callback){
+					var condition = {
+						condition : this.config[5],
+						operator : this.operator[0],
+						value : id
+					};
+					this.simple([condition], url, callback);
+				},
+				simple : function(conditionarray, url, callback){
+					var tester = this.condition(conditionarray, true);
+					return this._exec(tester, url, callback);
+				},
+				_exec : function(filter,path, callback){
+					var _s = function(data){
+						var r = [];
+						data.forEach(function(element,idx,array){
+							if(filter(element))
+								r.push(element);
+						});
+						return r;
+					};
+					var _t = this;
+					if(this.cache.length == 0){
+						var uuid = _this.UUID.generate(1);
+						_this.util.load(this, uuid, [{ url : path, process : function(serverData){ 
+							_t.cache = serverData;
+							var r = _s(serverData);
+							callback(r, false);
+						}}], function(){});
+					}
+					else{
+						var r = _s(this.cache);
+						callback(r, true);
+					}
+				}
 			}
 		},
 		qualifying : {
@@ -592,7 +672,8 @@ hauteclaire = function(_this){
 			name:'2016年12月',
 			bookmaker:'./granbluefantasy/battlefield/data/bookmaker_26.json',
 			ranking:'./granbluefantasy/battlefield/data/ranking_26.json',
-			qualifying:'./granbluefantasy/battlefield/data/qualifying_26.json'
+			qualifying:'./granbluefantasy/battlefield/data/qualifying_26.json',
+			rankingAll:'./granbluefantasy/battlefield/data/ranking_all_26.json'
 		}
 	];
 	return _this;
