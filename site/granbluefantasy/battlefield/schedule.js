@@ -171,9 +171,9 @@ hauteclaire = function(_this){
 			//y : score
 			data.forEach(function(element,idx, array){
 				if(revert)
-					r.push({y:_this.util.stringToDate(element.time), x:rounding(element[key])});
+					r.push({y:_this.util.stringToDatetime(element.time), x:rounding(element[key])});
 				else
-					r.push({x:_this.util.stringToDate(element.time), y:rounding(element[key])});
+					r.push({x:_this.util.stringToDatetime(element.time), y:rounding(element[key])});
 			});
 			return r;
 		},
@@ -204,8 +204,8 @@ hauteclaire = function(_this){
 					score.forEach(function(element, idx, array){
 						if(idx > 0){
 							before = array[idx-1];
-							bdate = _this.util.stringToDate(before.time);
-							ndate = _this.util.stringToDate(element.time);
+							bdate = _this.util.stringToDatetime(before.time);
+							ndate = _this.util.stringToDatetime(element.time);
 							gapMillsec = ndate - bdate;
 							gapMinutes = gapMillsec / 1000 / 60;
 							gapTerm = (gapMinutes / bookmakerTerm) -1;
@@ -259,12 +259,12 @@ hauteclaire = function(_this){
 				else
 					strend = _this.util.nextDateByStringDate(conf.datetime) + " "+conf.to
 					
-				var start = _this.util.stringToDate(strstart);
-				var end = _this.util.stringToDate(strend);
+				var start = _this.util.stringToDatetime(strstart);
+				var end = _this.util.stringToDatetime(strend);
 				
 				var r = [];
 				data.score.forEach(function(element,idx,array){
-					var target = _this.util.stringToDate(element.time);
+					var target = _this.util.stringToDatetime(element.time);
 					if(start <= target && target <= end)
 						r.push(element);
 				});
@@ -310,7 +310,14 @@ hauteclaire = function(_this){
 					name : conf.name,
 					type:conf.type,
 					graph : conf.graph,
-					conf:function(){
+					conf:function(data){
+						if(data!=null){
+							scores = this.select(data).score;
+							if(scores != null && scores.length > 0){
+								conf.startDate = _this.util.stringToDatetime(scores[0].time);
+								conf.endDate = _this.util.stringToDatetime(scores[scores.length-1].time);
+							}
+						}
 						return conf;
 					},
 					calc : function(data, revert, type){
@@ -340,7 +347,14 @@ hauteclaire = function(_this){
 					name : conf.name,
 					type:conf.type,
 					graph : conf.graph,
-					conf:function(){
+					conf:function(data){
+						if(data!=null){
+							scores = data.round1.score;
+							if(scores != null && scores.length > 0){
+								conf.startDate = _this.util.stringToDatetime(scores[0].time);
+								conf.endDate = _this.util.stringToDatetime(scores[scores.length-1].time);
+							}
+						}
 						return conf;
 					},
 					correct:function(data){
@@ -388,12 +402,12 @@ hauteclaire = function(_this){
 				return result;
 			},
 			filter:function(data,filterconf){
-				var start = _this.util.stringToDate(filterconf.fromDate + " "+filterconf.fromTime);
-				var end = _this.util.stringToDate(filterconf.toDate + " "+filterconf.toTime);
+				var start = _this.util.stringToDatetime(filterconf.fromDate + " "+filterconf.fromTime);
+				var end = _this.util.stringToDatetime(filterconf.toDate + " "+filterconf.toTime);
 				
 				var r = [];
 				data.score.forEach(function(element,idx,array){
-					var target = _this.util.stringToDate(element.time);
+					var target = _this.util.stringToDatetime(element.time);
 					if(start <= target && target <= end)
 						r.push(element);
 				});
@@ -404,7 +418,14 @@ hauteclaire = function(_this){
 					name : conf.name,
 					type:conf.type,
 					graph : conf.graph,
-					conf:function(){
+					conf:function(data){
+						if(data!=null){
+							scores = this.select(data);
+							if(scores != null && scores.length > 0){
+								conf.startDate = _this.util.stringToDatetime(scores[0].time);
+								conf.endDate = _this.util.stringToDatetime(scores[scores.length-1].time);
+							}
+						}
 						return conf;
 					},
 					correct:function(data){
@@ -521,12 +542,12 @@ hauteclaire = function(_this){
 				return result;
 			},
 			filter:function(data,filterconf){
-				var start = _this.util.stringToDate(filterconf.fromDate + " "+filterconf.fromTime);
-				var end = _this.util.stringToDate(filterconf.toDate + " "+filterconf.toTime);
+				var start = _this.util.stringToDatetime(filterconf.fromDate + " "+filterconf.fromTime);
+				var end = _this.util.stringToDatetime(filterconf.toDate + " "+filterconf.toTime);
 				
 				var r = [];
 				data.score.forEach(function(element,idx,array){
-					var target = _this.util.stringToDate(element.time);
+					var target = _this.util.stringToDatetime(element.time);
 					if(start <= target && target <= end)
 						r.push(element);
 				});
@@ -537,7 +558,14 @@ hauteclaire = function(_this){
 					name : conf.name,
 					type:conf.type,
 					graph : conf.graph,
-					conf:function(){
+					conf:function(data){
+						if(data!=null){
+							scores = this.select(data);
+							if(scores != null && scores.length > 0){
+								conf.startDate = _this.util.stringToDatetime(scores[0].time);
+								conf.endDate = _this.util.stringToDatetime(scores[scores.length-1].time);
+							}
+						}
 						return conf;
 					},
 					correct:function(data){
@@ -652,14 +680,14 @@ hauteclaire = function(_this){
 			_this.calc.qualifying.createAlgorithm({
 				name : 'トータルスコア',
 				type:"qualifying",
-				graph : _this.viewer.graph.dailyLine
+				graph : _this.viewer.graph.ndaysLine
 			})
 		],
 		ranking:[
 			_this.calc.ranking.createAlgorithm({
 				name : 'トータルスコア',
 				type:"ranking",
-				graph : _this.viewer.graph.dailyLine
+				graph : _this.viewer.graph.ndaysLine
 			})
 		]
 	};

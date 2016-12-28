@@ -177,12 +177,15 @@ hauteclaire = function(_this){
 			].join(":"));
 		},
 		nextDateByStringDate:function(stringDate){
-			base = this.stringToDate(stringDate);
+			base = this.stringToDatetime(stringDate);
 			basedate = this.integerToDate(base + (24*60*60*1000));
 			return this.dateToString(basedate);
 		},
-		stringToDate:function(sdate){
+		stringToDatetime:function(sdate){
 			return Date.parse(sdate);
+		},
+		stringToDate:function(sdate){
+			return new Date(sdate);
 		},
 		integerToDate:function(val){
 			return new Date(val);
@@ -236,7 +239,7 @@ hauteclaire = function(_this){
 		clear : function(){
 			this.cache = new Array();
 		},
-		chart : function(g, data){
+		chart : function(g, data, conf){
 			d3.select("svg").selectAll("*").remove();
 			nv.addGraph({
 				generate: function() {
@@ -249,12 +252,12 @@ hauteclaire = function(_this){
 					g.spec(nv,d3,chart);
 					
 					if(!g.revert){
-						g.xAxis(nv,d3,chart,chart.xAxis);
-						g.yAxis(nv,d3,chart,chart.yAxis);
+						g.xAxis(nv,d3,chart,chart.xAxis, conf);
+						g.yAxis(nv,d3,chart,chart.yAxis, conf);
 					}
 					else{
-						g.xAxis(nv,d3,chart,chart.yAxis);
-						g.yAxis(nv,d3,chart,chart.xAxis);
+						g.xAxis(nv,d3,chart,chart.yAxis, conf);
+						g.yAxis(nv,d3,chart,chart.xAxis, conf);
 					}
 					
 					chart.dispatch.on('renderEnd', function(){
@@ -284,7 +287,8 @@ hauteclaire = function(_this){
 				var correctData = algorithm.correct(serverData);
 				callback(correctData);
 				var graphData = algorithm.calc(correctData, g.revert);
-				_this.graph.chart(g, graphData);
+				var conf = algorithm.conf(correctData);
+				_this.graph.chart(g, graphData, conf);
 				return data;
 			}}], function(){
 			});
@@ -292,8 +296,9 @@ hauteclaire = function(_this){
 		bind:function(data, g, algorithm, filterconf, callback){
 			var fdata = algorithm.filter(data,filterconf);
 			callback(fdata);
+			var conf = algorithm.conf(fdata);
 			var cdata = algorithm.calc(fdata, g.revert, filterconf.type);
-			_this.graph.chart(g, cdata);
+			_this.graph.chart(g, cdata, conf);
 			return fdata;
 		},
 		locale : {

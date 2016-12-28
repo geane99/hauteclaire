@@ -45,7 +45,7 @@ angular.module('battlefieldApp',['ui.bootstrap'])
 				language: "ja"
 			});
 			if(sdate != null && sdate != ""){
-				var d = new Date(sdate);
+				var d = _this.util.stringToDate(sdate);
 				$target.datepicker("setDate", d);
 			}
 		},
