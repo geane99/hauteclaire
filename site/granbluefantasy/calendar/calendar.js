@@ -230,7 +230,7 @@ hauteclaire = function(_this){
 	_this.subjugation = {
 		id:2000,
 		cache:new Array(),
-		current:new Date(2016,7,19),
+		current:new Date(2016,7,16),
 		range:120,
 		size:18,
 		pattern:[{
