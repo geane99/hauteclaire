@@ -1,0 +1,4 @@
+Header set Access-Control-Allow-Origin "https://docs.google.com/"
+Header set Access-Control-Allow-Credentials true
+Header set Access-Control-Allow-Methods "GET, PUT, POST, DELETE, HEAD, OPTIONS"
+Header set Access-Control-Allow-Headers "X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept"

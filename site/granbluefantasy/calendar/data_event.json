@@ -1798,7 +1798,6 @@
 			"type":"subjugation",
 			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8139_%284%B2%F3%CC%DC%29%A5%B1%A5%EB%A5%D9%A5%ED%A5%B9%C6%A4%CC%C7%C0%EF"
 		},
-		
 		{
 			"id":152,
 			"title":"聖夜のスターダスト・メモリーズ(4)",
@@ -1889,9 +1888,50 @@
 		},
 		{
 			"id":159,
-			"title":"シナリオイベント",
+			"title":"神立、笠雲の合間に閃きて",
 			"start":"2017-01-31 19:00:00",
 			"end":"2017-02-08 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8169_%BF%C0%CE%A9%A1%A2%B3%DE%B1%C0%A4%CE%B9%E7%B4%D6%A4%CB%C1%AE%A4%AD%A4%C6"
+		},
+		{
+			"id":160,
+			"title":"四象降臨(5)",
+			"start":"2017-02-09 19:00:00",
+			"end":"2017-02-14 17:00:00",
+			"className":"sisyou",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"sisyou"
+		},
+		{
+			"id":161,
+			"title":"ゼノ・イフリート撃滅戦(1)",
+			"start":"2017-02-15 19:00:00",
+			"end":"2017-02-21 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation"
+		},
+		{
+			"id":162,
+			"title":"新イベント",
+			"start":"2017-02-22 19:00:00",
+			"end":"2017-02-28 17:00:00",
+			"className":"story_events",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency"
+		},
+		{
+			"id":163,
+			"title":"シナリオイベント",
+			"start":"2017-03-01 19:00:00",
+			"end":"2017-03-11 17:00:00",
 			"className":"story_events",
 			"isReprint":false,
 			"isCollaboration":false,

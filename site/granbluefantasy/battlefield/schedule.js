@@ -701,14 +701,14 @@ hauteclaire = function(_this){
 			bookmaker:'./granbluefantasy/battlefield/data/bookmaker_26.json',
 			ranking:'./granbluefantasy/battlefield/data/ranking_26.json',
 			qualifying:'./granbluefantasy/battlefield/data/qualifying_26.json',
-			rankingAll:'./granbluefantasy/battlefield/data/ranking_all_26.json'
+			rankingAll:'https://docs.google.com/uc?export=download&confirm=j48p&id=0BwqewcuGIA__dnJ2VkEydVp6enM'
 		},
 		{
 			name:'2017年01月',
 			bookmaker:'./granbluefantasy/battlefield/data/bookmaker_27.json',
 			ranking:'./granbluefantasy/battlefield/data/ranking_27.json',
 			qualifying:'./granbluefantasy/battlefield/data/qualifying_27.json',
-			rankingAll:'./granbluefantasy/battlefield/data/ranking_all_27.json'
+			rankingAll:'https://docs.google.com/uc?export=download&confirm=h_QO&id=0BwqewcuGIA__QTk3a3lpRWgxTDg'
 		}
 	];
 	return _this;

@@ -140,6 +140,13 @@ hauteclaire = function(_this){
 			return $.ajax({
 				url:surl,
 				dataType:'text',
+				  xhrFields: {
+					withCredentials: true
+				},
+				headers:{
+					'X-Requested-With':true,
+					'Content-Type': 'application/json'
+				},
 				success:function(text){
 					stext = text.replace(/\?/g,"");
 					data = (new Function("return " + stext))();
