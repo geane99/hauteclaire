@@ -1905,7 +1905,8 @@
 			"className":"sisyou",
 			"isReprint":true,
 			"isCollaboration":false,
-			"type":"sisyou"
+			"type":"sisyou",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8170_%285%B2%F3%CC%DC%29%BB%CD%BE%DD%B9%DF%CE%D7"
 		},
 		{
 			"id":161,
@@ -1915,25 +1916,68 @@
 			"className":"subjugation",
 			"isReprint":false,
 			"isCollaboration":false,
-			"type":"subjugation"
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8172_%A5%BC%A5%CE%A1%A6%A5%A4%A5%D5%A5%EA%A1%BC%A5%C8%B7%E2%CC%C7%C0%EF"
 		},
 		{
 			"id":162,
-			"title":"新イベント",
+			"title":"Shadowverse Duelist of Eternity",
 			"start":"2017-02-22 19:00:00",
 			"end":"2017-02-28 17:00:00",
-			"className":"story_events",
+			"className":"collaboration",
 			"isReprint":false,
-			"isCollaboration":false,
-			"type":"currency"
+			"isCollaboration":true,
+			"type":"subjugation",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8173_Shadowverse%20Duelist%20of%20Eternity"
 		},
 		{
 			"id":163,
-			"title":"シナリオイベント",
+			"title":"どうして空は蒼いのか",
 			"start":"2017-03-01 19:00:00",
 			"end":"2017-03-11 17:00:00",
 			"className":"story_events",
 			"isReprint":false,
+			"isCollaboration":false,
+			"type":"currency",
+			"wiki":"http://gbf-wiki.com/index.php?%A5%A4%A5%D9%A5%F3%A5%C8174_%A4%C9%A4%A6%A4%B7%A4%C6%B6%F5%A4%CF%C1%F3%A4%A4%A4%CE%A4%AB"
+		},
+		{
+			"id":164,
+			"title":"ゼノ・ウォフマナフ撃滅戦(1)",
+			"start":"2017-03-11 19:00:00",
+			"end":"2017-03-17 17:00:00",
+			"className":"subjugation",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"subjugation"
+		},
+		{
+			"id":165,
+			"title":"決戦！星の古戦場(28)",
+			"start":"2017-03-18 19:00:00",
+			"end":"2017-03-25 23:59:59",
+			"className":"historic_battlefield",
+			"isReprint":false,
+			"isCollaboration":false,
+			"type":"battelefield"
+		},
+		{
+			"id":166,
+			"title":"とりまトッポブで。(2)",
+			"start":"2017-03-26 19:00:00",
+			"end":"2017-03-31 17:00:00",
+			"className":"story_events",
+			"isReprint":true,
+			"isCollaboration":false,
+			"type":"currency"
+		},
+		{
+			"id":167,
+			"title":"シナリオイベント",
+			"start":"2017-04-01 19:00:00",
+			"end":"2017-04-09 17:00:00",
+			"className":"story_events",
+			"isReprint":true,
 			"isCollaboration":false,
 			"type":"currency"
 		}
